@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "es2022",
+    "lib": ["es2022", "DOM", "DOM.Iterable"],
+    "allowJs": false,
+    "jsx": "preserve",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "downlevelIteration": true,
+    "skipLibCheck": false,
+    "noErrorTruncation": true,
+
+    "strict": true,
+
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    "types": ["vitest/globals"]
+  },
+  "exclude": ["node_modules"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "test/**/*"],
+  "vueCompilerOptions": {
+    "jsxSlots": true
+  }
+}
