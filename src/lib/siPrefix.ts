@@ -130,13 +130,14 @@ export class SIValue {
   }
 
   static fitBy(value: number, symbol: SIPrefixSymbol): SIValue {
+    const prefix = SIValue.getPrefix(symbol);
+
     if (!Number.isFinite(value)) {
-      return new SIValue(value, BaseSIPrefix);
+      return new SIValue(value, prefix);
     }
 
     const sign = Math.sign(value);
     value = Math.abs(value);
-    const prefix = SIValue.getPrefix(symbol);
     const practicalValue = value * 10 ** -prefix.exponent;
 
     return new SIValue(practicalValue * sign, prefix);

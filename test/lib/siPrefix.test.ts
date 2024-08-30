@@ -91,6 +91,12 @@ describe('fitBy', () => {
     expect(SIValue.fitBy(0, 'k')).toStrictEqual(new SIValue(0, SIValue.getPrefix('k')));
   });
 
+  test('Fit with an infinite value', () => {
+    expect(SIValue.fitBy(Infinity, 'm')).toStrictEqual(new SIValue(Infinity, SIValue.getPrefix('m')));
+    expect(SIValue.fitBy(-Infinity, '')).toStrictEqual(new SIValue(-Infinity, SIValue.getPrefix('')));
+    expect(SIValue.fitBy(NaN, 'k')).toStrictEqual(new SIValue(NaN, SIValue.getPrefix('k')));
+  });
+
   test('Fit with a negative value', () => {
     expect(SIValue.fitBy(-1e6, 'k')).toStrictEqual(new SIValue(-1e3, SIValue.getPrefix('k')));
     expect(SIValue.fitBy(-1e6, 'M')).toStrictEqual(new SIValue(-1, SIValue.getPrefix('M')));
