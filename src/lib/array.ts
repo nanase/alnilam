@@ -123,12 +123,7 @@ export function findMinMax(array: Iterable<number>): { max: number; min: number;
     i++;
   }
 
-  return {
-    max: max,
-    min: min,
-    maxIndex: maxIndex,
-    minIndex: minIndex,
-  };
+  return { max, min, maxIndex, minIndex };
 }
 
 export function* generateForDepth<T>(array: Array<T>, depth: number): Iterable<Array<T>> {
