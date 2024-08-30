@@ -34,6 +34,8 @@ export default defineConfig({
     globals: true,
     coverage: {
       reporter: ['text', 'json'],
+      include: ['src/**/*.{ts,vue}'],
+      exclude: ['**/index.ts'],
     },
   },
   resolve: {
