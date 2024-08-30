@@ -28,6 +28,18 @@ describe('toFixed', () => {
   });
 });
 
+describe('parse', () => {
+  test('Parse a valid string contains SIValue', () => {
+    expect(SIValue.parse('1.0k')).toStrictEqual(new SIValue(1, SIValue.getPrefix('k')));
+  });
+
+  test('Parse an invalid string', () => {
+    expect(SIValue.parse('')).toStrictEqual(new SIValue(NaN, SIValue.getPrefix('')));
+    expect(SIValue.parse(undefined)).toStrictEqual(new SIValue(NaN, SIValue.getPrefix('')));
+    expect(SIValue.parse('1.5A')).toStrictEqual(new SIValue(NaN, SIValue.getPrefix('')));
+  });
+});
+
 describe('fit', () => {
   test('Fit a large SI prefix', () => {
     expect(SIValue.fit(1e6, ['k', ''])).toStrictEqual(new SIValue(1e3, SIValue.getPrefix('k')));

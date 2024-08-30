@@ -96,13 +96,9 @@ export class SIValue {
     }
 
     const fraction = Number.parseFloat(matches[1]);
-    const prefix = prefixes.find((p) => p.symbol === matches[2]);
+    const prefix = prefixes.find((p) => p.symbol === matches[2])!;
 
-    if (prefix) {
-      return new SIValue(fraction, prefix);
-    } else {
-      return new SIValue(fraction, BaseSIPrefix);
-    }
+    return new SIValue(fraction, prefix);
   }
 
   static fit(value: number, symbols: readonly SIPrefixSymbol[]): SIValue {
