@@ -1,5 +1,17 @@
 import { SIPrefixSymbol, SIValue } from '@/lib/siPrefix';
 
+describe('actualValue', () => {
+  test('Get actual value', () => {
+    expect(new SIValue(1, SIValue.getPrefix('k')).actualValue).toBe(1e3);
+    expect(new SIValue(5, SIValue.getPrefix('M')).actualValue).toBe(5e6);
+    expect(new SIValue(0.5, SIValue.getPrefix('G')).actualValue).toBe(0.5e9);
+
+    expect(new SIValue(-1, SIValue.getPrefix('k')).actualValue).toBe(-1e3);
+    expect(new SIValue(-5, SIValue.getPrefix('M')).actualValue).toBe(-5e6);
+    expect(new SIValue(-0.5, SIValue.getPrefix('G')).actualValue).toBe(-0.5e9);
+  });
+});
+
 describe('toString', () => {
   test('Convert to string', () => {
     expect(new SIValue(1, SIValue.getPrefix('k')).toString()).toEqual('1k');
@@ -9,6 +21,18 @@ describe('toString', () => {
     expect(new SIValue(-1, SIValue.getPrefix('k')).toString()).toEqual('-1k');
     expect(new SIValue(-5, SIValue.getPrefix('M')).toString()).toEqual('-5M');
     expect(new SIValue(-0.5, SIValue.getPrefix('G')).toString()).toEqual('-0.5G');
+  });
+});
+
+describe('toSimpleString', () => {
+  test('Convert to simple string', () => {
+    expect(new SIValue(1.000001, SIValue.getPrefix('k')).toSimpleString(1)).toEqual('1k');
+    expect(new SIValue(5.000001, SIValue.getPrefix('M')).toSimpleString(2)).toEqual('5M');
+    expect(new SIValue(0.5000001, SIValue.getPrefix('G')).toSimpleString(3)).toEqual('0.5G');
+
+    expect(new SIValue(-1.000001, SIValue.getPrefix('k')).toSimpleString(1)).toEqual('-1k');
+    expect(new SIValue(-5.000001, SIValue.getPrefix('M')).toSimpleString(2)).toEqual('-5M');
+    expect(new SIValue(-0.5000001, SIValue.getPrefix('G')).toSimpleString(3)).toEqual('-0.5G');
   });
 });
 
@@ -25,6 +49,78 @@ describe('toFixed', () => {
 
   test('Convert to string without a parameter of fraction digits', () => {
     expect(new SIValue(1, SIValue.getPrefix('k')).toFixed()).toEqual('1k');
+  });
+});
+
+describe('getPrefixSymbols', () => {
+  test('Get prefix symbols', () => {
+    expect(SIValue.getPrefixSymbols()).toEqual([
+      'Q',
+      'R',
+      'Y',
+      'Z',
+      'E',
+      'P',
+      'T',
+      'G',
+      'M',
+      'k',
+      '',
+      'm',
+      'μ',
+      'u',
+      'n',
+      'p',
+      'f',
+      'a',
+      'z',
+      'y',
+      'r',
+      'q',
+    ]);
+  });
+
+  test('Get all prefix symbols', () => {
+    expect(SIValue.getPrefixSymbols(true)).toEqual([
+      'Q',
+      'R',
+      'Y',
+      'Z',
+      'E',
+      'P',
+      'T',
+      'G',
+      'M',
+      'k',
+      'h',
+      'da',
+      '',
+      'd',
+      'c',
+      'm',
+      'μ',
+      'u',
+      'n',
+      'p',
+      'f',
+      'a',
+      'z',
+      'y',
+      'r',
+      'q',
+    ]);
+  });
+});
+
+describe('test', () => {
+  test('Test a valid string contains SIValue', () => {
+    expect(SIValue.test('1.0k')).toBeTruthy();
+  });
+
+  test('Test an invalid string', () => {
+    expect(SIValue.test('')).toBeFalsy();
+    expect(SIValue.test(undefined)).toBeFalsy();
+    expect(SIValue.test('1.5A')).toBeFalsy();
   });
 });
 
@@ -67,6 +163,13 @@ describe('fit', () => {
 
     expect(SIValue.fit(0, ['', 'm', 'μ', 'n', 'p'])).toStrictEqual(new SIValue(0, SIValue.getPrefix('')));
     expect(SIValue.fit(0, ['m', 'μ', 'n', 'p'])).toStrictEqual(new SIValue(0, SIValue.getPrefix('')));
+  });
+
+  test('Fit with an infinite value', () => {
+    expect(SIValue.fit(Infinity, [])).toStrictEqual(new SIValue(Infinity, SIValue.getPrefix('')));
+    expect(SIValue.fit(Infinity, ['k', ''])).toStrictEqual(new SIValue(Infinity, SIValue.getPrefix('k')));
+    expect(SIValue.fit(-Infinity, ['M', 'k', ''])).toStrictEqual(new SIValue(-Infinity, SIValue.getPrefix('M')));
+    expect(SIValue.fit(NaN, ['G', 'M', 'k', ''])).toStrictEqual(new SIValue(NaN, SIValue.getPrefix('G')));
   });
 
   test('Fit with a negative value', () => {
