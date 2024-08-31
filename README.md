@@ -8,6 +8,9 @@ To install the latest update:
 
 ```sh
 yarn add -D @nanase/alnilam@git+ssh://git@github.com:nanase/alnilam.git
+
+# using https
+yarn add -D @nanase/alnilam@https://github.com/nanase/alnilam.git
 ```
 
 Or, to specify branch or hash:
@@ -25,11 +28,11 @@ yarn upgrade @nanase/alnilam
 ## How to use
 
 ```ts
-import ThemeToggleButton from '@nanase/alnilam/components/ThemeToggleButton';
+import { ThemeToggleButton } from '@nanase/alnilam';
 ```
 
 ```ts
-import { SIValue } from '@nanase/alnilam/lib/siPrefix';
+import { SIValue } from '@nanase/alnilam';
 ```
 
 ## Development
