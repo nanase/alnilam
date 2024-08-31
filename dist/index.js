@@ -2,8 +2,8 @@ var y = Object.defineProperty;
 var b = (n, t, e) => t in n ? y(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
 var p = (n, t, e) => b(n, typeof t != "symbol" ? t + "" : t, e);
 import { onMounted as w, onBeforeUnmount as k, watch as v } from "vue";
-const u = "vuetify-color-scheme";
-function f(n, t) {
+const a = "vuetify-color-scheme";
+function c(n, t) {
   t === "unspecified" ? (n.global.name.value = "", document.querySelectorAll(".color-responsive").forEach((e) => {
     var r;
     if (e.classList.remove("color-responsive-dark", "color-responsive-light"), e instanceof HTMLObjectElement) {
@@ -24,11 +24,11 @@ function d() {
   return window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "unspecified" : "unspecified";
 }
 function A(n) {
-  n.global.current.value.dark ? (d() === "light" ? localStorage.removeItem(u) : localStorage.setItem(u, "light"), f(n, "light")) : (d() === "dark" ? localStorage.removeItem(u) : localStorage.setItem(u, "dark"), f(n, "dark"));
+  n.global.current.value.dark ? (d() === "light" ? localStorage.removeItem(a) : localStorage.setItem(a, "light"), c(n, "light")) : (d() === "dark" ? localStorage.removeItem(a) : localStorage.setItem(a, "dark"), c(n, "dark"));
 }
 function L(n) {
-  const t = localStorage.getItem(u);
-  t === "light" ? f(n, "light") : t === "dark" || d() === "dark" ? f(n, "dark") : f(n, "light");
+  const t = localStorage.getItem(a);
+  t === "light" ? c(n, "light") : t === "dark" || d() === "dark" ? c(n, "dark") : c(n, "light");
 }
 function h(n, t, e) {
   for (const r of e)
@@ -87,12 +87,7 @@ function q(n) {
   let t = -1 / 0, e = 1 / 0, r = -1, i = -1, o = 0;
   for (const s of n)
     s > t && (t = s, r = o), s < e && (e = s, i = o), o++;
-  return {
-    max: t,
-    min: e,
-    maxIndex: r,
-    minIndex: i
-  };
+  return { max: t, min: e, maxIndex: r, minIndex: i };
 }
 function* V(n, t) {
   const e = n.length, r = Array(t).fill(0);
@@ -105,7 +100,7 @@ function* V(n, t) {
       break;
   }
 }
-const c = { symbol: "", exponent: 0 }, a = [
+const u = { symbol: "", exponent: 0 }, f = [
   { symbol: "Q", exponent: 30 },
   { symbol: "R", exponent: 27 },
   { symbol: "Y", exponent: 24 },
@@ -118,7 +113,7 @@ const c = { symbol: "", exponent: 0 }, a = [
   { symbol: "k", exponent: 3 },
   { symbol: "h", exponent: 2 },
   { symbol: "da", exponent: 1 },
-  c,
+  u,
   { symbol: "d", exponent: -1 },
   { symbol: "c", exponent: -2 },
   { symbol: "m", exponent: -3 },
@@ -150,7 +145,7 @@ const c = { symbol: "", exponent: 0 }, a = [
     return `${this.fraction.toFixed(t)}${this.prefix.symbol}`;
   }
   static getPrefixSymbols(t) {
-    return a.filter((e) => e.exponent % (t ? 1 : 3) === 0).map((e) => e.symbol);
+    return f.filter((e) => e.exponent % (t ? 1 : 3) === 0).map((e) => e.symbol);
   }
   static test(t) {
     return l.siValuePattern.test(t ?? "");
@@ -158,13 +153,13 @@ const c = { symbol: "", exponent: 0 }, a = [
   static parse(t) {
     const e = l.siValuePattern.exec(t ?? "");
     if (e == null)
-      return new l(Number.NaN, c);
-    const r = Number.parseFloat(e[1]), i = a.find((o) => o.symbol === e[2]);
-    return i ? new l(r, i) : new l(r, c);
+      return new l(Number.NaN, u);
+    const r = Number.parseFloat(e[1]), i = f.find((o) => o.symbol === e[2]);
+    return new l(r, i);
   }
   static fit(t, e) {
     if (!Number.isFinite(t) && e.length === 0)
-      return new l(t, c);
+      return new l(t, u);
     if (t !== 0) {
       const r = Math.sign(t);
       t = Math.abs(t);
@@ -174,24 +169,25 @@ const c = { symbol: "", exponent: 0 }, a = [
       }).sort((o, s) => o.rank - s.rank);
       return new l(i[0].practicalValue * r, i[0].prefix);
     } else
-      return new l(0, c);
+      return new l(0, u);
   }
   static fitBy(t, e) {
+    const r = l.getPrefix(e);
     if (!Number.isFinite(t))
-      return new l(t, c);
-    const r = Math.sign(t);
+      return new l(t, r);
+    const i = Math.sign(t);
     t = Math.abs(t);
-    const i = l.getPrefix(e), o = t * 10 ** -i.exponent;
-    return new l(o * r, i);
+    const o = t * 10 ** -r.exponent;
+    return new l(o * i, r);
   }
   static getPrefix(t) {
-    const e = a.find((r) => r.symbol === t);
+    const e = f.find((r) => r.symbol === t);
     if (!e)
       throw new Error(`Prefix symbol '${t}' is not defined.`);
     return e;
   }
   static successor(t, e) {
-    const r = l.getPrefix(t), i = a.filter(
+    const r = l.getPrefix(t), i = f.filter(
       (s) => s.exponent > r.exponent && s.exponent % (e ? 1 : 3) === 0
     );
     if (i.length === 0)
@@ -200,7 +196,7 @@ const c = { symbol: "", exponent: 0 }, a = [
     return i.filter((s) => s.exponent === o.exponent)[0].symbol;
   }
   static predecessor(t, e) {
-    const r = l.getPrefix(t), i = a.filter(
+    const r = l.getPrefix(t), i = f.filter(
       (o) => o.exponent < r.exponent && o.exponent % (e ? 1 : 3) === 0
     );
     return i.length === 0 ? t : i[0].symbol;
@@ -299,13 +295,13 @@ class Q {
   }
 }
 export {
-  c as BaseSIPrefix,
+  u as BaseSIPrefix,
   S as RawObject,
   B as Rules,
   m as SIValue,
-  u as VuetifyColorSchemeName,
+  a as VuetifyColorSchemeName,
   Q as WorkerManager,
-  f as applyColorScheme,
+  c as applyColorScheme,
   z as compareWithNull,
   F as count,
   M as deepAssign,
