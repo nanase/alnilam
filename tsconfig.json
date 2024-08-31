@@ -5,6 +5,7 @@
     "lib": ["es2022", "DOM", "DOM.Iterable"],
     "allowJs": false,
     "jsx": "preserve",
+    "emitDeclarationOnly": true,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
