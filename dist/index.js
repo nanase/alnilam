@@ -1,67 +1,113 @@
-var y = Object.defineProperty;
-var b = (n, t, e) => t in n ? y(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
-var p = (n, t, e) => b(n, typeof t != "symbol" ? t + "" : t, e);
-import { onMounted as w, onBeforeUnmount as k, watch as v } from "vue";
-const a = "vuetify-color-scheme";
-function c(n, t) {
+var k = Object.defineProperty;
+var v = (n, t, e) => t in n ? k(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
+var h = (n, t, e) => v(n, typeof t != "symbol" ? t + "" : t, e);
+import { getCurrentInstance as S, inject as C, defineComponent as M, onMounted as y, onBeforeUnmount as w, resolveComponent as x, openBlock as T, createBlock as I, withCtx as N, createVNode as P, mergeProps as L, unref as E, watch as A } from "vue";
+function $(n, t) {
+  const e = S();
+  if (!e)
+    throw new Error(`[Vuetify] ${n} must be called from inside a setup function`);
+  return e;
+}
+const j = Symbol.for("vuetify:theme");
+function B() {
+  $("useTheme");
+  const n = C(j, null);
+  if (!n) throw new Error("Could not find Vuetify theme injection");
+  return n;
+}
+const c = "vuetify-color-scheme";
+function a(n, t) {
   t === "unspecified" ? (n.global.name.value = "", document.querySelectorAll(".color-responsive").forEach((e) => {
     var r;
     if (e.classList.remove("color-responsive-dark", "color-responsive-light"), e instanceof HTMLObjectElement) {
-      const i = (r = e.contentDocument) == null ? void 0 : r.documentElement;
-      i && i.classList.remove("color-responsive-dark", "color-responsive-light");
+      const o = (r = e.contentDocument) == null ? void 0 : r.documentElement;
+      o && o.classList.remove("color-responsive-dark", "color-responsive-light");
     }
   })) : (n.global.name.value = t, document.querySelectorAll(".color-responsive").forEach((e) => {
     var r;
     if (t === "light" ? (e.classList.add("color-responsive-light"), e.classList.remove("color-responsive-dark")) : (e.classList.add("color-responsive-dark"), e.classList.remove("color-responsive-light")), e instanceof HTMLObjectElement) {
-      const i = (r = e.contentDocument) == null ? void 0 : r.documentElement;
-      if (!i)
+      const o = (r = e.contentDocument) == null ? void 0 : r.documentElement;
+      if (!o)
         return;
-      t === "light" ? (i.classList.add("color-responsive-light"), i.classList.remove("color-responsive-dark")) : (i.classList.add("color-responsive-dark"), i.classList.remove("color-responsive-light"));
+      t === "light" ? (o.classList.add("color-responsive-light"), o.classList.remove("color-responsive-dark")) : (o.classList.add("color-responsive-dark"), o.classList.remove("color-responsive-light"));
     }
   }));
 }
-function d() {
+function g() {
   return window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "unspecified" : "unspecified";
 }
-function A(n) {
-  n.global.current.value.dark ? (d() === "light" ? localStorage.removeItem(a) : localStorage.setItem(a, "light"), c(n, "light")) : (d() === "dark" ? localStorage.removeItem(a) : localStorage.setItem(a, "dark"), c(n, "dark"));
+function F(n) {
+  n.global.current.value.dark ? (g() === "light" ? localStorage.removeItem(c) : localStorage.setItem(c, "light"), a(n, "light")) : (g() === "dark" ? localStorage.removeItem(c) : localStorage.setItem(c, "dark"), a(n, "dark"));
 }
-function L(n) {
-  const t = localStorage.getItem(a);
-  t === "light" ? c(n, "light") : t === "dark" || d() === "dark" ? c(n, "dark") : c(n, "light");
+function V(n) {
+  const t = localStorage.getItem(c);
+  t === "light" ? a(n, "light") : t === "dark" || g() === "dark" ? a(n, "dark") : a(n, "light");
 }
-function h(n, t, e) {
+const z = /* @__PURE__ */ M({
+  __name: "ThemeToggleButton",
+  setup(n) {
+    const t = B();
+    function e(o) {
+      const i = localStorage.getItem(c);
+      i === null ? a(t, o.matches ? "dark" : "light") : (i === "dark" && o.matches || i === "light" && !o.matches) && localStorage.removeItem(c);
+    }
+    function r() {
+      F(t);
+    }
+    return y(() => {
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e), V(t);
+    }), w(() => {
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", e);
+    }), (o, i) => {
+      const s = x("v-btn"), u = x("v-tooltip");
+      return T(), I(u, {
+        text: "テーマを切り替え",
+        "aria-label": "テーマを切り替え"
+      }, {
+        activator: N(({ props: p }) => [
+          P(s, L({ "data-test": "button" }, p, {
+            icon: E(t).global.current.value.dark ? "mdi-weather-night" : "mdi-white-balance-sunny",
+            onClick: r,
+            "aria-label": "テーマを切り替え"
+          }), null, 16, ["icon"])
+        ]),
+        _: 1
+      });
+    };
+  }
+});
+function b(n, t, e) {
   for (const r of e)
     if (!(typeof r[n] > "u") && r[n] === t)
       return r;
   return null;
 }
-function I(n, t, e) {
+function H(n, t, e) {
   return t.map((r) => {
-    const i = h(n, r[n], t), o = h(n, r[n], e);
-    return i == null || o == null ? null : { ...i, ...o };
+    const o = b(n, r[n], t), i = b(n, r[n], e);
+    return o == null || i == null ? null : { ...o, ...i };
   }).filter((r) => r !== null);
 }
-function T(n, t) {
+function Z(n, t) {
   return t == null ? n.reduce((e, r) => e + Number(r), 0) : n.reduce((e, r) => e + t(r), 0);
 }
-function j(n) {
+function G(n) {
   return n == null || n.length === 0;
 }
-function E(n) {
+function J(n) {
   return n.some((t, e) => n.indexOf(t) !== e);
 }
-function F(n, t) {
+function Q(n, t) {
   if (!n)
     return 0;
   if (!t)
     return n.length;
   let e = 0, r = 0;
-  for (const i of n)
-    t(i, r, n) && e++, r++;
+  for (const o of n)
+    t(o, r, n) && e++, r++;
   return e;
 }
-function $(n, t) {
+function W(n, t) {
   if (typeof t > "u") {
     const e = Array(n);
     let r = 0;
@@ -70,37 +116,37 @@ function $(n, t) {
     return e;
   } else {
     const e = Array(t - n);
-    let r = 0, i = n;
-    for (; i < t; )
-      e[r++] = i++;
+    let r = 0, o = n;
+    for (; o < t; )
+      e[r++] = o++;
     return e;
   }
 }
-function O(n, t) {
+function Y(n, t) {
   const e = Array(t);
   let r = 0;
   for (; r < t; )
     e[r] = n / t * r++;
   return e;
 }
-function q(n) {
-  let t = -1 / 0, e = 1 / 0, r = -1, i = -1, o = 0;
+function U(n) {
+  let t = -1 / 0, e = 1 / 0, r = -1, o = -1, i = 0;
   for (const s of n)
-    s > t && (t = s, r = o), s < e && (e = s, i = o), o++;
-  return { max: t, min: e, maxIndex: r, minIndex: i };
+    s > t && (t = s, r = i), s < e && (e = s, o = i), i++;
+  return { max: t, min: e, maxIndex: r, minIndex: o };
 }
-function* V(n, t) {
+function* K(n, t) {
   const e = n.length, r = Array(t).fill(0);
   for (; ; ) {
-    yield r.map((o) => n[o]);
-    let i = t - 1;
-    for (; i >= 0 && (r[i]++, !(r[i] < e)); )
-      r[i] = 0, i--;
-    if (i < 0)
+    yield r.map((i) => n[i]);
+    let o = t - 1;
+    for (; o >= 0 && (r[o]++, !(r[o] < e)); )
+      r[o] = 0, o--;
+    if (o < 0)
       break;
   }
 }
-const u = { symbol: "", exponent: 0 }, f = [
+const m = { symbol: "", exponent: 0 }, f = [
   { symbol: "Q", exponent: 30 },
   { symbol: "R", exponent: 27 },
   { symbol: "Y", exponent: 24 },
@@ -113,7 +159,7 @@ const u = { symbol: "", exponent: 0 }, f = [
   { symbol: "k", exponent: 3 },
   { symbol: "h", exponent: 2 },
   { symbol: "da", exponent: 1 },
-  u,
+  m,
   { symbol: "d", exponent: -1 },
   { symbol: "c", exponent: -2 },
   { symbol: "m", exponent: -3 },
@@ -153,32 +199,32 @@ const u = { symbol: "", exponent: 0 }, f = [
   static parse(t) {
     const e = l.siValuePattern.exec(t ?? "");
     if (e == null)
-      return new l(Number.NaN, u);
-    const r = Number.parseFloat(e[1]), i = f.find((o) => o.symbol === e[2]);
-    return new l(r, i);
+      return new l(Number.NaN, m);
+    const r = Number.parseFloat(e[1]), o = f.find((i) => i.symbol === e[2]);
+    return new l(r, o);
   }
   static fit(t, e) {
     if (!Number.isFinite(t) && e.length === 0)
-      return new l(t, u);
+      return new l(t, m);
     if (t !== 0) {
       const r = Math.sign(t);
       t = Math.abs(t);
-      const i = e.map((o) => {
-        const s = l.getPrefix(o), x = t * 10 ** -s.exponent, g = Math.abs(x - 500);
-        return { prefix: s, practicalValue: x, rank: g };
-      }).sort((o, s) => o.rank - s.rank);
-      return new l(i[0].practicalValue * r, i[0].prefix);
+      const o = e.map((i) => {
+        const s = l.getPrefix(i), u = t * 10 ** -s.exponent, p = Math.abs(u - 500);
+        return { prefix: s, practicalValue: u, rank: p };
+      }).sort((i, s) => i.rank - s.rank);
+      return new l(o[0].practicalValue * r, o[0].prefix);
     } else
-      return new l(0, u);
+      return new l(0, m);
   }
   static fitBy(t, e) {
     const r = l.getPrefix(e);
     if (!Number.isFinite(t))
       return new l(t, r);
-    const i = Math.sign(t);
+    const o = Math.sign(t);
     t = Math.abs(t);
-    const o = t * 10 ** -r.exponent;
-    return new l(o * i, r);
+    const i = t * 10 ** -r.exponent;
+    return new l(i * o, r);
   }
   static getPrefix(t) {
     const e = f.find((r) => r.symbol === t);
@@ -187,94 +233,94 @@ const u = { symbol: "", exponent: 0 }, f = [
     return e;
   }
   static successor(t, e) {
-    const r = l.getPrefix(t), i = f.filter(
+    const r = l.getPrefix(t), o = f.filter(
       (s) => s.exponent > r.exponent && s.exponent % (e ? 1 : 3) === 0
     );
-    if (i.length === 0)
+    if (o.length === 0)
       return t;
-    const o = i.slice(-1)[0];
-    return i.filter((s) => s.exponent === o.exponent)[0].symbol;
+    const i = o.slice(-1)[0];
+    return o.filter((s) => s.exponent === i.exponent)[0].symbol;
   }
   static predecessor(t, e) {
-    const r = l.getPrefix(t), i = f.filter(
-      (o) => o.exponent < r.exponent && o.exponent % (e ? 1 : 3) === 0
+    const r = l.getPrefix(t), o = f.filter(
+      (i) => i.exponent < r.exponent && i.exponent % (e ? 1 : 3) === 0
     );
-    return i.length === 0 ? t : i[0].symbol;
+    return o.length === 0 ? t : o[0].symbol;
   }
 };
-p(l, "siValuePattern", /^([+-]?(?:[0-9]*\.)?[0-9]+)([QRYZEPTGMkmuμnpfazyrq]?)$/);
-let m = l;
-const B = {
+h(l, "siValuePattern", /^([+-]?(?:[0-9]*\.)?[0-9]+)([QRYZEPTGMkmuμnpfazyrq]?)$/);
+let d = l;
+const X = {
   required: (n) => !!n || "値を入力してください",
-  value: (n) => Number.isFinite(m.parse(n).fraction) || "不正な値です",
+  value: (n) => Number.isFinite(d.parse(n).fraction) || "不正な値です",
   notZero: (n) => Number(n) !== 0 || "値を 0 にはできません",
   notNegative: (n) => {
-    const t = m.parse(n);
+    const t = d.parse(n);
     return Number.isFinite(t.fraction) && t.fraction >= 0 || "負値にはできません";
   }
 };
-function R(n) {
+function ee(n) {
   return n == null ? "" : n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-class S {
+class _ {
   constructor(t) {
     this.obj = t;
   }
 }
-function M(n, t) {
+function O(n, t) {
   if (typeof n < "u" && n != null)
     for (const e of Object.keys(t))
-      t[e] instanceof S ? n[e] = t[e].obj : t[e] === null ? n[e] = null : !Array.isArray(t[e]) && typeof t[e] == "object" ? n[e] = M(n[e], t[e]) : n[e] = t[e];
+      t[e] instanceof _ ? n[e] = t[e].obj : t[e] === null ? n[e] = null : !Array.isArray(t[e]) && typeof t[e] == "object" ? n[e] = O(n[e], t[e]) : n[e] = t[e];
   return n;
 }
-function D(n, t, e, r) {
+function te(n, t, e, r) {
   return typeof n > "u" || n == null ? r : n ? t : e;
 }
-function z(n, t, e) {
+function ne(n, t, e) {
   return n !== n && t !== t ? 0 : n !== n ? 1 : t !== t ? -1 : n == null && t == null ? 0 : n == null ? 1 : t == null ? -1 : n < t ? e === "descending" ? 1 : -1 : n > t ? e === "descending" ? -1 : 1 : 0;
 }
-function H(n) {
+function re(n) {
   return n.replace(/[/\-\\^$*+?.()|[\]{}]/g, "\\$&");
 }
-const N = /&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/gi;
-function Z(n) {
-  return n.replace(N, (t, e) => (e = e.toLowerCase(), e === "amp" ? "&" : e === "colon" ? ":" : e === "quot" ? '"' : e === "lt" ? "<" : e === "gt" ? ">" : e.charAt(0) === "#" ? e.charAt(1) === "x" ? String.fromCharCode(parseInt(e.substring(2), 16)) : String.fromCharCode(+e.substring(1)) : ""));
+const q = /&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/gi;
+function oe(n) {
+  return n.replace(q, (t, e) => (e = e.toLowerCase(), e === "amp" ? "&" : e === "colon" ? ":" : e === "quot" ? '"' : e === "lt" ? "<" : e === "gt" ? ">" : e.charAt(0) === "#" ? e.charAt(1) === "x" ? String.fromCharCode(parseInt(e.substring(2), 16)) : String.fromCharCode(+e.substring(1)) : ""));
 }
-function G(n, t) {
+function ie(n, t) {
   let e, r;
-  const i = async function() {
+  const o = async function() {
     try {
-      r = await n(), typeof r < "u" && (e = setTimeout(i, r * 1e3));
-    } catch (o) {
-      t && (r = await t(o), typeof r < "u" && (e = setTimeout(i, r * 1e3)));
+      r = await n(), typeof r < "u" && (e = setTimeout(o, r * 1e3));
+    } catch (i) {
+      t && (r = await t(i), typeof r < "u" && (e = setTimeout(o, r * 1e3)));
     }
   };
-  w(async () => {
-    await i();
-  }), k(() => {
+  y(async () => {
+    await o();
+  }), w(() => {
     clearTimeout(e);
   });
 }
-function J(n, t, e) {
-  const r = ((e == null ? void 0 : e.type) ?? "local") === "local" ? localStorage : sessionStorage, i = () => {
+function se(n, t, e) {
+  const r = ((e == null ? void 0 : e.type) ?? "local") === "local" ? localStorage : sessionStorage, o = () => {
     typeof n.value < "u" && r.setItem(t, JSON.stringify(n.value));
-  }, o = () => {
+  }, i = () => {
     const s = r.getItem(t);
     s != null && (n.value = JSON.parse(s));
   };
-  return ((e == null ? void 0 : e.immediate) ?? !0) && ((e == null ? void 0 : e.readable) ?? !0) && o(), ((e == null ? void 0 : e.writable) ?? !0) && v(() => n.value, i, {
+  return ((e == null ? void 0 : e.immediate) ?? !0) && ((e == null ? void 0 : e.readable) ?? !0) && i(), ((e == null ? void 0 : e.writable) ?? !0) && A(() => n.value, o, {
     immediate: (e == null ? void 0 : e.immediate) ?? !0
   }), {
     remove: () => {
       r.removeItem(t);
     },
-    save: i,
-    load: o
+    save: o,
+    load: i
   };
 }
-class Q {
+class le {
   constructor(t, e) {
-    p(this, "_worker", null);
+    h(this, "_worker", null);
     this.workerConstructor = t, this.options = e;
   }
   async invoke(t) {
@@ -283,10 +329,10 @@ class Q {
         r("worker is not initialized");
         return;
       }
-      this._worker.onmessage = function(i) {
-        e(i.data);
-      }, this._worker.onmessageerror = function(i) {
-        r(i);
+      this._worker.onmessage = function(o) {
+        e(o.data);
+      }, this._worker.onmessageerror = function(o) {
+        r(o);
       }, this._worker.postMessage(t);
     });
   }
@@ -295,32 +341,33 @@ class Q {
   }
 }
 export {
-  u as BaseSIPrefix,
-  S as RawObject,
-  B as Rules,
-  m as SIValue,
-  a as VuetifyColorSchemeName,
-  Q as WorkerManager,
-  c as applyColorScheme,
-  z as compareWithNull,
-  F as count,
-  M as deepAssign,
-  G as definePeriodicCall,
-  O as divide,
-  j as empty,
-  H as escapeRegex,
-  E as existsDuplicate,
-  h as findBy,
-  q as findMinMax,
-  V as generateForDepth,
-  d as getPrefersColorScheme,
-  I as mergeArrayBy,
-  L as reapplyTheme,
-  $ as sequence,
-  J as storage,
-  T as sum,
-  D as ternary,
-  A as toggleTheme,
-  Z as unescapeHtml,
-  R as withCommas
+  m as BaseSIPrefix,
+  _ as RawObject,
+  X as Rules,
+  d as SIValue,
+  z as ThemeToggleButton,
+  c as VuetifyColorSchemeName,
+  le as WorkerManager,
+  a as applyColorScheme,
+  ne as compareWithNull,
+  Q as count,
+  O as deepAssign,
+  ie as definePeriodicCall,
+  Y as divide,
+  G as empty,
+  re as escapeRegex,
+  J as existsDuplicate,
+  b as findBy,
+  U as findMinMax,
+  K as generateForDepth,
+  g as getPrefersColorScheme,
+  H as mergeArrayBy,
+  V as reapplyTheme,
+  W as sequence,
+  se as storage,
+  Z as sum,
+  te as ternary,
+  F as toggleTheme,
+  oe as unescapeHtml,
+  ee as withCommas
 };

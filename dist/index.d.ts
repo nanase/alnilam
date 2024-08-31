@@ -1,4 +1,4 @@
-export * from './components/ThemeToggleButton.vue';
+export * from './components';
 export * from './lib/array';
 export * from './lib/inputRule';
 export * from './lib/number';
