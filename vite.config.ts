@@ -37,6 +37,11 @@ export default defineConfig({
       include: ['src/**/*.{ts,vue}'],
       exclude: ['**/index.ts'],
     },
+    server: {
+      deps: {
+        inline: ['vuetify'],
+      },
+    },
   },
   resolve: {
     alias: {
