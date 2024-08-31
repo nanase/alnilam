@@ -1,4 +1,6 @@
-# Aʟɴɪʟᴀᴍ :star::star2::star:
+<h1 align="center">
+	<img width="800" src="media/logo.svg" alt="Alnilam">
+</h1>
 
 Common libraries and components for my works
 
