@@ -38,7 +38,6 @@ export interface StorageOptions {
   type: 'local' | 'session';
   readable: boolean;
   writable: boolean;
-  immediate: boolean;
 }
 
 export function storage<T>(value: Ref<T>, key: string, options?: Partial<StorageOptions>) {
@@ -57,13 +56,13 @@ export function storage<T>(value: Ref<T>, key: string, options?: Partial<Storage
     }
   };
 
-  if ((options?.immediate ?? true) && (options?.readable ?? true)) {
+  if (options?.readable ?? true) {
     load();
   }
 
   if (options?.writable ?? true) {
     watch(() => value.value, save, {
-      immediate: options?.immediate ?? true,
+      immediate: options?.readable ?? true,
     });
   }
 
