@@ -33,6 +33,10 @@ export class WorkerManager<ParameterType, ResultType> {
   }
 
   get worker() {
+    if (this._worker == null) {
+      this._worker = new this.workerConstructor(this.options);
+    }
+
     return this._worker;
   }
 }
