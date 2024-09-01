@@ -50,15 +50,11 @@ export function applyColorScheme(theme: ThemeInstance, scheme: PrefersColorSchem
 }
 
 export function getPrefersColorScheme(): PrefersColorScheme {
-  if (!window.matchMedia) {
-    return 'unspecified';
-  }
-
-  if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+  if (window.matchMedia?.('(prefers-color-scheme: light)').matches) {
     return 'light';
   }
 
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
     return 'dark';
   }
 
