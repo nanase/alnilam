@@ -17,18 +17,14 @@ export class WorkerManager<ParameterType, ResultType> {
     }
 
     return await new Promise<ResultType>((resolve, reject) => {
-      if (this._worker == null) {
-        reject('worker is not initialized');
-      } else {
-        this._worker.onmessage = function (e: MessageEvent<ResultType>) {
-          resolve(e.data);
-        };
-        this._worker.onmessageerror = function (e) {
-          reject(e);
-        };
+      this._worker!.onmessage = function (e: MessageEvent<ResultType>) {
+        resolve(e.data);
+      };
+      this._worker!.onmessageerror = function (e) {
+        reject(e);
+      };
 
-        this._worker.postMessage(parameter);
-      }
+      this._worker!.postMessage(parameter);
     });
   }
 
