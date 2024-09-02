@@ -1,10 +1,9 @@
 import { Ref } from 'vue';
-export declare function definePeriodicCall(onCalled: () => Promise<number | undefined>, onError?: (error: any) => Promise<number | undefined>): void;
+export declare function definePeriodicCall(onCalled: () => Promise<number | void>, onError?: (error: any) => Promise<number | void>): void;
 export interface StorageOptions {
     type: 'local' | 'session';
     readable: boolean;
     writable: boolean;
-    immediate: boolean;
 }
 export declare function storage<T>(value: Ref<T>, key: string, options?: Partial<StorageOptions>): {
     remove: () => void;

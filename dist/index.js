@@ -1,72 +1,73 @@
 var k = Object.defineProperty;
-var v = (n, t, e) => t in n ? k(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
-var h = (n, t, e) => v(n, typeof t != "symbol" ? t + "" : t, e);
-import { getCurrentInstance as S, inject as C, defineComponent as M, onMounted as y, onBeforeUnmount as w, resolveComponent as x, openBlock as T, createBlock as I, withCtx as N, createVNode as P, mergeProps as L, unref as E, watch as A } from "vue";
-function $(n, t) {
-  const e = S();
-  if (!e)
+var v = (n, e, t) => e in n ? k(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
+var h = (n, e, t) => v(n, typeof e != "symbol" ? e + "" : e, t);
+import { getCurrentInstance as S, inject as C, defineComponent as M, onMounted as y, onBeforeUnmount as w, resolveComponent as x, openBlock as T, createBlock as I, withCtx as N, createVNode as P, mergeProps as L, unref as E, watch as $ } from "vue";
+function j(n, e) {
+  const t = S();
+  if (!t)
     throw new Error(`[Vuetify] ${n} must be called from inside a setup function`);
-  return e;
+  return t;
 }
-const j = Symbol.for("vuetify:theme");
-function B() {
-  $("useTheme");
-  const n = C(j, null);
+const A = Symbol.for("vuetify:theme");
+function _() {
+  j("useTheme");
+  const n = C(A, null);
   if (!n) throw new Error("Could not find Vuetify theme injection");
   return n;
 }
 const c = "vuetify-color-scheme";
-function a(n, t) {
-  t === "unspecified" ? (n.global.name.value = "", document.querySelectorAll(".color-responsive").forEach((e) => {
+function a(n, e) {
+  e === "unspecified" ? (n.global.name.value = "", document.querySelectorAll(".color-responsive").forEach((t) => {
     var r;
-    if (e.classList.remove("color-responsive-dark", "color-responsive-light"), e instanceof HTMLObjectElement) {
-      const o = (r = e.contentDocument) == null ? void 0 : r.documentElement;
+    if (t.classList.remove("color-responsive-dark", "color-responsive-light"), t instanceof HTMLObjectElement) {
+      const o = (r = t.contentDocument) == null ? void 0 : r.documentElement;
       o && o.classList.remove("color-responsive-dark", "color-responsive-light");
     }
-  })) : (n.global.name.value = t, document.querySelectorAll(".color-responsive").forEach((e) => {
+  })) : (n.global.name.value = e, document.querySelectorAll(".color-responsive").forEach((t) => {
     var r;
-    if (t === "light" ? (e.classList.add("color-responsive-light"), e.classList.remove("color-responsive-dark")) : (e.classList.add("color-responsive-dark"), e.classList.remove("color-responsive-light")), e instanceof HTMLObjectElement) {
-      const o = (r = e.contentDocument) == null ? void 0 : r.documentElement;
+    if (e === "light" ? (t.classList.add("color-responsive-light"), t.classList.remove("color-responsive-dark")) : (t.classList.add("color-responsive-dark"), t.classList.remove("color-responsive-light")), t instanceof HTMLObjectElement) {
+      const o = (r = t.contentDocument) == null ? void 0 : r.documentElement;
       if (!o)
         return;
-      t === "light" ? (o.classList.add("color-responsive-light"), o.classList.remove("color-responsive-dark")) : (o.classList.add("color-responsive-dark"), o.classList.remove("color-responsive-light"));
+      e === "light" ? (o.classList.add("color-responsive-light"), o.classList.remove("color-responsive-dark")) : (o.classList.add("color-responsive-dark"), o.classList.remove("color-responsive-light"));
     }
   }));
 }
 function g() {
-  return window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "unspecified" : "unspecified";
+  var n, e;
+  return (n = window.matchMedia) != null && n.call(window, "(prefers-color-scheme: light)").matches ? "light" : (e = window.matchMedia) != null && e.call(window, "(prefers-color-scheme: dark)").matches ? "dark" : "unspecified";
 }
-function F(n) {
+function B(n) {
   n.global.current.value.dark ? (g() === "light" ? localStorage.removeItem(c) : localStorage.setItem(c, "light"), a(n, "light")) : (g() === "dark" ? localStorage.removeItem(c) : localStorage.setItem(c, "dark"), a(n, "dark"));
 }
-function V(n) {
-  const t = localStorage.getItem(c);
-  t === "light" ? a(n, "light") : t === "dark" || g() === "dark" ? a(n, "dark") : a(n, "light");
+function F(n) {
+  const e = localStorage.getItem(c);
+  e === "light" ? a(n, "light") : e === "dark" || g() === "dark" ? a(n, "dark") : a(n, "light");
 }
-const z = /* @__PURE__ */ M({
+const H = /* @__PURE__ */ M({
   __name: "ThemeToggleButton",
   setup(n) {
-    const t = B();
-    function e(o) {
+    const e = _();
+    function t(o) {
       const i = localStorage.getItem(c);
-      i === null ? a(t, o.matches ? "dark" : "light") : (i === "dark" && o.matches || i === "light" && !o.matches) && localStorage.removeItem(c);
+      i === null ? a(e, o.matches ? "dark" : "light") : (i === "dark" && o.matches || i === "light" && !o.matches) && localStorage.removeItem(c);
     }
     function r() {
-      F(t);
+      B(e);
     }
     return y(() => {
-      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e), V(t);
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", t), F(e);
     }), w(() => {
-      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", e);
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", t);
     }), (o, i) => {
       const s = x("v-btn"), u = x("v-tooltip");
       return T(), I(u, {
         text: "テーマを切り替え",
         "aria-label": "テーマを切り替え"
       }, {
-        activator: N(({ props: p }) => [
-          P(s, L({ "data-test": "button" }, p, {
-            icon: E(t).global.current.value.dark ? "mdi-weather-night" : "mdi-white-balance-sunny",
+        activator: N(({ props: d }) => [
+          P(s, L({ "data-test": "button" }, d, {
+            icon: E(e).global.current.value.dark ? "mdi-weather-night" : "mdi-white-balance-sunny",
             onClick: r,
             "aria-label": "テーマを切り替え"
           }), null, 16, ["icon"])
@@ -76,71 +77,71 @@ const z = /* @__PURE__ */ M({
     };
   }
 });
-function b(n, t, e) {
-  for (const r of e)
-    if (!(typeof r[n] > "u") && r[n] === t)
+function b(n, e, t) {
+  for (const r of t)
+    if (!(typeof r[n] > "u") && r[n] === e)
       return r;
   return null;
 }
-function H(n, t, e) {
-  return t.map((r) => {
-    const o = b(n, r[n], t), i = b(n, r[n], e);
+function Z(n, e, t) {
+  return e.map((r) => {
+    const o = b(n, r[n], e), i = b(n, r[n], t);
     return o == null || i == null ? null : { ...o, ...i };
   }).filter((r) => r !== null);
 }
-function Z(n, t) {
-  return t == null ? n.reduce((e, r) => e + Number(r), 0) : n.reduce((e, r) => e + t(r), 0);
+function z(n, e) {
+  return e == null ? n.reduce((t, r) => t + Number(r), 0) : n.reduce((t, r) => t + e(r), 0);
 }
 function G(n) {
   return n == null || n.length === 0;
 }
 function J(n) {
-  return n.some((t, e) => n.indexOf(t) !== e);
+  return n.some((e, t) => n.indexOf(e) !== t);
 }
-function Q(n, t) {
+function Q(n, e) {
   if (!n)
     return 0;
-  if (!t)
+  if (!e)
     return n.length;
-  let e = 0, r = 0;
+  let t = 0, r = 0;
   for (const o of n)
-    t(o, r, n) && e++, r++;
-  return e;
+    e(o, r, n) && t++, r++;
+  return t;
 }
-function W(n, t) {
-  if (typeof t > "u") {
-    const e = Array(n);
+function W(n, e) {
+  if (typeof e > "u") {
+    const t = Array(n);
     let r = 0;
     for (; r < n; )
-      e[r] = r++;
-    return e;
+      t[r] = r++;
+    return t;
   } else {
-    const e = Array(t - n);
+    const t = Array(e - n);
     let r = 0, o = n;
-    for (; o < t; )
-      e[r++] = o++;
-    return e;
+    for (; o < e; )
+      t[r++] = o++;
+    return t;
   }
 }
-function Y(n, t) {
-  const e = Array(t);
+function Y(n, e) {
+  const t = Array(e);
   let r = 0;
-  for (; r < t; )
-    e[r] = n / t * r++;
-  return e;
+  for (; r < e; )
+    t[r] = n / e * r++;
+  return t;
 }
 function U(n) {
-  let t = -1 / 0, e = 1 / 0, r = -1, o = -1, i = 0;
+  let e = -1 / 0, t = 1 / 0, r = -1, o = -1, i = 0;
   for (const s of n)
-    s > t && (t = s, r = i), s < e && (e = s, o = i), i++;
-  return { max: t, min: e, maxIndex: r, minIndex: o };
+    s > e && (e = s, r = i), s < t && (t = s, o = i), i++;
+  return { max: e, min: t, maxIndex: r, minIndex: o };
 }
-function* K(n, t) {
-  const e = n.length, r = Array(t).fill(0);
+function* K(n, e) {
+  const t = n.length, r = Array(e).fill(0);
   for (; ; ) {
     yield r.map((i) => n[i]);
-    let o = t - 1;
-    for (; o >= 0 && (r[o]++, !(r[o] < e)); )
+    let o = e - 1;
+    for (; o >= 0 && (r[o]++, !(r[o] < t)); )
       r[o] = 0, o--;
     if (o < 0)
       break;
@@ -175,8 +176,8 @@ const m = { symbol: "", exponent: 0 }, f = [
   { symbol: "r", exponent: -27 },
   { symbol: "q", exponent: -30 }
 ], l = class l {
-  constructor(t, e) {
-    this.fraction = t, this.prefix = e;
+  constructor(e, t) {
+    this.fraction = e, this.prefix = t;
   }
   get actualValue() {
     return this.fraction * 10 ** this.prefix.exponent;
@@ -184,168 +185,167 @@ const m = { symbol: "", exponent: 0 }, f = [
   toString() {
     return `${this.fraction}${this.prefix.symbol}`;
   }
-  toSimpleString(t) {
-    return `${Number(this.fraction.toFixed(t))}${this.prefix.symbol}`;
+  toSimpleString(e) {
+    return `${Number(this.fraction.toFixed(e))}${this.prefix.symbol}`;
   }
-  toFixed(t) {
-    return `${this.fraction.toFixed(t)}${this.prefix.symbol}`;
+  toFixed(e) {
+    return `${this.fraction.toFixed(e)}${this.prefix.symbol}`;
   }
-  static getPrefixSymbols(t) {
-    return f.filter((e) => e.exponent % (t ? 1 : 3) === 0).map((e) => e.symbol);
+  static getPrefixSymbols(e) {
+    return f.filter((t) => t.exponent % (e ? 1 : 3) === 0).map((t) => t.symbol);
   }
-  static test(t) {
-    return l.siValuePattern.test(t ?? "");
+  static test(e) {
+    return l.siValuePattern.test(e ?? "");
   }
-  static parse(t) {
-    const e = l.siValuePattern.exec(t ?? "");
-    if (e == null)
+  static parse(e) {
+    const t = l.siValuePattern.exec(e ?? "");
+    if (t == null)
       return new l(Number.NaN, m);
-    const r = Number.parseFloat(e[1]), o = f.find((i) => i.symbol === e[2]);
+    const r = Number.parseFloat(t[1]), o = f.find((i) => i.symbol === t[2]);
     return new l(r, o);
   }
-  static fit(t, e) {
-    if (!Number.isFinite(t) && e.length === 0)
-      return new l(t, m);
-    if (t !== 0) {
-      const r = Math.sign(t);
-      t = Math.abs(t);
-      const o = e.map((i) => {
-        const s = l.getPrefix(i), u = t * 10 ** -s.exponent, p = Math.abs(u - 500);
-        return { prefix: s, practicalValue: u, rank: p };
+  static fit(e, t) {
+    if (!Number.isFinite(e) && t.length === 0)
+      return new l(e, m);
+    if (e !== 0) {
+      const r = Math.sign(e);
+      e = Math.abs(e);
+      const o = t.map((i) => {
+        const s = l.getPrefix(i), u = e * 10 ** -s.exponent, d = Math.abs(u - 500);
+        return { prefix: s, practicalValue: u, rank: d };
       }).sort((i, s) => i.rank - s.rank);
       return new l(o[0].practicalValue * r, o[0].prefix);
     } else
       return new l(0, m);
   }
-  static fitBy(t, e) {
-    const r = l.getPrefix(e);
-    if (!Number.isFinite(t))
-      return new l(t, r);
-    const o = Math.sign(t);
-    t = Math.abs(t);
-    const i = t * 10 ** -r.exponent;
+  static fitBy(e, t) {
+    const r = l.getPrefix(t);
+    if (!Number.isFinite(e))
+      return new l(e, r);
+    const o = Math.sign(e);
+    e = Math.abs(e);
+    const i = e * 10 ** -r.exponent;
     return new l(i * o, r);
   }
-  static getPrefix(t) {
-    const e = f.find((r) => r.symbol === t);
-    if (!e)
-      throw new Error(`Prefix symbol '${t}' is not defined.`);
-    return e;
+  static getPrefix(e) {
+    const t = f.find((r) => r.symbol === e);
+    if (!t)
+      throw new Error(`Prefix symbol '${e}' is not defined.`);
+    return t;
   }
-  static successor(t, e) {
-    const r = l.getPrefix(t), o = f.filter(
-      (s) => s.exponent > r.exponent && s.exponent % (e ? 1 : 3) === 0
+  static successor(e, t) {
+    const r = l.getPrefix(e), o = f.filter(
+      (s) => s.exponent > r.exponent && s.exponent % (t ? 1 : 3) === 0
     );
     if (o.length === 0)
-      return t;
+      return e;
     const i = o.slice(-1)[0];
     return o.filter((s) => s.exponent === i.exponent)[0].symbol;
   }
-  static predecessor(t, e) {
-    const r = l.getPrefix(t), o = f.filter(
-      (i) => i.exponent < r.exponent && i.exponent % (e ? 1 : 3) === 0
+  static predecessor(e, t) {
+    const r = l.getPrefix(e), o = f.filter(
+      (i) => i.exponent < r.exponent && i.exponent % (t ? 1 : 3) === 0
     );
-    return o.length === 0 ? t : o[0].symbol;
+    return o.length === 0 ? e : o[0].symbol;
   }
 };
 h(l, "siValuePattern", /^([+-]?(?:[0-9]*\.)?[0-9]+)([QRYZEPTGMkmuμnpfazyrq]?)$/);
-let d = l;
+let p = l;
 const X = {
   required: (n) => !!n || "値を入力してください",
-  value: (n) => Number.isFinite(d.parse(n).fraction) || "不正な値です",
+  value: (n) => Number.isFinite(p.parse(n).fraction) || "不正な値です",
   notZero: (n) => Number(n) !== 0 || "値を 0 にはできません",
   notNegative: (n) => {
-    const t = d.parse(n);
-    return Number.isFinite(t.fraction) && t.fraction >= 0 || "負値にはできません";
+    const e = p.parse(n);
+    return Number.isFinite(e.fraction) && e.fraction >= 0 || "負値にはできません";
   }
 };
 function ee(n) {
   return n == null ? "" : n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-class _ {
-  constructor(t) {
-    this.obj = t;
+class V {
+  constructor(e) {
+    this.obj = e;
   }
 }
-function O(n, t) {
+function O(n, e) {
   if (typeof n < "u" && n != null)
-    for (const e of Object.keys(t))
-      t[e] instanceof _ ? n[e] = t[e].obj : t[e] === null ? n[e] = null : !Array.isArray(t[e]) && typeof t[e] == "object" ? n[e] = O(n[e], t[e]) : n[e] = t[e];
+    for (const t of Object.keys(e))
+      e[t] instanceof V ? n[t] = e[t].obj : e[t] === null ? n[t] = null : !Array.isArray(e[t]) && typeof e[t] == "object" ? n[t] = O(n[t], e[t]) : n[t] = e[t];
   return n;
 }
-function te(n, t, e, r) {
-  return typeof n > "u" || n == null ? r : n ? t : e;
+function te(n, e, t, r) {
+  return typeof n > "u" || n == null ? r : n ? e : t;
 }
-function ne(n, t, e) {
-  return n !== n && t !== t ? 0 : n !== n ? 1 : t !== t ? -1 : n == null && t == null ? 0 : n == null ? 1 : t == null ? -1 : n < t ? e === "descending" ? 1 : -1 : n > t ? e === "descending" ? -1 : 1 : 0;
+function ne(n, e, t) {
+  return n !== n && e !== e ? 0 : n !== n ? 1 : e !== e ? -1 : n == null && e == null ? 0 : n == null ? 1 : e == null ? -1 : n < e ? t === "descending" ? 1 : -1 : n > e ? t === "descending" ? -1 : 1 : 0;
 }
 function re(n) {
   return n.replace(/[/\-\\^$*+?.()|[\]{}]/g, "\\$&");
 }
-const q = /&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/gi;
+const q = /&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));/gi;
 function oe(n) {
-  return n.replace(q, (t, e) => (e = e.toLowerCase(), e === "amp" ? "&" : e === "colon" ? ":" : e === "quot" ? '"' : e === "lt" ? "<" : e === "gt" ? ">" : e.charAt(0) === "#" ? e.charAt(1) === "x" ? String.fromCharCode(parseInt(e.substring(2), 16)) : String.fromCharCode(+e.substring(1)) : ""));
+  return n.replace(q, (e, t) => {
+    const r = t.toLowerCase();
+    return r === "amp" ? "&" : r === "colon" ? ":" : r === "apos" ? "'" : r === "quot" ? '"' : r === "lt" ? "<" : r === "gt" ? ">" : r.charAt(0) === "#" ? r.charAt(1) === "x" ? String.fromCharCode(parseInt(r.substring(2), 16)) : String.fromCharCode(+r.substring(1)) : `&${t};`;
+  });
 }
-function ie(n, t) {
-  let e, r;
+function ie(n, e) {
+  let t, r;
   const o = async function() {
     try {
-      r = await n(), typeof r < "u" && (e = setTimeout(o, r * 1e3));
+      r = await n(), typeof r < "u" && (t = setTimeout(o, r * 1e3));
     } catch (i) {
-      t && (r = await t(i), typeof r < "u" && (e = setTimeout(o, r * 1e3)));
+      e && (r = await e(i), typeof r < "u" && (t = setTimeout(o, r * 1e3)));
     }
   };
   y(async () => {
     await o();
   }), w(() => {
-    clearTimeout(e);
+    clearTimeout(t);
   });
 }
-function se(n, t, e) {
-  const r = ((e == null ? void 0 : e.type) ?? "local") === "local" ? localStorage : sessionStorage, o = () => {
-    typeof n.value < "u" && r.setItem(t, JSON.stringify(n.value));
+function se(n, e, t) {
+  const r = ((t == null ? void 0 : t.type) ?? "local") === "local" ? localStorage : sessionStorage, o = () => {
+    typeof n.value < "u" && r.setItem(e, JSON.stringify(n.value));
   }, i = () => {
-    const s = r.getItem(t);
+    const s = r.getItem(e);
     s != null && (n.value = JSON.parse(s));
   };
-  return ((e == null ? void 0 : e.immediate) ?? !0) && ((e == null ? void 0 : e.readable) ?? !0) && i(), ((e == null ? void 0 : e.writable) ?? !0) && A(() => n.value, o, {
-    immediate: (e == null ? void 0 : e.immediate) ?? !0
+  return ((t == null ? void 0 : t.readable) ?? !0) && i(), ((t == null ? void 0 : t.writable) ?? !0) && $(() => n.value, o, {
+    immediate: (t == null ? void 0 : t.readable) ?? !0
   }), {
     remove: () => {
-      r.removeItem(t);
+      r.removeItem(e);
     },
     save: o,
     load: i
   };
 }
 class le {
-  constructor(t, e) {
+  constructor(e, t) {
     h(this, "_worker", null);
-    this.workerConstructor = t, this.options = e;
+    this.workerConstructor = e, this.options = t;
   }
-  async invoke(t) {
-    return this._worker == null && (this._worker = new this.workerConstructor(this.options)), await new Promise((e, r) => {
-      if (this._worker == null) {
-        r("worker is not initialized");
-        return;
-      }
+  async invoke(e) {
+    return this._worker == null && (this._worker = new this.workerConstructor(this.options)), await new Promise((t, r) => {
       this._worker.onmessage = function(o) {
-        e(o.data);
+        t(o.data);
       }, this._worker.onmessageerror = function(o) {
         r(o);
-      }, this._worker.postMessage(t);
+      }, this._worker.postMessage(e);
     });
   }
   get worker() {
-    return this._worker;
+    return this._worker == null && (this._worker = new this.workerConstructor(this.options)), this._worker;
   }
 }
 export {
   m as BaseSIPrefix,
-  _ as RawObject,
+  V as RawObject,
   X as Rules,
-  d as SIValue,
-  z as ThemeToggleButton,
+  p as SIValue,
+  H as ThemeToggleButton,
   c as VuetifyColorSchemeName,
   le as WorkerManager,
   a as applyColorScheme,
@@ -361,13 +361,13 @@ export {
   U as findMinMax,
   K as generateForDepth,
   g as getPrefersColorScheme,
-  H as mergeArrayBy,
-  V as reapplyTheme,
+  Z as mergeArrayBy,
+  F as reapplyTheme,
   W as sequence,
   se as storage,
-  Z as sum,
+  z as sum,
   te as ternary,
-  F as toggleTheme,
+  B as toggleTheme,
   oe as unescapeHtml,
   ee as withCommas
 };

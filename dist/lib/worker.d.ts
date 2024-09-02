@@ -8,7 +8,7 @@ export declare class WorkerManager<ParameterType, ResultType> {
     private _worker;
     constructor(workerConstructor: WorkerConstructor, options?: WorkerConstructorOptions | undefined);
     invoke(parameter: ParameterType): Promise<ResultType>;
-    get worker(): Worker | null;
+    get worker(): Worker;
 }
 export {};
 //# sourceMappingURL=worker.d.ts.map
