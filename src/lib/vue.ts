@@ -1,11 +1,11 @@
 import { onMounted, onBeforeUnmount, Ref, watch } from 'vue';
 
 export function definePeriodicCall(
-  onCalled: () => Promise<number | undefined>,
-  onError?: (error: any) => Promise<number | undefined>,
+  onCalled: () => Promise<number | void>,
+  onError?: (error: any) => Promise<number | void>,
 ): void {
   let intervalObj: ReturnType<typeof setTimeout>;
-  let waitTime: number | undefined;
+  let waitTime: number | void;
 
   const callee = async function () {
     try {
