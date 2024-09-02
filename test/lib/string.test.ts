@@ -1,4 +1,10 @@
-import { unescapeHtml } from '@/lib/string';
+import { escapeRegex, unescapeHtml } from '@/lib/string';
+
+describe('escapeRegex', () => {
+  test('with regex text includes unescaped char', () => {
+    expect(escapeRegex('/-\\^$*+?.()|[]{}')).toEqual('\\/\\-\\\\\\^\\$\\*\\+\\?\\.\\(\\)\\|\\[\\]\\{\\}');
+  });
+});
 
 describe('unescapeHtml', () => {
   test('with text includes escaped char', () => {
