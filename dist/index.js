@@ -1,7 +1,7 @@
 var k = Object.defineProperty;
 var v = (n, e, t) => e in n ? k(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
 var h = (n, e, t) => v(n, typeof e != "symbol" ? e + "" : e, t);
-import { getCurrentInstance as S, inject as C, defineComponent as M, onMounted as y, onBeforeUnmount as w, resolveComponent as x, openBlock as T, createBlock as I, withCtx as N, createVNode as P, mergeProps as L, unref as E, watch as $ } from "vue";
+import { getCurrentInstance as S, inject as C, defineComponent as T, onMounted as y, onBeforeUnmount as w, resolveComponent as x, openBlock as M, createBlock as I, withCtx as N, createVNode as P, mergeProps as L, unref as $, watch as E } from "vue";
 function j(n, e) {
   const t = S();
   if (!t)
@@ -16,6 +16,9 @@ function _() {
   return n;
 }
 const c = "vuetify-color-scheme";
+function B() {
+  return _();
+}
 function a(n, e) {
   e === "unspecified" ? (n.global.name.value = "", document.querySelectorAll(".color-responsive").forEach((t) => {
     var r;
@@ -37,37 +40,37 @@ function g() {
   var n, e;
   return (n = window.matchMedia) != null && n.call(window, "(prefers-color-scheme: light)").matches ? "light" : (e = window.matchMedia) != null && e.call(window, "(prefers-color-scheme: dark)").matches ? "dark" : "unspecified";
 }
-function B(n) {
+function F(n) {
   n.global.current.value.dark ? (g() === "light" ? localStorage.removeItem(c) : localStorage.setItem(c, "light"), a(n, "light")) : (g() === "dark" ? localStorage.removeItem(c) : localStorage.setItem(c, "dark"), a(n, "dark"));
 }
-function F(n) {
+function V(n) {
   const e = localStorage.getItem(c);
   e === "light" ? a(n, "light") : e === "dark" || g() === "dark" ? a(n, "dark") : a(n, "light");
 }
-const H = /* @__PURE__ */ M({
+const Z = /* @__PURE__ */ T({
   __name: "ThemeToggleButton",
   setup(n) {
-    const e = _();
+    const e = B();
     function t(o) {
       const i = localStorage.getItem(c);
       i === null ? a(e, o.matches ? "dark" : "light") : (i === "dark" && o.matches || i === "light" && !o.matches) && localStorage.removeItem(c);
     }
     function r() {
-      B(e);
+      F(e);
     }
     return y(() => {
-      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", t), F(e);
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", t), V(e);
     }), w(() => {
       window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", t);
     }), (o, i) => {
       const s = x("v-btn"), u = x("v-tooltip");
-      return T(), I(u, {
+      return M(), I(u, {
         text: "テーマを切り替え",
         "aria-label": "テーマを切り替え"
       }, {
         activator: N(({ props: d }) => [
           P(s, L({ "data-test": "button" }, d, {
-            icon: E(e).global.current.value.dark ? "mdi-weather-night" : "mdi-white-balance-sunny",
+            icon: $(e).global.current.value.dark ? "mdi-weather-night" : "mdi-white-balance-sunny",
             onClick: r,
             "aria-label": "テーマを切り替え"
           }), null, 16, ["icon"])
@@ -83,22 +86,22 @@ function b(n, e, t) {
       return r;
   return null;
 }
-function Z(n, e, t) {
+function z(n, e, t) {
   return e.map((r) => {
     const o = b(n, r[n], e), i = b(n, r[n], t);
     return o == null || i == null ? null : { ...o, ...i };
   }).filter((r) => r !== null);
 }
-function z(n, e) {
+function G(n, e) {
   return e == null ? n.reduce((t, r) => t + Number(r), 0) : n.reduce((t, r) => t + e(r), 0);
 }
-function G(n) {
+function J(n) {
   return n == null || n.length === 0;
 }
-function J(n) {
+function Q(n) {
   return n.some((e, t) => n.indexOf(e) !== t);
 }
-function Q(n, e) {
+function W(n, e) {
   if (!n)
     return 0;
   if (!e)
@@ -108,7 +111,7 @@ function Q(n, e) {
     e(o, r, n) && t++, r++;
   return t;
 }
-function W(n, e) {
+function Y(n, e) {
   if (typeof e > "u") {
     const t = Array(n);
     let r = 0;
@@ -123,20 +126,20 @@ function W(n, e) {
     return t;
   }
 }
-function Y(n, e) {
+function U(n, e) {
   const t = Array(e);
   let r = 0;
   for (; r < e; )
     t[r] = n / e * r++;
   return t;
 }
-function U(n) {
+function K(n) {
   let e = -1 / 0, t = 1 / 0, r = -1, o = -1, i = 0;
   for (const s of n)
     s > e && (e = s, r = i), s < t && (t = s, o = i), i++;
   return { max: e, min: t, maxIndex: r, minIndex: o };
 }
-function* K(n, e) {
+function* X(n, e) {
   const t = n.length, r = Array(e).fill(0);
   for (; ; ) {
     yield r.map((i) => n[i]);
@@ -251,7 +254,7 @@ const m = { symbol: "", exponent: 0 }, f = [
 };
 h(l, "siValuePattern", /^([+-]?(?:[0-9]*\.)?[0-9]+)([QRYZEPTGMkmuμnpfazyrq]?)$/);
 let p = l;
-const X = {
+const ee = {
   required: (n) => !!n || "値を入力してください",
   value: (n) => Number.isFinite(p.parse(n).fraction) || "不正な値です",
   notZero: (n) => Number(n) !== 0 || "値を 0 にはできません",
@@ -260,37 +263,37 @@ const X = {
     return Number.isFinite(e.fraction) && e.fraction >= 0 || "負値にはできません";
   }
 };
-function ee(n) {
+function te(n) {
   return n == null ? "" : n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-class V {
+class O {
   constructor(e) {
     this.obj = e;
   }
 }
-function O(n, e) {
+function q(n, e) {
   if (typeof n < "u" && n != null)
     for (const t of Object.keys(e))
-      e[t] instanceof V ? n[t] = e[t].obj : e[t] === null ? n[t] = null : !Array.isArray(e[t]) && typeof e[t] == "object" ? n[t] = O(n[t], e[t]) : n[t] = e[t];
+      e[t] instanceof O ? n[t] = e[t].obj : e[t] === null ? n[t] = null : !Array.isArray(e[t]) && typeof e[t] == "object" ? n[t] = q(n[t], e[t]) : n[t] = e[t];
   return n;
 }
-function te(n, e, t, r) {
+function ne(n, e, t, r) {
   return typeof n > "u" || n == null ? r : n ? e : t;
 }
-function ne(n, e, t) {
+function re(n, e, t) {
   return n !== n && e !== e ? 0 : n !== n ? 1 : e !== e ? -1 : n == null && e == null ? 0 : n == null ? 1 : e == null ? -1 : n < e ? t === "descending" ? 1 : -1 : n > e ? t === "descending" ? -1 : 1 : 0;
 }
-function re(n) {
+function oe(n) {
   return n.replace(/[/\-\\^$*+?.()|[\]{}]/g, "\\$&");
 }
-const q = /&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));/gi;
-function oe(n) {
-  return n.replace(q, (e, t) => {
+const R = /&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));/gi;
+function ie(n) {
+  return n.replace(R, (e, t) => {
     const r = t.toLowerCase();
     return r === "amp" ? "&" : r === "colon" ? ":" : r === "apos" ? "'" : r === "quot" ? '"' : r === "lt" ? "<" : r === "gt" ? ">" : r.charAt(0) === "#" ? r.charAt(1) === "x" ? String.fromCharCode(parseInt(r.substring(2), 16)) : String.fromCharCode(+r.substring(1)) : `&${t};`;
   });
 }
-function ie(n, e) {
+function se(n, e) {
   let t, r;
   const o = async function() {
     try {
@@ -305,14 +308,14 @@ function ie(n, e) {
     clearTimeout(t);
   });
 }
-function se(n, e, t) {
+function le(n, e, t) {
   const r = ((t == null ? void 0 : t.type) ?? "local") === "local" ? localStorage : sessionStorage, o = () => {
     typeof n.value < "u" && r.setItem(e, JSON.stringify(n.value));
   }, i = () => {
     const s = r.getItem(e);
     s != null && (n.value = JSON.parse(s));
   };
-  return ((t == null ? void 0 : t.readable) ?? !0) && i(), ((t == null ? void 0 : t.writable) ?? !0) && $(() => n.value, o, {
+  return ((t == null ? void 0 : t.readable) ?? !0) && i(), ((t == null ? void 0 : t.writable) ?? !0) && E(() => n.value, o, {
     immediate: (t == null ? void 0 : t.readable) ?? !0
   }), {
     remove: () => {
@@ -322,7 +325,7 @@ function se(n, e, t) {
     load: i
   };
 }
-class le {
+class ce {
   constructor(e, t) {
     h(this, "_worker", null);
     this.workerConstructor = e, this.options = t;
@@ -342,32 +345,33 @@ class le {
 }
 export {
   m as BaseSIPrefix,
-  V as RawObject,
-  X as Rules,
+  O as RawObject,
+  ee as Rules,
   p as SIValue,
-  H as ThemeToggleButton,
+  Z as ThemeToggleButton,
   c as VuetifyColorSchemeName,
-  le as WorkerManager,
+  ce as WorkerManager,
   a as applyColorScheme,
-  ne as compareWithNull,
-  Q as count,
-  O as deepAssign,
-  ie as definePeriodicCall,
-  Y as divide,
-  G as empty,
-  re as escapeRegex,
-  J as existsDuplicate,
+  re as compareWithNull,
+  W as count,
+  q as deepAssign,
+  se as definePeriodicCall,
+  U as divide,
+  J as empty,
+  oe as escapeRegex,
+  Q as existsDuplicate,
   b as findBy,
-  U as findMinMax,
-  K as generateForDepth,
+  K as findMinMax,
+  X as generateForDepth,
   g as getPrefersColorScheme,
-  Z as mergeArrayBy,
-  F as reapplyTheme,
-  W as sequence,
-  se as storage,
-  z as sum,
-  te as ternary,
-  B as toggleTheme,
-  oe as unescapeHtml,
-  ee as withCommas
+  z as mergeArrayBy,
+  V as reapplyTheme,
+  Y as sequence,
+  le as storage,
+  G as sum,
+  ne as ternary,
+  F as toggleTheme,
+  ie as unescapeHtml,
+  B as useTheme,
+  te as withCommas
 };
