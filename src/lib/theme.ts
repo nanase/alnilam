@@ -1,7 +1,12 @@
-import type { ThemeInstance } from 'vuetify';
+import { useTheme as useVuetifyTheme } from 'vuetify';
 
 export const VuetifyColorSchemeName = 'vuetify-color-scheme';
 export type PrefersColorScheme = 'unspecified' | 'light' | 'dark';
+
+export type ThemeInstance = ReturnType<typeof useVuetifyTheme>;
+export function useTheme(): ThemeInstance {
+  return useVuetifyTheme();
+}
 
 export function applyColorScheme(theme: ThemeInstance, scheme: PrefersColorScheme) {
   if (scheme === 'unspecified') {

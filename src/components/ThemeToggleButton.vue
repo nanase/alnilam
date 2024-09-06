@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount } from 'vue';
-import { useTheme } from 'vuetify';
-import { VuetifyColorSchemeName, applyColorScheme, reapplyTheme, toggleTheme } from '@/lib/theme';
+import { VuetifyColorSchemeName, applyColorScheme, reapplyTheme, toggleTheme, useTheme } from '@/lib/theme';
 
 const theme = useTheme();
 
