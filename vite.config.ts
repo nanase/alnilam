@@ -1,5 +1,4 @@
 /// <reference types="vitest" />
-import { fileURLToPath, URL } from 'node:url';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import VueMacros from 'unplugin-vue-macros/vite';
