@@ -58,9 +58,9 @@
       "require": "./dist/lib/theme.umd.js"
     },
     "./use": {
-      "types": "./dist/lib/use.d.ts",
-      "import": "./dist/lib/use.js",
-      "require": "./dist/lib/use.umd.js"
+      "types": "./dist/lib/use/index.d.ts",
+      "import": "./dist/lib/use/index.js",
+      "require": "./dist/lib/use/index.umd.js"
     },
     "./worker": {
       "types": "./dist/lib/worker.d.ts",
