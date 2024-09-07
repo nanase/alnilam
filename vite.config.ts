@@ -58,6 +58,7 @@ export default defineConfig({
         'lib/state': resolve(srcDir, 'lib', 'state.ts'),
         'lib/string': resolve(srcDir, 'lib', 'string.ts'),
         'lib/theme': resolve(srcDir, 'lib', 'theme.ts'),
+        'lib/use': resolve(srcDir, 'lib', 'use.ts'),
         'lib/worker': resolve(srcDir, 'lib', 'worker.ts'),
       },
       name: 'alnilam',

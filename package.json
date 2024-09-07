@@ -57,6 +57,11 @@
       "import": "./dist/lib/theme.js",
       "require": "./dist/lib/theme.umd.js"
     },
+    "./use": {
+      "types": "./dist/lib/use.d.ts",
+      "import": "./dist/lib/use.js",
+      "require": "./dist/lib/use.umd.js"
+    },
     "./worker": {
       "types": "./dist/lib/worker.d.ts",
       "import": "./dist/lib/worker.js",
