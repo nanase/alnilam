@@ -47,14 +47,26 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve(srcDir, 'index.ts'),
+      entry: {
+        'components/index': resolve(srcDir, 'components', 'index.ts'),
+        'lib/array': resolve(srcDir, 'lib', 'array.ts'),
+        'lib/inputRule': resolve(srcDir, 'lib', 'inputRule.ts'),
+        'lib/number': resolve(srcDir, 'lib', 'number.ts'),
+        'lib/object': resolve(srcDir, 'lib', 'object.ts'),
+        'lib/siPrefix': resolve(srcDir, 'lib', 'siPrefix.ts'),
+        'lib/sort': resolve(srcDir, 'lib', 'sort.ts'),
+        'lib/state': resolve(srcDir, 'lib', 'state.ts'),
+        'lib/string': resolve(srcDir, 'lib', 'string.ts'),
+        'lib/theme': resolve(srcDir, 'lib', 'theme.ts'),
+        'lib/worker': resolve(srcDir, 'lib', 'worker.ts'),
+      },
       name: 'alnilam',
-      fileName: 'index',
-      formats: ['es', 'umd'],
+      formats: ['es'],
     },
     rollupOptions: {
       external: ['vue'],
       output: {
+        exports: 'named',
         globals: {
           vue: 'Vue',
         },

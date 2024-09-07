@@ -1,3 +1,1 @@
-import ThemeToggleButton from './ThemeToggleButton.vue';
-
-export { ThemeToggleButton };
+export { default as ThemeToggleButton } from './ThemeToggleButton.vue';
