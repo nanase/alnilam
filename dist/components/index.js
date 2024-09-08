@@ -1,30 +1,98 @@
-import { defineComponent as g, onMounted as C, onBeforeUnmount as y, resolveComponent as n, openBlock as v, createBlock as _, withCtx as t, createVNode as r, mergeProps as B, unref as V, ref as b, renderSlot as a, createTextVNode as u, useSlots as M, withModifiers as A, createCommentVNode as E, toDisplayString as N } from "vue";
-import { useTheme as P, reapplyTheme as I, VuetifyColorSchemeName as h, applyColorScheme as L, toggleTheme as O } from "../lib/theme.js";
-const U = /* @__PURE__ */ g({
+import { defineComponent as T, mergeDefaults as D, ref as y, computed as E, watch as I, openBlock as d, createElementBlock as c, renderSlot as a, createTextVNode as f, toDisplayString as u, unref as B, createCommentVNode as v, createElementVNode as p, normalizeStyle as g, Fragment as N, onMounted as P, onBeforeUnmount as Y, resolveComponent as r, createBlock as w, withCtx as l, createVNode as m, mergeProps as F, useSlots as H, withModifiers as L } from "vue";
+import S, { getTimezoneName as O } from "../lib/dayjs.js";
+import { u as U } from "../useIntervalFnWithPauser-cB_8Of1A.js";
+import { useTheme as j, reapplyTheme as W, VuetifyColorSchemeName as $, applyColorScheme as q, toggleTheme as G } from "../lib/theme.js";
+const J = { class: "animated-clock" }, K = {
+  key: 0,
+  class: "date"
+}, Q = {
+  key: 0,
+  class: "timezone"
+}, R = {
+  key: 1,
+  class: "time"
+}, oe = /* @__PURE__ */ T({
+  __name: "AnimatedClock",
+  props: D({
+    time: null,
+    updateInterval: null,
+    stop: { type: Boolean },
+    stopAnimation: { type: Boolean },
+    hideDate: { type: Boolean },
+    hideTime: { type: Boolean },
+    hideTimezone: { type: Boolean },
+    hideSeconds: { type: Boolean }
+  }, { time: S(), updateInterval: 200 }),
+  setup(s) {
+    const e = y(s.time), i = E(
+      () => s.stopAnimation ? "" : `visibility:${e.value.millisecond() < 666 ? "visible" : "hidden"}`
+    );
+    return I(
+      () => s.time,
+      () => {
+        e.value = s.time;
+      }
+    ), U(
+      () => e.value = S(),
+      () => s.stop,
+      () => s.updateInterval
+    ), (t, o) => (d(), c("div", J, [
+      t.hideDate ? v("", !0) : (d(), c("div", K, [
+        t.hideTimezone ? v("", !0) : (d(), c("div", Q, [
+          a(t.$slots, "timezone", {}, () => [
+            f(u(B(O)(e.value)), 1)
+          ])
+        ])),
+        p("div", null, [
+          a(t.$slots, "date", {}, () => [
+            f(u(e.value.format("YYYY-MM-DD")), 1)
+          ])
+        ])
+      ])),
+      t.hideTime ? v("", !0) : (d(), c("span", R, [
+        a(t.$slots, "time", {
+          style: g(i.value)
+        }, () => [
+          p("span", null, u(e.value.format("HH")), 1),
+          p("span", {
+            style: g(i.value)
+          }, ":", 4),
+          p("span", null, u(e.value.format("mm")), 1),
+          t.hideSeconds ? v("", !0) : (d(), c(N, { key: 0 }, [
+            p("span", {
+              style: g(i.value)
+            }, ":", 4),
+            p("span", null, u(e.value.format("ss")), 1)
+          ], 64))
+        ])
+      ]))
+    ]));
+  }
+}), X = /* @__PURE__ */ T({
   __name: "ThemeToggleButton",
-  setup(f) {
-    const s = P();
-    function p(o) {
-      const e = localStorage.getItem(h);
-      e === null ? L(s, o.matches ? "dark" : "light") : (e === "dark" && o.matches || e === "light" && !o.matches) && localStorage.removeItem(h);
+  setup(s) {
+    const e = j();
+    function i(o) {
+      const n = localStorage.getItem($);
+      n === null ? q(e, o.matches ? "dark" : "light") : (n === "dark" && o.matches || n === "light" && !o.matches) && localStorage.removeItem($);
     }
-    function l() {
-      O(s);
+    function t() {
+      G(e);
     }
-    return C(() => {
-      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", p), I(s);
-    }), y(() => {
-      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", p);
-    }), (o, e) => {
-      const i = n("v-btn"), c = n("v-tooltip");
-      return v(), _(c, {
+    return P(() => {
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", i), W(e);
+    }), Y(() => {
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", i);
+    }), (o, n) => {
+      const h = r("v-btn"), _ = r("v-tooltip");
+      return d(), w(_, {
         text: "テーマを切り替え",
         "aria-label": "テーマを切り替え"
       }, {
-        activator: t(({ props: m }) => [
-          r(i, B({ "data-test": "button" }, m, {
-            icon: V(s).global.current.value.dark ? "mdi-weather-night" : "mdi-white-balance-sunny",
-            onClick: l,
+        activator: l(({ props: b }) => [
+          m(h, F({ "data-test": "button" }, b, {
+            icon: B(e).global.current.value.dark ? "mdi-weather-night" : "mdi-white-balance-sunny",
+            onClick: t,
             "aria-label": "テーマを切り替え"
           }), null, 16, ["icon"])
         ]),
@@ -32,72 +100,72 @@ const U = /* @__PURE__ */ g({
       });
     };
   }
-}), q = /* @__PURE__ */ g({
+}), ne = /* @__PURE__ */ T({
   __name: "AppBase",
   props: {
     toolbarTitle: null
   },
-  setup(f, { expose: s }) {
-    const p = b(), l = b();
-    return s({
+  setup(s, { expose: e }) {
+    const i = y(), t = y();
+    return e({
       showErrorSnackbar: function() {
-        l.value = !0;
+        t.value = !0;
       },
       closeErrorSnackbar: function() {
-        l.value = !1;
+        t.value = !1;
       }
-    }), (o, e) => {
-      const i = n("v-btn"), c = n("v-snackbar"), m = n("v-app-bar-nav-icon"), k = n("v-toolbar-title"), w = n("v-app-bar"), S = n("v-container"), T = n("v-main"), $ = n("v-app");
-      return v(), _($, null, {
-        default: t(() => [
+    }), (o, n) => {
+      const h = r("v-btn"), _ = r("v-snackbar"), b = r("v-app-bar-nav-icon"), C = r("v-toolbar-title"), A = r("v-app-bar"), M = r("v-container"), V = r("v-main"), z = r("v-app");
+      return d(), w(z, null, {
+        default: l(() => [
           a(o.$slots, "drawer", { opened: "drawerOpened" }),
-          r(c, {
-            modelValue: l.value,
-            "onUpdate:modelValue": e[1] || (e[1] = (d) => l.value = d),
+          m(_, {
+            modelValue: t.value,
+            "onUpdate:modelValue": n[1] || (n[1] = (k) => t.value = k),
             timeout: "10000"
           }, {
-            actions: t(() => [
-              r(i, {
+            actions: l(() => [
+              m(h, {
                 color: "red-lighten-2",
                 variant: "text",
-                onClick: e[0] || (e[0] = (d) => l.value = !1)
+                onClick: n[0] || (n[0] = (k) => t.value = !1)
               }, {
-                default: t(() => e[4] || (e[4] = [
-                  u("閉じる")
+                default: l(() => n[4] || (n[4] = [
+                  f("閉じる")
                 ])),
                 _: 1
               })
             ]),
-            default: t(() => [
+            default: l(() => [
               a(o.$slots, "errorSnackbar", {}, () => [
-                e[3] || (e[3] = u("データの読み込みができませんでした。しばらくしてから再読み込みしてください。"))
+                n[3] || (n[3] = f("データの読み込みができませんでした。しばらくしてから再読み込みしてください。"))
               ])
             ]),
             _: 3
           }, 8, ["modelValue"]),
-          r(T, null, {
-            default: t(() => [
-              r(w, {
+          m(V, null, {
+            default: l(() => [
+              m(A, {
                 flat: "",
                 floating: "",
                 density: "compact"
               }, {
-                append: t(() => [
+                append: l(() => [
                   a(o.$slots, "toolbarPrepend"),
-                  r(U),
+                  m(X),
                   a(o.$slots, "toolbarAppend")
                 ]),
-                default: t(() => [
+                default: l(() => [
                   a(o.$slots, "appbarPrepend"),
-                  M().drawer ? (v(), _(m, {
+                  H().drawer ? (d(), w(b, {
                     key: 0,
                     variant: "text",
-                    onClick: e[2] || (e[2] = A((d) => p.value = !p.value, ["stop"])),
+                    onClick: n[2] || (n[2] = L((k) => i.value = !i.value, ["stop"])),
                     "aria-label": "ナビゲーションを表示"
-                  })) : E("", !0),
-                  r(k, null, {
-                    default: t(() => [
-                      u(N(f.toolbarTitle), 1)
+                  })) : v("", !0),
+                  m(C, null, {
+                    default: l(() => [
+                      f(u(s.toolbarTitle), 1)
                     ]),
                     _: 1
                   }),
@@ -106,8 +174,8 @@ const U = /* @__PURE__ */ g({
                 _: 3
               }),
               a(o.$slots, "header"),
-              r(S, null, {
-                default: t(() => [
+              m(M, null, {
+                default: l(() => [
                   a(o.$slots, "default")
                 ]),
                 _: 3
@@ -123,6 +191,7 @@ const U = /* @__PURE__ */ g({
   }
 });
 export {
-  q as AppBase,
-  U as ThemeToggleButton
+  oe as AnimatedClock,
+  ne as AppBase,
+  X as ThemeToggleButton
 };
