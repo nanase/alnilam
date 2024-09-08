@@ -1,5 +1,5 @@
 import { computed as a } from "vue";
-import { u as c } from "../../useIntervalFnWithPauser-cB_8Of1A.js";
+import { u as c } from "../../chunks/useIntervalFnWithPauser.cB_8Of1A.js";
 function p(r, e = {}) {
   return a({
     get: () => JSON.stringify(r.value, e.replacer, e.space),
