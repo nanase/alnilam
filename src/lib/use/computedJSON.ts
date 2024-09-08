@@ -1,4 +1,4 @@
-import { computed, Ref, WritableComputedRef } from 'vue';
+import { computed, type Ref, type WritableComputedRef } from 'vue';
 
 export interface ComputedJSONOptions {
   replacer?: Parameters<typeof JSON.stringify>[1];

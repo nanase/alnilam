@@ -1,4 +1,4 @@
-import { SIPrefixSymbol, SIValue } from '@/lib/siPrefix';
+import { type SIPrefixSymbol, SIValue } from '@/lib/siPrefix';
 
 describe('actualValue', () => {
   test('Get actual value', () => {
