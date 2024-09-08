@@ -24,7 +24,7 @@ export default defineConfig({
       },
     }),
     dts({
-      exclude: ['**/*.test.ts'],
+      exclude: ['test/**/*.ts', '**/*.test.ts'],
     }),
   ],
   test: {
