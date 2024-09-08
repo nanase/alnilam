@@ -151,3 +151,21 @@ export function* generateForDepth<T>(array: Array<T>, depth: number): Iterable<A
     }
   }
 }
+
+export function moveAbove<T>(array: T[], element: T): void {
+  const index = array.indexOf(element);
+
+  if (index > 0) {
+    array.splice(index, 1);
+    array.splice(index - 1, 0, element);
+  }
+}
+
+export function moveBelow<T>(array: T[], element: T): void {
+  const index = array.indexOf(element);
+
+  if (index !== -1 && index < array.length - 1) {
+    array.splice(index, 1);
+    array.splice(index + 1, 0, element);
+  }
+}

@@ -9,6 +9,8 @@ import {
   count,
   findMinMax,
   generateForDepth,
+  moveAbove,
+  moveBelow,
 } from '@/lib/array';
 
 describe('findBy', () => {
@@ -200,5 +202,69 @@ describe('generateForDepth', () => {
       [2, 1],
       [2, 2],
     ]);
+  });
+});
+
+describe('moveAbove', () => {
+  test('call with an array and its element', () => {
+    const array = [0, 1, 2, 3];
+    moveAbove(array, 1);
+    expect(array).toEqual([1, 0, 2, 3]);
+  });
+
+  test('call with an array and its first element', () => {
+    const array = [0, 1, 2, 3];
+    moveAbove(array, 0);
+    expect(array).toEqual([0, 1, 2, 3]);
+  });
+
+  test('call with an array and its non-element value', () => {
+    const array = [0, 1, 2, 3];
+    moveAbove(array, 4);
+    expect(array).toEqual([0, 1, 2, 3]);
+  });
+
+  test('call with an array and its element, but length 1', () => {
+    const array = [0];
+    moveAbove(array, 0);
+    expect(array).toEqual([0]);
+  });
+
+  test('call with empty array', () => {
+    const array: number[] = [];
+    moveAbove(array, 0);
+    expect(array).toEqual([]);
+  });
+});
+
+describe('moveBelow', () => {
+  test('call with an array and its element', () => {
+    const array = [0, 1, 2, 3];
+    moveBelow(array, 1);
+    expect(array).toEqual([0, 2, 1, 3]);
+  });
+
+  test('call with an array and its last element', () => {
+    const array = [0, 1, 2, 3];
+    moveBelow(array, 3);
+    expect(array).toEqual([0, 1, 2, 3]);
+  });
+
+  test('call with an array and its non-element value', () => {
+    const array = [0, 1, 2, 3];
+    moveBelow(array, 4);
+    expect(array).toEqual([0, 1, 2, 3]);
+  });
+
+  test('call with an array and its element, but length 1', () => {
+    const array = [0];
+    moveBelow(array, 0);
+    expect(array).toEqual([0]);
+  });
+
+  test('call with empty array', () => {
+    const array: number[] = [];
+    moveBelow(array, 0);
+    expect(array).toEqual([]);
   });
 });
