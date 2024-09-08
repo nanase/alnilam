@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 import VueMacros from 'unplugin-vue-macros/vite';
 import Vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
+import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 const root = resolve(__dirname);
 const srcDir = resolve(root, 'src');
@@ -26,6 +27,7 @@ export default defineConfig({
     dts({
       exclude: ['test/**/*.ts', '**/*.test.ts'],
     }),
+    libInjectCss(),
   ],
   test: {
     root,
@@ -72,6 +74,8 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
         },
+        chunkFileNames: 'chunks/[name].[hash].js',
+        assetFileNames: 'assets/[name][extname]',
       },
     },
     outDir: resolve(root, './dist'),
