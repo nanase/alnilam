@@ -50,6 +50,7 @@ export default defineConfig({
       entry: {
         'components/index': resolve(srcDir, 'components', 'index.ts'),
         'lib/array': resolve(srcDir, 'lib', 'array.ts'),
+        'lib/dayjs': resolve(srcDir, 'lib', 'dayjs.ts'),
         'lib/inputRule': resolve(srcDir, 'lib', 'inputRule.ts'),
         'lib/number': resolve(srcDir, 'lib', 'number.ts'),
         'lib/object': resolve(srcDir, 'lib', 'object.ts'),
@@ -58,7 +59,7 @@ export default defineConfig({
         'lib/state': resolve(srcDir, 'lib', 'state.ts'),
         'lib/string': resolve(srcDir, 'lib', 'string.ts'),
         'lib/theme': resolve(srcDir, 'lib', 'theme.ts'),
-        'lib/use': resolve(srcDir, 'lib', 'use', 'index.ts'),
+        'lib/use/index': resolve(srcDir, 'lib', 'use', 'index.ts'),
         'lib/worker': resolve(srcDir, 'lib', 'worker.ts'),
       },
       name: 'alnilam',

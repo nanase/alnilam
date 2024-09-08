@@ -17,6 +17,11 @@
       "import": "./dist/lib/array.js",
       "require": "./dist/lib/array.umd.js"
     },
+    "./dayjs": {
+      "types": "./dist/lib/dayjs.d.ts",
+      "import": "./dist/lib/dayjs.js",
+      "require": "./dist/lib/dayjs.umd.js"
+    },
     "./inputRule": {
       "types": "./dist/lib/inputRule.d.ts",
       "import": "./dist/lib/inputRule.js",
