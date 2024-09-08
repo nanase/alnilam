@@ -32,7 +32,7 @@
     "types": ["vitest/globals"]
   },
   "exclude": ["node_modules"],
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "test/**/*"],
+  "include": ["src/**/*", "src/**/*.vue", "test/**/*"],
   "vueCompilerOptions": {
     "jsxSlots": true
   }
