@@ -1,8 +1,6 @@
 declare function __VLS_template(): {
     slots: {
-        drawer?(_: {
-            opened: boolean | undefined;
-        }): any;
+        mainPrepend?(_: {}): any;
         errorSnackbar?(_: {}): any;
         appbarPrepend?(_: {}): any;
         appbarAppend?(_: {}): any;
@@ -11,6 +9,7 @@ declare function __VLS_template(): {
         header?(_: {}): any;
         default?(_: {}): any;
         footer?(_: {}): any;
+        mainAppend?(_: {}): any;
     };
     refs: {};
     attrs: Partial<{}>;
