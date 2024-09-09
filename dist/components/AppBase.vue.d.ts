@@ -1,7 +1,7 @@
 declare function __VLS_template(): {
     slots: {
         drawer?(_: {
-            opened: string;
+            opened: boolean | undefined;
         }): any;
         errorSnackbar?(_: {}): any;
         appbarPrepend?(_: {}): any;
