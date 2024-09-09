@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { ref, useSlots } from 'vue';
+import { ref } from 'vue';
 import ThemeToggleButton from './ThemeToggleButton.vue';
 
 const { toolbarTitle } = defineProps<{
   toolbarTitle?: string;
 }>();
 
-const drawerOpened = ref<boolean>();
 const errorSnackbar = ref<boolean>();
 
 defineExpose({
@@ -21,7 +20,7 @@ defineExpose({
 
 <template>
   <v-app>
-    <slot name="drawer" :opened="drawerOpened"></slot>
+    <slot name="mainPrepend"></slot>
 
     <v-snackbar v-model="errorSnackbar" timeout="10000">
       <slot name="errorSnackbar">データの読み込みができませんでした。しばらくしてから再読み込みしてください。</slot>
@@ -33,12 +32,6 @@ defineExpose({
     <v-main>
       <v-app-bar flat floating density="compact">
         <slot name="appbarPrepend"></slot>
-        <v-app-bar-nav-icon
-          v-if="useSlots()['drawer']"
-          variant="text"
-          @click.stop="drawerOpened = !drawerOpened"
-          aria-label="ナビゲーションを表示"
-        />
         <v-toolbar-title>{{ toolbarTitle }}</v-toolbar-title>
         <slot name="appbarAppend"></slot>
         <template #append>
@@ -56,5 +49,7 @@ defineExpose({
 
       <slot name="footer"></slot>
     </v-main>
+
+    <slot name="mainAppend"></slot>
   </v-app>
 </template>
