@@ -1,0 +1,1 @@
+{"version":3,"file":"useMutationObserver.d.ts","sourceRoot":"","sources":["../../../src/lib/use/useMutationObserver.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,UAAU,EAAyB,MAAM,KAAK,CAAC;AAE7D,wBAAgB,mBAAmB,CACjC,MAAM,EAAE,QAAQ,CAAC,UAAU,CAAC,WAAW,GAAG,IAAI,GAAG,SAAS,CAAC,CAAC,GAAG,MAAM,EACrE,EAAE,EAAE,gBAAgB,EACpB,OAAO,CAAC,EAAE,oBAAoB;;;;EAsB/B"}

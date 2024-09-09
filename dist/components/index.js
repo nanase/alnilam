@@ -1,7 +1,7 @@
 import { defineComponent as T, mergeDefaults as D, ref as y, computed as E, watch as I, openBlock as d, createElementBlock as c, renderSlot as a, createTextVNode as f, toDisplayString as u, unref as B, createCommentVNode as v, createElementVNode as p, normalizeStyle as g, Fragment as N, onMounted as P, onBeforeUnmount as Y, resolveComponent as r, createBlock as w, withCtx as l, createVNode as m, mergeProps as F, useSlots as H, withModifiers as L } from "vue";
 import { getTimezoneName as O } from "../lib/dayjs.js";
-import { a as U } from "../chunks/useIntervalFnWithPauser.CDwrKPK1.js";
 import S from "dayjs";
+import { u as U } from "../chunks/useIntervalFnWithPauser.DQJ-weBt.js";
 import { useTheme as j, reapplyTheme as W, VuetifyColorSchemeName as $, applyColorScheme as q, toggleTheme as G } from "../lib/theme.js";
 import '../assets/index.css';const J = { class: "animated-clock" }, K = {
   key: 0,
