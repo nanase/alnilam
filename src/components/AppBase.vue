@@ -21,7 +21,7 @@ defineExpose({
 
 <template>
   <v-app>
-    <slot name="drawer" opened="drawerOpened"></slot>
+    <slot name="drawer" :opened="drawerOpened"></slot>
 
     <v-snackbar v-model="errorSnackbar" timeout="10000">
       <slot name="errorSnackbar">データの読み込みができませんでした。しばらくしてから再読み込みしてください。</slot>
