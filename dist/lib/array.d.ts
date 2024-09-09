@@ -14,4 +14,6 @@ export declare function findMinMax(array: Iterable<number>): {
     minIndex: number;
 };
 export declare function generateForDepth<T>(array: Array<T>, depth: number): Iterable<Array<T>>;
+export declare function moveAbove<T>(array: T[], element: T): void;
+export declare function moveBelow<T>(array: T[], element: T): void;
 //# sourceMappingURL=array.d.ts.map

@@ -1,82 +1,92 @@
-function f(n, t, i) {
-  for (const e of i)
-    if (!(typeof e[n] > "u") && e[n] === t)
-      return e;
+function o(n, i, e) {
+  for (const t of e)
+    if (!(typeof t[n] > "u") && t[n] === i)
+      return t;
   return null;
 }
-function o(n, t, i) {
-  return t.map((e) => {
-    const u = f(n, e[n], t), l = f(n, e[n], i);
-    return u == null || l == null ? null : { ...u, ...l };
-  }).filter((e) => e !== null);
+function c(n, i, e) {
+  return i.map((t) => {
+    const l = o(n, t[n], i), u = o(n, t[n], e);
+    return l == null || u == null ? null : { ...l, ...u };
+  }).filter((t) => t !== null);
 }
-function c(n, t) {
-  return t == null ? n.reduce((i, e) => i + Number(e), 0) : n.reduce((i, e) => i + t(e), 0);
+function r(n, i) {
+  return i == null ? n.reduce((e, t) => e + Number(t), 0) : n.reduce((e, t) => e + i(t), 0);
 }
 function s(n) {
   return n == null || n.length === 0;
 }
-function m(n) {
-  return n.some((t, i) => n.indexOf(t) !== i);
+function x(n) {
+  return n.some((i, e) => n.indexOf(i) !== e);
 }
-function x(n, t) {
+function d(n, i) {
   if (!n)
     return 0;
-  if (!t)
+  if (!i)
     return n.length;
-  let i = 0, e = 0;
-  for (const u of n)
-    t(u, e, n) && i++, e++;
-  return i;
+  let e = 0, t = 0;
+  for (const l of n)
+    i(l, t, n) && e++, t++;
+  return e;
 }
-function d(n, t) {
-  if (typeof t > "u") {
-    const i = Array(n);
-    let e = 0;
-    for (; e < n; )
-      i[e] = e++;
-    return i;
+function m(n, i) {
+  if (typeof i > "u") {
+    const e = Array(n);
+    let t = 0;
+    for (; t < n; )
+      e[t] = t++;
+    return e;
   } else {
-    const i = Array(t - n);
-    let e = 0, u = n;
-    for (; u < t; )
-      i[e++] = u++;
-    return i;
+    const e = Array(i - n);
+    let t = 0, l = n;
+    for (; l < i; )
+      e[t++] = l++;
+    return e;
   }
 }
-function h(n, t) {
-  const i = Array(t);
-  let e = 0;
-  for (; e < t; )
-    i[e] = n / t * e++;
-  return i;
+function p(n, i) {
+  const e = Array(i);
+  let t = 0;
+  for (; t < i; )
+    e[t] = n / i * t++;
+  return e;
 }
-function p(n) {
-  let t = -1 / 0, i = 1 / 0, e = -1, u = -1, l = 0;
-  for (const r of n)
-    r > t && (t = r, e = l), r < i && (i = r, u = l), l++;
-  return { max: t, min: i, maxIndex: e, minIndex: u };
+function h(n) {
+  let i = -1 / 0, e = 1 / 0, t = -1, l = -1, u = 0;
+  for (const f of n)
+    f > i && (i = f, t = u), f < e && (e = f, l = u), u++;
+  return { max: i, min: e, maxIndex: t, minIndex: l };
 }
-function* b(n, t) {
-  const i = n.length, e = Array(t).fill(0);
+function* b(n, i) {
+  const e = n.length, t = Array(i).fill(0);
   for (; ; ) {
-    yield e.map((l) => n[l]);
-    let u = t - 1;
-    for (; u >= 0 && (e[u]++, !(e[u] < i)); )
-      e[u] = 0, u--;
-    if (u < 0)
+    yield t.map((u) => n[u]);
+    let l = i - 1;
+    for (; l >= 0 && (t[l]++, !(t[l] < e)); )
+      t[l] = 0, l--;
+    if (l < 0)
       break;
   }
 }
+function g(n, i) {
+  const e = n.indexOf(i);
+  e > 0 && (n.splice(e, 1), n.splice(e - 1, 0, i));
+}
+function w(n, i) {
+  const e = n.indexOf(i);
+  e !== -1 && e < n.length - 1 && (n.splice(e, 1), n.splice(e + 1, 0, i));
+}
 export {
-  x as count,
-  h as divide,
+  d as count,
+  p as divide,
   s as empty,
-  m as existsDuplicate,
-  f as findBy,
-  p as findMinMax,
+  x as existsDuplicate,
+  o as findBy,
+  h as findMinMax,
   b as generateForDepth,
-  o as mergeArrayBy,
-  d as sequence,
-  c as sum
+  c as mergeArrayBy,
+  g as moveAbove,
+  w as moveBelow,
+  m as sequence,
+  r as sum
 };
