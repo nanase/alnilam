@@ -2,7 +2,7 @@
  * @vitest-environment happy-dom
  */
 import { useIntervalFetch } from '@/lib/use/useIntervalFetch';
-import { MockInstance } from 'vitest';
+import { type MockInstance } from 'vitest';
 import { wait, nextTwoTick } from '../utils';
 
 describe('useIntervalFetch', () => {
