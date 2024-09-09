@@ -2,7 +2,7 @@
  * @vitest-environment happy-dom
  */
 import { nextTick, shallowRef, render, h, type ShallowRef } from 'vue';
-import { wait } from '../utils';
+import { nextTwoTick } from '../utils';
 import { useMutationObserver } from '@/lib/use';
 
 describe('useMutationObserver', () => {
@@ -22,7 +22,7 @@ describe('useMutationObserver', () => {
 
     expect(counter).toBe(0);
     div.innerText = 'foo';
-    await wait(1);
+    await nextTwoTick();
     expect(counter).toBe(1);
   });
 
@@ -43,12 +43,12 @@ describe('useMutationObserver', () => {
     expect(counter).toBe(0);
     pause();
     div.innerText = 'foo';
-    await wait(1);
+    await nextTwoTick();
     expect(counter).toBe(0);
 
     resume();
     div.innerText = 'bar';
-    await wait(1);
+    await nextTwoTick();
     expect(counter).toBe(1);
   });
 
@@ -71,7 +71,7 @@ describe('useMutationObserver', () => {
     divRef.value = div;
     await nextTick();
     div.innerText = 'foo';
-    await wait(1);
+    await nextTwoTick();
     expect(counter).toBe(1);
   });
 
@@ -98,7 +98,7 @@ describe('useMutationObserver', () => {
 
     await nextTick();
     keyRef!.value!.innerText = 'foo';
-    await wait(1);
+    await nextTwoTick();
     expect(counter).toBe(1);
   });
 });
