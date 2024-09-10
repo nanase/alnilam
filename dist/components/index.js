@@ -1,20 +1,20 @@
-import { defineComponent as k, mergeDefaults as M, ref as S, computed as z, watch as D, openBlock as m, createElementBlock as c, renderSlot as n, createTextVNode as v, toDisplayString as u, unref as B, createCommentVNode as h, createElementVNode as p, normalizeStyle as g, Fragment as E, onMounted as I, onBeforeUnmount as N, resolveComponent as r, createBlock as w, withCtx as l, createVNode as i, mergeProps as P } from "vue";
-import { getTimezoneName as Y } from "../lib/dayjs.js";
+import { defineComponent as k, mergeDefaults as z, ref as S, computed as M, watch as P, openBlock as m, createElementBlock as c, renderSlot as n, createTextVNode as v, toDisplayString as u, unref as B, createCommentVNode as h, createElementVNode as p, normalizeStyle as g, Fragment as D, onMounted as E, onBeforeUnmount as I, resolveComponent as s, createBlock as w, withCtx as l, createVNode as i, mergeProps as N, normalizeProps as Y, guardReactiveProps as F } from "vue";
+import { getTimezoneName as H } from "../lib/dayjs.js";
 import T from "dayjs";
-import { u as F } from "../chunks/useIntervalFnWithPauser.DQJ-weBt.js";
-import { useTheme as H, reapplyTheme as L, VuetifyColorSchemeName as $, applyColorScheme as U, toggleTheme as j } from "../lib/theme.js";
-import '../assets/index.css';const W = { class: "animated-clock" }, q = {
+import { u as L } from "../chunks/useIntervalFnWithPauser.DQJ-weBt.js";
+import { useTheme as U, reapplyTheme as j, VuetifyColorSchemeName as $, applyColorScheme as R, toggleTheme as W } from "../lib/theme.js";
+import '../assets/index.css';const q = { class: "animated-clock" }, G = {
   key: 0,
   class: "date"
-}, G = {
+}, J = {
   key: 0,
   class: "timezone"
-}, J = {
+}, K = {
   key: 1,
   class: "time"
-}, x = /* @__PURE__ */ k({
+}, te = /* @__PURE__ */ k({
   __name: "AnimatedClock",
-  props: M({
+  props: z({
     time: null,
     updateInterval: null,
     stop: { type: Boolean },
@@ -24,24 +24,24 @@ import '../assets/index.css';const W = { class: "animated-clock" }, q = {
     hideTimezone: { type: Boolean },
     hideSeconds: { type: Boolean }
   }, { time: T(), updateInterval: 200 }),
-  setup(s) {
-    const t = S(s.time), a = z(
-      () => s.stopAnimation ? "" : `visibility:${t.value.millisecond() < 666 ? "visible" : "hidden"}`
+  setup(r) {
+    const t = S(r.time), a = M(
+      () => r.stopAnimation ? "" : `visibility:${t.value.millisecond() < 666 ? "visible" : "hidden"}`
     );
-    return D(
-      () => s.time,
+    return P(
+      () => r.time,
       () => {
-        t.value = s.time;
+        t.value = r.time;
       }
-    ), F(
+    ), L(
       () => t.value = T(),
-      () => s.stop,
-      () => s.updateInterval
-    ), (e, o) => (m(), c("div", W, [
-      e.hideDate ? h("", !0) : (m(), c("div", q, [
-        e.hideTimezone ? h("", !0) : (m(), c("div", G, [
+      () => r.stop,
+      () => r.updateInterval
+    ), (e, o) => (m(), c("div", q, [
+      e.hideDate ? h("", !0) : (m(), c("div", G, [
+        e.hideTimezone ? h("", !0) : (m(), c("div", J, [
           n(e.$slots, "timezone", {}, () => [
-            v(u(B(Y)(t.value)), 1)
+            v(u(B(H)(t.value)), 1)
           ])
         ])),
         p("div", null, [
@@ -50,7 +50,7 @@ import '../assets/index.css';const W = { class: "animated-clock" }, q = {
           ])
         ])
       ])),
-      e.hideTime ? h("", !0) : (m(), c("span", J, [
+      e.hideTime ? h("", !0) : (m(), c("span", K, [
         n(e.$slots, "time", {
           style: g(a.value)
         }, () => [
@@ -59,7 +59,7 @@ import '../assets/index.css';const W = { class: "animated-clock" }, q = {
             style: g(a.value)
           }, ":", 4),
           p("span", null, u(t.value.format("mm")), 1),
-          e.hideSeconds ? h("", !0) : (m(), c(E, { key: 0 }, [
+          e.hideSeconds ? h("", !0) : (m(), c(D, { key: 0 }, [
             p("span", {
               style: g(a.value)
             }, ":", 4),
@@ -69,29 +69,29 @@ import '../assets/index.css';const W = { class: "animated-clock" }, q = {
       ]))
     ]));
   }
-}), K = /* @__PURE__ */ k({
+}), O = /* @__PURE__ */ k({
   __name: "ThemeToggleButton",
-  setup(s) {
-    const t = H();
+  setup(r) {
+    const t = U();
     function a(o) {
       const d = localStorage.getItem($);
-      d === null ? U(t, o.matches ? "dark" : "light") : (d === "dark" && o.matches || d === "light" && !o.matches) && localStorage.removeItem($);
+      d === null ? R(t, o.matches ? "dark" : "light") : (d === "dark" && o.matches || d === "light" && !o.matches) && localStorage.removeItem($);
     }
     function e() {
-      j(t);
+      W(t);
     }
-    return I(() => {
-      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", a), L(t);
-    }), N(() => {
+    return E(() => {
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", a), j(t);
+    }), I(() => {
       window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", a);
     }), (o, d) => {
-      const f = r("v-btn"), _ = r("v-tooltip");
+      const f = s("v-btn"), _ = s("v-tooltip");
       return m(), w(_, {
         text: "テーマを切り替え",
         "aria-label": "テーマを切り替え"
       }, {
         activator: l(({ props: b }) => [
-          i(f, P({ "data-test": "button" }, b, {
+          i(f, N({ "data-test": "button" }, b, {
             icon: B(t).global.current.value.dark ? "mdi-weather-night" : "mdi-white-balance-sunny",
             onClick: e,
             "aria-label": "テーマを切り替え"
@@ -101,12 +101,12 @@ import '../assets/index.css';const W = { class: "animated-clock" }, q = {
       });
     };
   }
-}), ee = /* @__PURE__ */ k({
+}), oe = /* @__PURE__ */ k({
   __name: "AppBase",
   props: {
     toolbarTitle: null
   },
-  setup(s, { expose: t }) {
+  setup(r, { expose: t }) {
     const a = S();
     return t({
       showErrorSnackbar: function() {
@@ -116,7 +116,7 @@ import '../assets/index.css';const W = { class: "animated-clock" }, q = {
         a.value = !1;
       }
     }), (e, o) => {
-      const d = r("v-btn"), f = r("v-snackbar"), _ = r("v-toolbar-title"), b = r("v-app-bar"), C = r("v-container"), A = r("v-main"), V = r("v-app");
+      const d = s("v-btn"), f = s("v-snackbar"), _ = s("v-toolbar-title"), b = s("v-app-bar"), C = s("v-container"), A = s("v-main"), V = s("v-app");
       return m(), w(V, null, {
         default: l(() => [
           n(e.$slots, "mainPrepend"),
@@ -146,28 +146,24 @@ import '../assets/index.css';const W = { class: "animated-clock" }, q = {
           }, 8, ["modelValue"]),
           i(A, null, {
             default: l(() => [
-              i(b, {
-                flat: "",
-                floating: "",
-                density: "compact"
-              }, {
+              i(b, Y(F(e.$attrs)), {
                 append: l(() => [
                   n(e.$slots, "toolbarPrepend"),
-                  i(K),
+                  i(O),
                   n(e.$slots, "toolbarAppend")
                 ]),
                 default: l(() => [
                   n(e.$slots, "appbarPrepend"),
                   i(_, null, {
                     default: l(() => [
-                      v(u(s.toolbarTitle), 1)
+                      v(u(r.toolbarTitle), 1)
                     ]),
                     _: 1
                   }),
                   n(e.$slots, "appbarAppend")
                 ]),
                 _: 3
-              }),
+              }, 16),
               n(e.$slots, "header"),
               i(C, null, {
                 default: l(() => [
@@ -187,7 +183,7 @@ import '../assets/index.css';const W = { class: "animated-clock" }, q = {
   }
 });
 export {
-  x as AnimatedClock,
-  ee as AppBase,
-  K as ThemeToggleButton
+  te as AnimatedClock,
+  oe as AppBase,
+  O as ThemeToggleButton
 };
