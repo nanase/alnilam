@@ -30,7 +30,7 @@ defineExpose({
     </v-snackbar>
 
     <v-main>
-      <v-app-bar flat floating density="compact">
+      <v-app-bar v-bind="$attrs">
         <slot name="appbarPrepend"></slot>
         <v-toolbar-title>{{ toolbarTitle }}</v-toolbar-title>
         <slot name="appbarAppend"></slot>
