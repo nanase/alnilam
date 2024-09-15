@@ -40,5 +40,5 @@ export function useIntervalFetch<T>(
     fetchedAt: fetchedAt as Readonly<Ref<Dayjs>>,
     ...fetchReturn,
     ...pausable,
-  };
+  } as const;
 }
