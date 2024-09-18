@@ -101,7 +101,7 @@
     "ts-node": "^10.9.2",
     "typescript": "5.6.2",
     "unplugin-vue-macros": "^2.11.10",
-    "vite": "^5.4.2",
+    "vite": "^5.4.6",
     "vite-plugin-dts": "^4.2.1",
     "vite-plugin-lib-inject-css": "^2.1.1",
     "vitest": "^2.0.5",
