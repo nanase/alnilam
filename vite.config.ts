@@ -56,6 +56,7 @@ export default defineConfig({
         'lib/inputRule': resolve(srcDir, 'lib', 'inputRule.ts'),
         'lib/number': resolve(srcDir, 'lib', 'number.ts'),
         'lib/object': resolve(srcDir, 'lib', 'object.ts'),
+        'lib/page': resolve(srcDir, 'lib', 'page.ts'),
         'lib/siPrefix': resolve(srcDir, 'lib', 'siPrefix.ts'),
         'lib/sort': resolve(srcDir, 'lib', 'sort.ts'),
         'lib/state': resolve(srcDir, 'lib', 'state.ts'),

@@ -31,6 +31,10 @@
       "types": "./dist/lib/object.d.ts",
       "import": "./dist/lib/object.js"
     },
+    "./page": {
+      "types": "./dist/lib/page.d.ts",
+      "import": "./dist/lib/page.js"
+    },
     "./siPrefix": {
       "types": "./dist/lib/siPrefix.d.ts",
       "import": "./dist/lib/siPrefix.js"
