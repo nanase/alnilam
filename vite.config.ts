@@ -31,6 +31,13 @@ export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: srcDir }],
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+      },
+    },
+  },
   build: {
     lib: {
       entry: {
