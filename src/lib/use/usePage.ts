@@ -1,6 +1,6 @@
-import { MaybeRefOrGetter, toRef, toValue } from '@vueuse/core';
+import { type MaybeRefOrGetter, toRef, toValue } from '@vueuse/core';
 import { computed, ref } from 'vue';
-import { Page, PageSection } from '../page';
+import type { Page, PageSection } from '../page';
 
 declare global {
   interface Window {
