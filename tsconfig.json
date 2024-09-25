@@ -13,6 +13,7 @@
     "downlevelIteration": true,
     "skipLibCheck": false,
     "noErrorTruncation": true,
+    "verbatimModuleSyntax": true,
 
     "strict": true,
 
