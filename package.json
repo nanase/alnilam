@@ -32,8 +32,7 @@
       "import": "./dist/lib/object.js"
     },
     "./page": {
-      "types": "./dist/lib/page.d.ts",
-      "import": "./dist/lib/page.js"
+      "types": "./dist/lib/page.d.ts"
     },
     "./siPrefix": {
       "types": "./dist/lib/siPrefix.d.ts",
@@ -44,8 +43,7 @@
       "import": "./dist/lib/sort.js"
     },
     "./state": {
-      "types": "./dist/lib/state.d.ts",
-      "import": "./dist/lib/state.js"
+      "types": "./dist/lib/state.d.ts"
     },
     "./string": {
       "types": "./dist/lib/string.d.ts",
