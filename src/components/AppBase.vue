@@ -1,19 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import ThemeToggleButton from './ThemeToggleButton.vue';
 
 const { toolbarTitle } = defineProps<{
   toolbarTitle?: string;
 }>();
 
-const errorSnackbar = ref<boolean>();
+const errorSnackbarShown = defineModel<boolean>('errorSnackbarShown');
 
 defineExpose({
+  /**
+   * @deprecated Model `errorSnackbarShown` should be used instead of this function.
+   */
   showErrorSnackbar: function () {
-    errorSnackbar.value = true;
+    errorSnackbarShown.value = true;
   },
+  /**
+   * @deprecated Model `errorSnackbarShown` should be used instead of this function.
+   */
   closeErrorSnackbar: function () {
-    errorSnackbar.value = false;
+    errorSnackbarShown.value = false;
   },
 });
 </script>
@@ -22,10 +27,10 @@ defineExpose({
   <v-app>
     <slot name="mainPrepend"></slot>
 
-    <v-snackbar v-model="errorSnackbar" timeout="10000">
+    <v-snackbar v-model="errorSnackbarShown" timeout="10000">
       <slot name="errorSnackbar">データの読み込みができませんでした。しばらくしてから再読み込みしてください。</slot>
       <template #actions>
-        <v-btn color="red-lighten-2" variant="text" @click="errorSnackbar = false">閉じる</v-btn>
+        <v-btn color="red-lighten-2" variant="text" @click="errorSnackbarShown = false">閉じる</v-btn>
       </template>
     </v-snackbar>
 
