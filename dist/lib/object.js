@@ -1,19 +1,33 @@
-class i {
-  constructor(e) {
-    this.obj = e;
+class l {
+  constructor(n) {
+    this.obj = n;
   }
 }
-function y(f, e) {
-  if (typeof f < "u" && f != null)
-    for (const n of Object.keys(e))
-      e[n] instanceof i ? f[n] = e[n].obj : e[n] === null ? f[n] = null : !Array.isArray(e[n]) && typeof e[n] == "object" ? f[n] = y(f[n], e[n]) : f[n] = e[n];
-  return f;
+function o(e, n) {
+  if (typeof e < "u" && e != null)
+    for (const f of Object.keys(n))
+      n[f] instanceof l ? e[f] = n[f].obj : n[f] === null ? e[f] = null : !Array.isArray(n[f]) && typeof n[f] == "object" ? e[f] = o(e[f], n[f]) : e[f] = n[f];
+  return e;
 }
-function s(f, e, n, l) {
-  return typeof f > "u" || f == null ? l : f ? e : n;
+function s(e, n, f, t) {
+  return typeof e > "u" || e == null ? t : e ? n : f;
+}
+function c(e, ...n) {
+  const f = {};
+  return (Array.isArray(n[0]) ? n[0] : n).forEach((i) => {
+    f[i] = e[i];
+  }), f;
+}
+function u(e, ...n) {
+  const f = { ...e };
+  return (Array.isArray(n[0]) ? n[0] : n).forEach((i) => {
+    delete f[i];
+  }), f;
 }
 export {
-  i as RawObject,
-  y as deepAssign,
+  l as RawObject,
+  o as deepAssign,
+  u as omit,
+  c as pick,
   s as ternary
 };
