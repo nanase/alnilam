@@ -41,3 +41,30 @@ export function ternary<T>(condition: boolean | undefined | null, truthy: T, fal
 
   return condition ? truthy : falsy;
 }
+
+// from: https://stackoverflow.com/a/47232883
+export function pick<T, K extends keyof T>(obj: T, ...keys: K[]): Pick<T, K>;
+export function pick<T, K extends keyof T>(obj: T, keys: K[]): Pick<T, K>;
+export function pick<T, K extends keyof T>(obj: T, ...keysOrArray: any): Pick<T, K> {
+  const ret: any = {};
+  const keys: K[] = Array.isArray(keysOrArray[0]) ? keysOrArray[0] : keysOrArray;
+
+  keys.forEach((key) => {
+    ret[key] = obj[key];
+  });
+
+  return ret;
+}
+
+export function omit<T, K extends keyof T>(obj: T, ...keys: K[]): Omit<T, K>;
+export function omit<T, K extends keyof T>(obj: T, keys: K[]): Omit<T, K>;
+export function omit<T, K extends keyof T>(obj: T, ...keysOrArray: any): Omit<T, K> {
+  const ret: T = { ...obj };
+  const keys: K[] = Array.isArray(keysOrArray[0]) ? keysOrArray[0] : keysOrArray;
+
+  keys.forEach((key) => {
+    delete ret[key];
+  });
+
+  return ret;
+}
