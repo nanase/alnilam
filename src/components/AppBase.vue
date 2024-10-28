@@ -11,13 +11,13 @@ defineExpose({
   /**
    * @deprecated Model `errorSnackbarShown` should be used instead of this function.
    */
-  showErrorSnackbar: function () {
+  showErrorSnackbar: () => {
     errorSnackbarShown.value = true;
   },
   /**
    * @deprecated Model `errorSnackbarShown` should be used instead of this function.
    */
-  closeErrorSnackbar: function () {
+  closeErrorSnackbar: () => {
     errorSnackbarShown.value = false;
   },
 });

@@ -17,14 +17,11 @@ export class WorkerManager<ParameterType, ResultType> {
     }
 
     return await new Promise<ResultType>((resolve, reject) => {
-      this._worker!.onmessage = function (e: MessageEvent<ResultType>) {
-        resolve(e.data);
-      };
-      this._worker!.onmessageerror = function (e) {
-        reject(e);
-      };
-
-      this._worker!.postMessage(parameter);
+      if (this._worker != null) {
+        this._worker.onmessage = (e: MessageEvent<ResultType>) => resolve(e.data);
+        this._worker.onmessageerror = (e) => reject(e);
+        this._worker.postMessage(parameter);
+      }
     });
   }
 

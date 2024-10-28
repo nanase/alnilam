@@ -6,12 +6,10 @@ interface TestParameter {
 }
 
 class TestWorker implements Worker {
-  onmessage: ((this: Worker, ev: MessageEvent) => any) | null = null;
-  onmessageerror: ((this: Worker, ev: MessageEvent) => any) | null = null;
-  onerror: ((this: AbstractWorker, ev: ErrorEvent) => any) | null = null;
+  onmessage: ((this: Worker, ev: MessageEvent) => void) | null = null;
+  onmessageerror: ((this: Worker, ev: MessageEvent) => void) | null = null;
+  onerror: ((this: AbstractWorker, ev: ErrorEvent) => void) | null = null;
 
-  postMessage(message: any, transfer: Transferable[]): void;
-  postMessage(message: any, options?: StructuredSerializeOptions): void;
   postMessage(message: TestParameter, _options?: unknown): void {
     if (message.type === 'resolve') {
       this.onmessage?.(new MessageEvent<object>('test', { data: message.data }));
@@ -21,31 +19,8 @@ class TestWorker implements Worker {
   }
 
   terminate(): void {}
-
-  addEventListener<K extends keyof WorkerEventMap>(
-    type: K,
-    listener: (this: Worker, ev: WorkerEventMap[K]) => any,
-    options?: boolean | AddEventListenerOptions,
-  ): void;
-  addEventListener(
-    type: string,
-    listener: EventListenerOrEventListenerObject,
-    options?: boolean | AddEventListenerOptions,
-  ): void;
   addEventListener(_type: unknown, _listener: unknown, _options?: unknown): void {}
-
-  removeEventListener<K extends keyof WorkerEventMap>(
-    type: K,
-    listener: (this: Worker, ev: WorkerEventMap[K]) => any,
-    options?: boolean | EventListenerOptions,
-  ): void;
-  removeEventListener(
-    type: string,
-    listener: EventListenerOrEventListenerObject,
-    options?: boolean | EventListenerOptions,
-  ): void;
   removeEventListener(_type: unknown, _listener: unknown, _options?: unknown): void {}
-
   dispatchEvent(_event: Event): boolean {
     return true;
   }

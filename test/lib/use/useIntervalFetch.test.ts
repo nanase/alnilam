@@ -2,11 +2,12 @@
  * @vitest-environment happy-dom
  */
 import { useIntervalFetch } from '@/lib/use/useIntervalFetch';
-import { type MockInstance } from 'vitest';
 import { wait, nextTwoTick } from '../utils';
+import type { MockInstance } from 'vitest';
 
 describe('useIntervalFetch', () => {
-  let fetchSpy: MockInstance<any>;
+  let fetchSpy: MockInstance;
+
   beforeEach(() => {
     fetchSpy = vi.spyOn(global, 'fetch').mockImplementation(async () => new Response('hello', { status: 200 }));
   });

@@ -8,7 +8,7 @@ import {
   type UseIntervalFnOptions,
   type Pausable,
 } from '@vueuse/core';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 
 export type UseIntervalFetchReturn<T> = { fetchedAt: Readonly<Ref<Dayjs>> } & UseFetchReturn<T> & Pausable;
 

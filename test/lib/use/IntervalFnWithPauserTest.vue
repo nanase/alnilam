@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useIntervalFnWithPauser } from '@/lib/use';
-import { type MaybeRefOrGetter, useIntervalFn } from '@vueuse/core';
+import type { MaybeRefOrGetter, useIntervalFn } from '@vueuse/core';
 
 const { cb, pauser, interval, options } = defineProps<{
   cb: Parameters<typeof useIntervalFn>[0];

@@ -1,9 +1,12 @@
 export type SortOrder = 'ascending' | 'descending';
 
 export function compareWithNull<T>(a: T | undefined | null, b: T | undefined | null, order?: SortOrder): number {
-  if (a !== a && b !== b) return 0;
-  if (a !== a) return 1;
-  if (b !== b) return -1;
+  const aIsNaN = typeof a === 'number' && Number.isNaN(a);
+  const bIsNaN = typeof b === 'number' && Number.isNaN(b);
+
+  if (aIsNaN && bIsNaN) return 0;
+  if (aIsNaN) return 1;
+  if (bIsNaN) return -1;
 
   if (a == null && b == null) return 0;
   if (a == null) return 1;
@@ -11,9 +14,11 @@ export function compareWithNull<T>(a: T | undefined | null, b: T | undefined | n
 
   if (a < b) {
     return order === 'descending' ? 1 : -1;
-  } else if (a > b) {
-    return order === 'descending' ? -1 : 1;
-  } else {
-    return 0;
   }
+
+  if (a > b) {
+    return order === 'descending' ? -1 : 1;
+  }
+
+  return 0;
 }

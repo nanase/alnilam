@@ -88,15 +88,22 @@ export class SIValue {
     return SIValue.siValuePattern.test(text ?? '');
   }
 
-  static parse(text: string | undefined): SIValue {
+  static parseToPart(text: string | undefined): { fraction?: number; prefix?: SIPrefix } {
     const matches = SIValue.siValuePattern.exec(text ?? '');
 
     if (matches == null) {
-      return new SIValue(Number.NaN, BaseSIPrefix);
+      return {};
     }
 
-    const fraction = Number.parseFloat(matches[1]);
-    const prefix = prefixes.find((p) => p.symbol === matches[2])!;
+    return { fraction: Number.parseFloat(matches[1]), prefix: prefixes.find((p) => p.symbol === matches[2]) };
+  }
+
+  static parse(text: string | undefined): SIValue {
+    const { fraction, prefix } = SIValue.parseToPart(text);
+
+    if (typeof fraction === 'undefined' || typeof prefix === 'undefined') {
+      return new SIValue(Number.NaN, BaseSIPrefix);
+    }
 
     return new SIValue(fraction, prefix);
   }
@@ -108,21 +115,21 @@ export class SIValue {
 
     if (value !== 0.0) {
       const sign = Math.sign(value);
-      value = Math.abs(value);
+      const absoluteValue = Math.abs(value);
 
       const prefixes = symbols
         .map((s) => {
           const prefix = SIValue.getPrefix(s);
-          const practicalValue = value * 10 ** -prefix.exponent;
+          const practicalValue = absoluteValue * 10 ** -prefix.exponent;
           const rank = Math.abs(practicalValue - 500);
           return { prefix, practicalValue, rank };
         })
         .sort((a, b) => a.rank - b.rank);
 
       return new SIValue(prefixes[0].practicalValue * sign, prefixes[0].prefix);
-    } else {
-      return new SIValue(0, BaseSIPrefix);
     }
+
+    return new SIValue(0, BaseSIPrefix);
   }
 
   static fitBy(value: number, symbol: SIPrefixSymbol): SIValue {
@@ -133,8 +140,8 @@ export class SIValue {
     }
 
     const sign = Math.sign(value);
-    value = Math.abs(value);
-    const practicalValue = value * 10 ** -prefix.exponent;
+    const absoluteValue = Math.abs(value);
+    const practicalValue = absoluteValue * 10 ** -prefix.exponent;
 
     return new SIValue(practicalValue * sign, prefix);
   }

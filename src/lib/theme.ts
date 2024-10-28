@@ -12,7 +12,7 @@ export function applyColorScheme(theme: ThemeInstance, scheme: PrefersColorSchem
   if (scheme === 'unspecified') {
     theme.global.name.value = '';
 
-    document.querySelectorAll('.color-responsive').forEach((element) => {
+    for (const element of document.querySelectorAll('.color-responsive')) {
       element.classList.remove('color-responsive-dark', 'color-responsive-light');
 
       if (element instanceof HTMLObjectElement) {
@@ -22,11 +22,11 @@ export function applyColorScheme(theme: ThemeInstance, scheme: PrefersColorSchem
           innerElement.classList.remove('color-responsive-dark', 'color-responsive-light');
         }
       }
-    });
+    }
   } else {
     theme.global.name.value = scheme;
 
-    document.querySelectorAll('.color-responsive').forEach((element) => {
+    for (const element of document.querySelectorAll('.color-responsive')) {
       if (scheme === 'light') {
         element.classList.add('color-responsive-light');
         element.classList.remove('color-responsive-dark');
@@ -50,7 +50,7 @@ export function applyColorScheme(theme: ThemeInstance, scheme: PrefersColorSchem
           innerElement.classList.remove('color-responsive-light');
         }
       }
-    });
+    }
   }
 }
 

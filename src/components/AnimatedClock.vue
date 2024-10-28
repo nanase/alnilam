@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue';
-import dayjs, { Dayjs, getTimezoneName } from '@/lib/dayjs';
+import dayjs, { type Dayjs, getTimezoneName } from '@/lib/dayjs';
 import { useIntervalFnWithPauser } from '@/lib/use';
 
 const {
@@ -36,7 +36,9 @@ watch(
 );
 
 useIntervalFnWithPauser(
-  () => (displayedTime.value = dayjs()),
+  () => {
+    displayedTime.value = dayjs();
+  },
   () => stop,
   () => updateInterval,
 );

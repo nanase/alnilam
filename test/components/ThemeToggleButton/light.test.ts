@@ -24,7 +24,7 @@ describe('ThemeToggleButton', () => {
     colorResponsiveElement.setAttribute('type', 'image/svg+xml');
     colorResponsiveElement.setAttribute(
       'data',
-      `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgo8L3N2Zz4K`,
+      'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgo8L3N2Zz4K',
     );
     document.body.appendChild(colorResponsiveElement);
 

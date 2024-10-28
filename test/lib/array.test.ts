@@ -24,13 +24,14 @@ describe('findBy', () => {
   });
 
   test('find object but key is any', () => {
-    const obj: any = { hello: 'world' };
+    // biome-ignore lint/suspicious/noExplicitAny: the key of property must be explicitly specified as `any`
+    const key: any = { hello: 'world' };
     const array = [
-      { [obj]: 27, name: 'Ken' },
-      { [obj]: 32, name: 'John' },
+      { [key]: 27, name: 'Ken' },
+      { [key]: 32, name: 'John' },
     ];
 
-    expect(findBy(obj, 27, array)).toEqual({ [obj]: 27, name: 'Ken' });
+    expect(findBy(key, 27, array)).toEqual({ [key]: 27, name: 'Ken' });
   });
 
   test('find in mismatch object', () => {
@@ -185,7 +186,12 @@ describe('findMinMax', () => {
   });
 
   test('find minimum and maximum value for empty input', () => {
-    expect(findMinMax([])).toEqual({ max: -Infinity, min: Infinity, maxIndex: -1, minIndex: -1 });
+    expect(findMinMax([])).toEqual({
+      max: Number.NEGATIVE_INFINITY,
+      min: Number.POSITIVE_INFINITY,
+      maxIndex: -1,
+      minIndex: -1,
+    });
   });
 });
 

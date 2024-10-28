@@ -1,4 +1,4 @@
-export function findBy<K extends PropertyKey, T extends Record<K, any>, ValueType>(
+export function findBy<K extends PropertyKey, T extends Record<K, unknown>, ValueType>(
   key: K,
   value: ValueType,
   array: Array<T>,
@@ -10,7 +10,7 @@ export function findBy<K extends PropertyKey, T extends Record<K, any>, ValueTyp
   return null;
 }
 
-export function mergeArrayBy<K extends PropertyKey, T1 extends Record<K, any>, T2 extends Record<K, any>>(
+export function mergeArrayBy<K extends PropertyKey, T1 extends Record<K, unknown>, T2 extends Record<K, unknown>>(
   key: K,
   array1: T1[],
   array2: T2[],
@@ -32,9 +32,9 @@ export function sum<T>(array: T[], key?: (element: T) => number): number;
 export function sum<T>(array: T[], key?: (element: T) => number): number {
   if (key == null) {
     return array.reduce((prev, element) => prev + Number(element), 0);
-  } else {
-    return array.reduce((prev, element) => prev + key(element), 0);
   }
+
+  return array.reduce((prev, element) => prev + key(element), 0);
 }
 
 export function empty<T>(array: string | T[] | undefined | null): boolean {
@@ -78,17 +78,17 @@ export function sequence(start: number, end?: number): number[] {
     }
 
     return array;
-  } else {
-    const array = Array(end - start);
-    let i = 0;
-    let j = start;
-
-    while (j < end) {
-      array[i++] = j++;
-    }
-
-    return array;
   }
+
+  const array = Array(end - start);
+  let i = 0;
+  let j = start;
+
+  while (j < end) {
+    array[i++] = j++;
+  }
+
+  return array;
 }
 
 export function divide(value: number, divider: number): number[] {
@@ -103,8 +103,8 @@ export function divide(value: number, divider: number): number[] {
 }
 
 export function findMinMax(array: Iterable<number>): { max: number; min: number; maxIndex: number; minIndex: number } {
-  let max = -Infinity;
-  let min = Infinity;
+  let max = Number.NEGATIVE_INFINITY;
+  let min = Number.POSITIVE_INFINITY;
   let maxIndex = -1;
   let minIndex = -1;
   let i = 0;

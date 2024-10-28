@@ -130,9 +130,9 @@ describe('parse', () => {
   });
 
   test('Parse an invalid string', () => {
-    expect(SIValue.parse('')).toStrictEqual(new SIValue(NaN, SIValue.getPrefix('')));
-    expect(SIValue.parse(undefined)).toStrictEqual(new SIValue(NaN, SIValue.getPrefix('')));
-    expect(SIValue.parse('1.5A')).toStrictEqual(new SIValue(NaN, SIValue.getPrefix('')));
+    expect(SIValue.parse('')).toStrictEqual(new SIValue(Number.NaN, SIValue.getPrefix('')));
+    expect(SIValue.parse(undefined)).toStrictEqual(new SIValue(Number.NaN, SIValue.getPrefix('')));
+    expect(SIValue.parse('1.5A')).toStrictEqual(new SIValue(Number.NaN, SIValue.getPrefix('')));
   });
 });
 
@@ -166,10 +166,16 @@ describe('fit', () => {
   });
 
   test('Fit with an infinite value', () => {
-    expect(SIValue.fit(Infinity, [])).toStrictEqual(new SIValue(Infinity, SIValue.getPrefix('')));
-    expect(SIValue.fit(Infinity, ['k', ''])).toStrictEqual(new SIValue(Infinity, SIValue.getPrefix('k')));
-    expect(SIValue.fit(-Infinity, ['M', 'k', ''])).toStrictEqual(new SIValue(-Infinity, SIValue.getPrefix('M')));
-    expect(SIValue.fit(NaN, ['G', 'M', 'k', ''])).toStrictEqual(new SIValue(NaN, SIValue.getPrefix('G')));
+    expect(SIValue.fit(Number.POSITIVE_INFINITY, [])).toStrictEqual(
+      new SIValue(Number.POSITIVE_INFINITY, SIValue.getPrefix('')),
+    );
+    expect(SIValue.fit(Number.POSITIVE_INFINITY, ['k', ''])).toStrictEqual(
+      new SIValue(Number.POSITIVE_INFINITY, SIValue.getPrefix('k')),
+    );
+    expect(SIValue.fit(Number.NEGATIVE_INFINITY, ['M', 'k', ''])).toStrictEqual(
+      new SIValue(Number.NEGATIVE_INFINITY, SIValue.getPrefix('M')),
+    );
+    expect(SIValue.fit(Number.NaN, ['G', 'M', 'k', ''])).toStrictEqual(new SIValue(Number.NaN, SIValue.getPrefix('G')));
   });
 
   test('Fit with a negative value', () => {
@@ -207,9 +213,13 @@ describe('fitBy', () => {
   });
 
   test('Fit with an infinite value', () => {
-    expect(SIValue.fitBy(Infinity, 'm')).toStrictEqual(new SIValue(Infinity, SIValue.getPrefix('m')));
-    expect(SIValue.fitBy(-Infinity, '')).toStrictEqual(new SIValue(-Infinity, SIValue.getPrefix('')));
-    expect(SIValue.fitBy(NaN, 'k')).toStrictEqual(new SIValue(NaN, SIValue.getPrefix('k')));
+    expect(SIValue.fitBy(Number.POSITIVE_INFINITY, 'm')).toStrictEqual(
+      new SIValue(Number.POSITIVE_INFINITY, SIValue.getPrefix('m')),
+    );
+    expect(SIValue.fitBy(Number.NEGATIVE_INFINITY, '')).toStrictEqual(
+      new SIValue(Number.NEGATIVE_INFINITY, SIValue.getPrefix('')),
+    );
+    expect(SIValue.fitBy(Number.NaN, 'k')).toStrictEqual(new SIValue(Number.NaN, SIValue.getPrefix('k')));
   });
 
   test('Fit with a negative value', () => {
