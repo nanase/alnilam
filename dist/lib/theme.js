@@ -1,4 +1,4 @@
-import { V as o, a as r, b as m, r as s, t as h, u as l } from "../chunks/theme.BqEKJIqM.js";
+import { V as o, a as r, b as m, r as s, t as h, u as l } from "../chunks/theme.Vy_fBxwW.js";
 export {
   o as VuetifyColorSchemeName,
   r as applyColorScheme,

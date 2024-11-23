@@ -1,5 +1,5 @@
-export declare function findBy<K extends PropertyKey, T extends Record<K, any>, ValueType>(key: K, value: ValueType, array: Array<T>): T | null;
-export declare function mergeArrayBy<K extends PropertyKey, T1 extends Record<K, any>, T2 extends Record<K, any>>(key: K, array1: T1[], array2: T2[]): Array<T1 & T2>;
+export declare function findBy<K extends PropertyKey, T extends Record<K, unknown>, ValueType>(key: K, value: ValueType, array: Array<T>): T | null;
+export declare function mergeArrayBy<K extends PropertyKey, T1 extends Record<K, unknown>, T2 extends Record<K, unknown>>(key: K, array1: T1[], array2: T2[]): Array<T1 & T2>;
 export declare function sum(array: number[]): number;
 export declare function sum<T>(array: T[], key?: (element: T) => number): number;
 export declare function empty<T>(array: string | T[] | undefined | null): boolean;

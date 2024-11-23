@@ -15,6 +15,10 @@ export declare class SIValue {
     toFixed(fractionDigits?: number): string;
     static getPrefixSymbols(allPrefix?: boolean): SIPrefixSymbol[];
     static test(text: string | undefined): boolean;
+    static parseToPart(text: string | undefined): {
+        fraction?: number;
+        prefix?: SIPrefix;
+    };
     static parse(text: string | undefined): SIValue;
     static fit(value: number, symbols: readonly SIPrefixSymbol[]): SIValue;
     static fitBy(value: number, symbol: SIPrefixSymbol): SIValue;
