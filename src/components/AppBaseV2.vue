@@ -80,7 +80,7 @@ const drawerOpened = ref<boolean>();
       </v-app-bar>
 
       <v-app-bar
-        v-if="mdAndDown"
+        v-if="mdAndDown && $slots.drawerMenu"
         transition="slide-y-transition"
         class="app-bar-sub"
         flat
