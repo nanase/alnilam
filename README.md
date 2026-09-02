@@ -21,6 +21,10 @@ Or, to specify branch or hash:
 yarn add -D @nanase/alnilam@git+ssh://git@github.com:nanase/alnilam.git#BRANCH_NAME
 ```
 
+`vue`, `vuetify` and `dayjs` are peer dependencies, not bundled. Install
+them alongside this package; the versions you already have are the ones
+this package will use.
+
 To upgrade to the latest update:
 
 ```sh
