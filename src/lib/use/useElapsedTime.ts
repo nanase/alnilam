@@ -1,7 +1,7 @@
-import { type Ref, ref, watch } from 'vue';
+import { useIntervalFn } from '@vueuse/core';
+import type { ConfigType, Dayjs } from 'dayjs';
+import { type MaybeRefOrGetter, type Ref, ref, toValue, watch } from 'vue';
 import dayjs from '@/lib/dayjs';
-import type { Dayjs, ConfigType } from 'dayjs';
-import { toValue, useIntervalFn, type MaybeRefOrGetter } from '@vueuse/core';
 
 export function useElapsedTime(
   time: MaybeRefOrGetter<ConfigType> = dayjs(),

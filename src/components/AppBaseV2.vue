@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useDisplay } from 'vuetify';
-import { usePage } from '@/lib/use/usePage';
 import type { PageSection } from '@/lib/page';
+import { usePage } from '@/lib/use/usePage';
 import ShakingIcon from './ShakingIcon.vue';
 
 const { pageId, pageSections, title, icon } = defineProps<{

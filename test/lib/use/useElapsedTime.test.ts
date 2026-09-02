@@ -1,8 +1,9 @@
 /**
  * @vitest-environment happy-dom
  */
-import { wait } from '../utils';
+
 import { useElapsedTime } from '@/lib/use';
+import { wait } from '../utils';
 
 describe('useElapsedTime', () => {
   test('useElapsedTime', async () => {

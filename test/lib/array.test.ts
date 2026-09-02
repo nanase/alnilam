@@ -1,16 +1,16 @@
 import {
+  count,
+  divide,
   empty,
   existsDuplicate,
   findBy,
-  mergeArrayBy,
-  sum,
-  divide,
-  sequence,
-  count,
   findMinMax,
   generateForDepth,
+  mergeArrayBy,
   moveAbove,
   moveBelow,
+  sequence,
+  sum,
 } from '@/lib/array';
 
 describe('findBy', () => {

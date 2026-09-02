@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, computed } from 'vue';
+import { computed, ref, watch } from 'vue';
 import dayjs, { type Dayjs, getTimezoneName } from '@/lib/dayjs';
 import { useIntervalFnWithPauser } from '@/lib/use';
 

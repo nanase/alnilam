@@ -70,9 +70,17 @@ If you are using VSCode, you can use [vitest extension](https://marketplace.visu
 
 ### Lint
 
+This project uses [Biome](https://biomejs.dev/) for both linting and formatting.
+
 ```sh
 yarn run lint
-yarn run prettier
+yarn run format
 ```
 
-Use VSCode extensions. ([ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode))
+To check without writing, the way CI does:
+
+```sh
+yarn run lint:check
+```
+
+Use the VSCode extension. ([Biome](https://marketplace.visualstudio.com/items?itemName=biomejs.biome))

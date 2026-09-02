@@ -1,8 +1,8 @@
 import dayjs, { Dayjs } from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import duration from 'dayjs/plugin/duration';
+import timezone from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc';
 import 'dayjs/locale/ja';
 
 dayjs.extend(utc);
@@ -31,5 +31,5 @@ export function getTimezoneName(date: Dayjs): string {
   return dayjs.tz.guess();
 }
 
-export { Dayjs, utc, timezone, advancedFormat, duration };
+export { advancedFormat, Dayjs, duration, timezone, utc };
 export default dayjs;

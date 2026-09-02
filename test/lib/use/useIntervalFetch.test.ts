@@ -1,9 +1,10 @@
 /**
  * @vitest-environment happy-dom
  */
-import { useIntervalFetch } from '@/lib/use/useIntervalFetch';
-import { wait, nextTwoTick } from '../utils';
+
 import type { MockInstance } from 'vitest';
+import { useIntervalFetch } from '@/lib/use/useIntervalFetch';
+import { nextTwoTick, wait } from '../utils';
 
 describe('useIntervalFetch', () => {
   let fetchSpy: MockInstance;
