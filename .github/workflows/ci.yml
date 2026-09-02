@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+# Nothing in this workflow writes to the repository.
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # corepack otherwise asks before downloading the pinned yarn.
+  COREPACK_ENABLE_DOWNLOAD_PROMPT: '0'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install the Node pinned in mise.toml
+        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      # The lint and format scripts write files. biome ci is the read-only
+      # form, and covers the linter, the formatter and import order at once.
+      - name: Lint
+        run: yarn lint:check
+
+      - name: Type check
+        run: yarn type-check
+
+      - name: Test
+        run: yarn vitest run
+
+      # dist/ is committed, and consumers read it straight from this
+      # repository, so a build here must not touch it: rebuilding into the
+      # working tree would let an unreviewed dist reach them. This only
+      # proves the build still succeeds.
+      - name: Build
+        run: yarn build-only --outDir "$RUNNER_TEMP/build" --emptyOutDir
