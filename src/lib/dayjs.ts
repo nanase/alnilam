@@ -1,4 +1,4 @@
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import duration from 'dayjs/plugin/duration';
 import timezone from 'dayjs/plugin/timezone';
@@ -31,5 +31,10 @@ export function getTimezoneName(date: Dayjs): string {
   return dayjs.tz.guess();
 }
 
-export { advancedFormat, Dayjs, duration, timezone, utc };
+// Dayjs is a type here, not a value: dayjs is CommonJS and carries no
+// Dayjs property at runtime, so re-exporting it as a value published an
+// undefined binding - and made the module unloadable under Node's ESM
+// resolver, which refuses a named import a CommonJS module does not expose.
+export type { Dayjs };
+export { advancedFormat, duration, timezone, utc };
 export default dayjs;

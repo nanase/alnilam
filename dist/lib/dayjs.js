@@ -1,19 +1,19 @@
 import o from "dayjs";
-import { Dayjs as T, default as y } from "dayjs";
-import m from "dayjs/plugin/advancedFormat";
-import { default as g } from "dayjs/plugin/advancedFormat";
-import n from "dayjs/plugin/duration";
-import { default as v } from "dayjs/plugin/duration";
-import i from "dayjs/plugin/timezone";
-import { default as D } from "dayjs/plugin/timezone";
-import f from "dayjs/plugin/utc";
-import { default as b } from "dayjs/plugin/utc";
-import "dayjs/locale/ja";
+import { default as T } from "dayjs";
+import m from "dayjs/plugin/advancedFormat.js";
+import { default as g } from "dayjs/plugin/advancedFormat.js";
+import n from "dayjs/plugin/duration.js";
+import { default as y } from "dayjs/plugin/duration.js";
+import i from "dayjs/plugin/timezone.js";
+import { default as C } from "dayjs/plugin/timezone.js";
+import f from "dayjs/plugin/utc.js";
+import { default as b } from "dayjs/plugin/utc.js";
+import "dayjs/locale/ja.js";
 o.extend(f);
 o.extend(i);
 o.extend(m);
 o.extend(n);
-function d(e, r) {
+function s(e, r) {
   const t = Intl.DateTimeFormat(e).resolvedOptions();
   return o(r).tz(t.timeZone).locale(t.locale);
 }
@@ -21,12 +21,11 @@ function c(e) {
   return e.isUTC() ? "UTC" : "$x" in e && typeof e.$x == "object" && e.$x != null && "$timezone" in e.$x && typeof e.$x.$timezone == "string" ? e.$x.$timezone : o.tz.guess();
 }
 export {
-  T as Dayjs,
   g as advancedFormat,
-  y as default,
-  v as duration,
-  d as fromLocale,
+  T as default,
+  y as duration,
+  s as fromLocale,
   c as getTimezoneName,
-  D as timezone,
+  C as timezone,
   b as utc
 };

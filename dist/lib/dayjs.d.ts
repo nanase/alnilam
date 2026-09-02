@@ -6,6 +6,7 @@ import { default as utc } from 'dayjs/plugin/utc';
 type DayjsDate = Parameters<typeof dayjs>[0];
 export declare function fromLocale(locale?: string, date?: DayjsDate): Dayjs;
 export declare function getTimezoneName(date: Dayjs): string;
-export { advancedFormat, Dayjs, duration, timezone, utc };
+export type { Dayjs };
+export { advancedFormat, duration, timezone, utc };
 export default dayjs;
 //# sourceMappingURL=dayjs.d.ts.map
