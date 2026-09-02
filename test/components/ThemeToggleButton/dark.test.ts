@@ -2,11 +2,12 @@
  * @vitest-environment happy-dom
  * @vitest-environment-options {"settings": {"device": {"prefersColorScheme": "dark"}}}
  */
-import ThemeToggleButton from '@/components/ThemeToggleButton.vue';
+
 import { mount } from '@vue/test-utils';
 import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
+import ThemeToggleButton from '@/components/ThemeToggleButton.vue';
 import { getPrefersColorScheme, VuetifyColorSchemeName } from '@/lib/theme';
 
 const vuetify = createVuetify({ components, directives });

@@ -1,10 +1,11 @@
 /**
  * @vitest-environment happy-dom
  */
-import { ref } from 'vue';
+
 import { mount } from '@vue/test-utils';
-import IntervalFnWithPauserTest from './IntervalFnWithPauserTest.vue';
+import { ref } from 'vue';
 import { wait } from '../utils';
+import IntervalFnWithPauserTest from './IntervalFnWithPauserTest.vue';
 
 describe('useIntervalFnWithPauser', () => {
   test('call useIntervalFnWithPauser', async () => {

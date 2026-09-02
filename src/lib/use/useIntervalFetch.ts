@@ -1,14 +1,13 @@
-import { type Ref, ref, watch } from 'vue';
 import {
-  useFetch,
-  useIntervalFn,
-  type MaybeRefOrGetter,
+  type Pausable,
   type UseFetchOptions,
   type UseFetchReturn,
   type UseIntervalFnOptions,
-  type Pausable,
+  useFetch,
+  useIntervalFn,
 } from '@vueuse/core';
 import dayjs, { type Dayjs } from 'dayjs';
+import { type MaybeRefOrGetter, type Ref, ref, watch } from 'vue';
 
 export type UseIntervalFetchReturn<T> = { fetchedAt: Readonly<Ref<Dayjs>> } & UseFetchReturn<T> & Pausable;
 

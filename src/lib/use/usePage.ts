@@ -1,5 +1,4 @@
-import { type MaybeRefOrGetter, toRef, toValue } from '@vueuse/core';
-import { computed, ref } from 'vue';
+import { computed, type MaybeRefOrGetter, ref, toRef, toValue } from 'vue';
 import type { Page, PageSection } from '../page';
 
 declare global {

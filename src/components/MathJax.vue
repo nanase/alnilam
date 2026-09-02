@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import { useMutationObserver } from '@vueuse/core';
+import { computed, nextTick, onMounted, ref, watch } from 'vue';
 
 const {
   tag = 'span',

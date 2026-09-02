@@ -1,5 +1,5 @@
-import { watch } from 'vue';
-import { useIntervalFn, type MaybeRefOrGetter, toValue } from '@vueuse/core';
+import { useIntervalFn } from '@vueuse/core';
+import { type MaybeRefOrGetter, toValue, watch } from 'vue';
 
 export function useIntervalFnWithPauser(
   cb: Parameters<typeof useIntervalFn>[0],

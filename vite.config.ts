@@ -1,7 +1,7 @@
 import { resolve } from 'node:path';
-import { defineConfig } from 'vite';
-import VueMacros from 'unplugin-vue-macros/vite';
 import Vue from '@vitejs/plugin-vue';
+import VueMacros from 'unplugin-vue-macros/vite';
+import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
@@ -30,13 +30,6 @@ export default defineConfig({
   ],
   resolve: {
     alias: [{ find: '@', replacement: srcDir }],
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern-compiler',
-      },
-    },
   },
   build: {
     lib: {
