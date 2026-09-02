@@ -31,8 +31,13 @@ jobs:
 
       # Dependabot already raises alerts; this is a second, independent look
       # that also runs when nobody is watching the security tab.
+      #
+      # --recursive is what makes it one. Without it yarn audits only what
+      # this package depends on directly, and every advisory here has come
+      # from a transitive dependency: the first run of this workflow said
+      # nothing while 20 alerts stood open.
       - name: Audit
-        run: yarn npm audit --severity high
+        run: yarn npm audit --recursive --severity high
 
       # yarn reports deprecated packages at moderate alongside real
       # advisories. Those are worth seeing but not worth failing on.
@@ -40,9 +45,9 @@ jobs:
         if: always()
         run: |
           {
-            echo '### `yarn npm audit --severity moderate`'
+            echo '### `yarn npm audit --recursive --severity moderate`'
             echo
             echo '```'
-            yarn npm audit --severity moderate || true
+            yarn npm audit --recursive --severity moderate || true
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
