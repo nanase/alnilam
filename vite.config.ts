@@ -1,4 +1,4 @@
-import { resolve } from 'node:path';
+import { extname, resolve } from 'node:path';
 import Vue from '@vitejs/plugin-vue';
 import VueMacros from 'unplugin-vue-macros/vite';
 import { defineConfig } from 'vite';
@@ -7,6 +7,27 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 const root = resolve(__dirname);
 const srcDir = resolve(root, 'src');
+
+/**
+ * Appends `.js` to a dayjs subpath in the emitted output.
+ *
+ * dayjs ships no `exports` map, so Node resolves `dayjs/plugin/utc` as a
+ * plain path - and an ESM resolver does not guess extensions, so it looks
+ * for a file named `utc` and fails. A bundler hides this, which is why the
+ * build and this repository's own tests never noticed. A consumer running
+ * the published files through Node does not: vitest fails while collecting,
+ * before a single test runs.
+ *
+ * vue and vuetify do declare `exports`, so their specifiers are left alone;
+ * appending an extension there would break the lookup instead of fixing it.
+ */
+function withDayjsSubpathExtension(id: string): string {
+  if (!id.startsWith('dayjs/') || extname(id) !== '') {
+    return id;
+  }
+
+  return `${id}.js`;
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -65,6 +86,7 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
         },
+        paths: withDayjsSubpathExtension,
         chunkFileNames: 'chunks/[name].[hash].js',
         assetFileNames: 'assets/[name][extname]',
       },
