@@ -1,3 +1,9 @@
+type __VLS_Props = {
+    tag?: string;
+    node?: boolean;
+    block?: boolean;
+    overlook?: boolean;
+};
 declare global {
     interface Window {
         MathJax: {
@@ -7,39 +13,23 @@ declare global {
     }
 }
 declare function typeset(): Promise<void>;
-declare function __VLS_template(): {
-    slots: {
-        default?(_: {}): any;
-    };
-    refs: {
-        raw: HTMLSpanElement;
-        formula: unknown;
-    };
-    attrs: Partial<{}>;
+type __VLS_PublicProps = __VLS_PropsChildren<__VLS_Slots> & __VLS_Props;
+declare var __VLS_8: {};
+type __VLS_Slots = {} & {
+    default?: (props: typeof __VLS_8) => any;
 };
-type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
-declare const __VLS_component: import('vue').DefineComponent<{
-    tag?: string;
-    node?: boolean;
-    block?: boolean;
-    overlook?: boolean;
-}, {
+declare const __VLS_base: import('vue').DefineComponent<__VLS_PublicProps, {
     typeset: typeof typeset;
-}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<{
-    tag?: string;
-    node?: boolean;
-    block?: boolean;
-    overlook?: boolean;
-}> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
-declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
+}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+declare const __VLS_export: __VLS_WithSlots<typeof __VLS_base, __VLS_Slots>;
+declare const _default: typeof __VLS_export;
 export default _default;
-type __VLS_WithTemplateSlots<T, S> = T & {
-    new (): {
-        $slots: S;
-        $props: __VLS_PropsChildren<S>;
-    };
-};
 type __VLS_PropsChildren<S> = {
     [K in keyof (boolean extends (JSX.ElementChildrenAttribute extends never ? true : false) ? never : JSX.ElementChildrenAttribute)]?: S;
+};
+type __VLS_WithSlots<T, S> = T & {
+    new (): {
+        $slots: S;
+    };
 };
 //# sourceMappingURL=MathJax.vue.d.ts.map

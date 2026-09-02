@@ -24,7 +24,12 @@ export default defineConfig({
       },
     }),
     dts({
-      exclude: ['test/**/*.ts', '**/*.test.ts'],
+      // Only src produces declarations, and they are rooted there so they
+      // land beside the modules package.json's "exports" points at. Left to
+      // itself unplugin-dts roots them at the project root and writes
+      // dist/src/..., and an exclude list has to keep chasing test files.
+      include: ['src/**/*.ts', 'src/**/*.vue'],
+      entryRoot: srcDir,
     }),
     libInjectCss(),
   ],
@@ -51,7 +56,10 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['vue', /^dayjs/],
+      // The three peerDependencies. Left bundled, a consumer that already
+      // has them would load a second copy, and for vue and vuetify a
+      // second copy does not share reactivity or the theme it injects.
+      external: ['vue', /^vuetify/, /^dayjs/],
       output: {
         exports: 'named',
         globals: {

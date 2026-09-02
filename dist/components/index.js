@@ -1,37 +1,19 @@
-import { inject as W, computed as T, defineComponent as B, mergeDefaults as E, ref as M, watch as J, openBlock as m, createElementBlock as $, renderSlot as u, createTextVNode as f, toDisplayString as y, unref as v, createCommentVNode as g, createElementVNode as h, normalizeStyle as V, Fragment as G, onMounted as x, onBeforeUnmount as K, resolveComponent as i, createBlock as k, withCtx as o, createVNode as s, mergeProps as Q, mergeModels as F, useModel as j, normalizeProps as X, guardReactiveProps as Z, withModifiers as N, nextTick as ee } from "vue";
-import { getTimezoneName as te } from "../lib/dayjs.js";
+import { defineComponent as B, ref as T, computed as N, watch as z, openBlock as m, createElementBlock as S, renderSlot as i, createTextVNode as v, toDisplayString as g, unref as p, createCommentVNode as _, createElementVNode as b, normalizeStyle as C, Fragment as R, mergeDefaults as E, onMounted as J, onBeforeUnmount as W, resolveComponent as r, createBlock as h, withCtx as n, createVNode as s, mergeProps as G, useModel as x, normalizeProps as K, guardReactiveProps as Q, mergeModels as F, withModifiers as D, nextTick as X } from "vue";
+import { getTimezoneName as Z } from "../lib/dayjs.js";
 import P from "dayjs";
-import { u as ne, a as oe, b as ae } from "../chunks/usePage.CqiVlbjN.js";
-import { g as le, u as re, r as ie, V as z, a as se, t as ue } from "../chunks/theme.Vy_fBxwW.js";
-import '../assets/index.css';const de = Symbol.for("vuetify:display");
-function ce() {
-  let e = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}, a = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : le();
-  const l = W(de);
-  if (!l) throw new Error("Could not find Vuetify display injection");
-  const t = T(() => {
-    if (e.mobile != null) return e.mobile;
-    if (!e.mobileBreakpoint) return l.mobile.value;
-    const d = typeof e.mobileBreakpoint == "number" ? e.mobileBreakpoint : l.thresholds.value[e.mobileBreakpoint];
-    return l.width.value < d;
-  }), n = T(() => a ? {
-    [`${a}--mobile`]: t.value
-  } : {});
-  return {
-    ...l,
-    displayClasses: n,
-    mobile: t
-  };
-}
-const me = { class: "animated-clock" }, pe = {
+import { u as ee, a as oe, b as te } from "../chunks/usePage.CKcnc269.js";
+import { useDisplay as ne } from "vuetify";
+import { useTheme as ae, reapplyTheme as le, VuetifyColorSchemeName as I, applyColorScheme as re, toggleTheme as se } from "../lib/theme.js";
+import '../assets/index.css';const ie = { class: "animated-clock" }, ue = {
   key: 0,
   class: "date"
-}, ve = {
+}, de = {
   key: 0,
   class: "timezone"
-}, fe = {
+}, ce = {
   key: 1,
   class: "time"
-}, Me = /* @__PURE__ */ B({
+}, $e = /* @__PURE__ */ B({
   __name: "AnimatedClock",
   props: E({
     time: null,
@@ -43,78 +25,78 @@ const me = { class: "animated-clock" }, pe = {
     hideTimezone: { type: Boolean },
     hideSeconds: { type: Boolean }
   }, { time: () => P(), updateInterval: 200 }),
-  setup(e) {
-    const a = M(e.time), l = T(
-      () => e.stopAnimation ? "" : `visibility:${a.value.millisecond() < 666 ? "visible" : "hidden"}`
+  setup(t) {
+    const l = T(t.time), u = N(
+      () => t.stopAnimation ? "" : `visibility:${l.value.millisecond() < 666 ? "visible" : "hidden"}`
     );
-    return J(
-      () => e.time,
+    return z(
+      () => t.time,
       () => {
-        a.value = e.time;
+        l.value = t.time;
       }
-    ), ne(
+    ), ee(
       () => {
-        a.value = P();
+        l.value = P();
       },
-      () => e.stop,
-      () => e.updateInterval
-    ), (t, n) => (m(), $("div", me, [
-      t.hideDate ? g("", !0) : (m(), $("div", pe, [
-        t.hideTimezone ? g("", !0) : (m(), $("div", ve, [
-          u(t.$slots, "timezone", {}, () => [
-            f(y(v(te)(a.value)), 1)
+      () => t.stop,
+      () => t.updateInterval
+    ), (e, o) => (m(), S("div", ie, [
+      e.hideDate ? _("", !0) : (m(), S("div", ue, [
+        e.hideTimezone ? _("", !0) : (m(), S("div", de, [
+          i(e.$slots, "timezone", {}, () => [
+            v(g(p(Z)(l.value)), 1)
           ])
         ])),
-        h("div", null, [
-          u(t.$slots, "date", {}, () => [
-            f(y(a.value.format("YYYY-MM-DD")), 1)
+        b("div", null, [
+          i(e.$slots, "date", {}, () => [
+            v(g(l.value.format("YYYY-MM-DD")), 1)
           ])
         ])
       ])),
-      t.hideTime ? g("", !0) : (m(), $("span", fe, [
-        u(t.$slots, "time", {
-          style: V(l.value)
+      e.hideTime ? _("", !0) : (m(), S("span", ce, [
+        i(e.$slots, "time", {
+          style: C(u.value)
         }, () => [
-          h("span", null, y(a.value.format("HH")), 1),
-          h("span", {
-            style: V(l.value)
+          b("span", null, g(l.value.format("HH")), 1),
+          b("span", {
+            style: C(u.value)
           }, ":", 4),
-          h("span", null, y(a.value.format("mm")), 1),
-          t.hideSeconds ? g("", !0) : (m(), $(G, { key: 0 }, [
-            h("span", {
-              style: V(l.value)
+          b("span", null, g(l.value.format("mm")), 1),
+          e.hideSeconds ? _("", !0) : (m(), S(R, { key: 0 }, [
+            b("span", {
+              style: C(u.value)
             }, ":", 4),
-            h("span", null, y(a.value.format("ss")), 1)
+            b("span", null, g(l.value.format("ss")), 1)
           ], 64))
         ])
       ]))
     ]));
   }
-}), be = /* @__PURE__ */ B({
+}), me = /* @__PURE__ */ B({
   __name: "ThemeToggleButton",
-  setup(e) {
-    const a = re();
-    function l(n) {
-      const d = localStorage.getItem(z);
-      d === null ? se(a, n.matches ? "dark" : "light") : (d === "dark" && n.matches || d === "light" && !n.matches) && localStorage.removeItem(z);
+  setup(t) {
+    const l = ae();
+    function u(o) {
+      const d = localStorage.getItem(I);
+      d === null ? re(l, o.matches ? "dark" : "light") : (d === "dark" && o.matches || d === "light" && !o.matches) && localStorage.removeItem(I);
     }
-    function t() {
-      ue(a);
+    function e() {
+      se(l);
     }
-    return x(() => {
-      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", l), ie(a);
-    }), K(() => {
-      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", l);
-    }), (n, d) => {
-      const c = i("v-btn"), r = i("v-tooltip");
-      return m(), k(r, {
+    return J(() => {
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", u), le(l);
+    }), W(() => {
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", u);
+    }), (o, d) => {
+      const c = r("v-btn"), a = r("v-tooltip");
+      return m(), h(a, {
         text: "テーマを切り替え",
         "aria-label": "テーマを切り替え"
       }, {
-        activator: o(({ props: b }) => [
-          s(c, Q({ "data-test": "button" }, b, {
-            icon: v(a).global.current.value.dark ? "mdi-weather-night" : "mdi-white-balance-sunny",
-            onClick: t,
+        activator: n(({ props: f }) => [
+          s(c, G({ "data-test": "button" }, f, {
+            icon: p(l).global.current.value.dark ? "mdi-weather-night" : "mdi-white-balance-sunny",
+            onClick: e,
             "aria-label": "テーマを切り替え"
           }), null, 16, ["icon"])
         ]),
@@ -122,7 +104,7 @@ const me = { class: "animated-clock" }, pe = {
       });
     };
   }
-}), Ce = /* @__PURE__ */ B({
+}), Se = /* @__PURE__ */ B({
   __name: "AppBase",
   props: /* @__PURE__ */ F({
     toolbarTitle: null
@@ -131,98 +113,98 @@ const me = { class: "animated-clock" }, pe = {
     errorSnackbarShownModifiers: {}
   }),
   emits: ["update:errorSnackbarShown"],
-  setup(e, { expose: a }) {
-    const l = j(e, "errorSnackbarShown");
-    return a({
+  setup(t, { expose: l }) {
+    const u = x(t, "errorSnackbarShown");
+    return l({
       /**
        * @deprecated Model `errorSnackbarShown` should be used instead of this function.
        */
       showErrorSnackbar: () => {
-        l.value = !0;
+        u.value = !0;
       },
       /**
        * @deprecated Model `errorSnackbarShown` should be used instead of this function.
        */
       closeErrorSnackbar: () => {
-        l.value = !1;
+        u.value = !1;
       }
-    }), (t, n) => {
-      const d = i("v-btn"), c = i("v-snackbar"), r = i("v-toolbar-title"), b = i("v-app-bar"), _ = i("v-container"), w = i("v-main"), C = i("v-app");
-      return m(), k(C, null, {
-        default: o(() => [
-          u(t.$slots, "mainPrepend"),
+    }), (e, o) => {
+      const d = r("v-btn"), c = r("v-snackbar"), a = r("v-toolbar-title"), f = r("v-app-bar"), k = r("v-container"), y = r("v-main"), M = r("v-app");
+      return m(), h(M, null, {
+        default: n(() => [
+          i(e.$slots, "mainPrepend"),
           s(c, {
-            modelValue: l.value,
-            "onUpdate:modelValue": n[1] || (n[1] = (S) => l.value = S),
+            modelValue: u.value,
+            "onUpdate:modelValue": o[1] || (o[1] = ($) => u.value = $),
             timeout: "10000"
           }, {
-            actions: o(() => [
+            actions: n(() => [
               s(d, {
                 color: "red-lighten-2",
                 variant: "text",
-                onClick: n[0] || (n[0] = (S) => l.value = !1)
+                onClick: o[0] || (o[0] = ($) => u.value = !1)
               }, {
-                default: o(() => n[3] || (n[3] = [
-                  f("閉じる")
-                ])),
+                default: n(() => [...o[3] || (o[3] = [
+                  v("閉じる", -1)
+                ])]),
                 _: 1
               })
             ]),
-            default: o(() => [
-              u(t.$slots, "errorSnackbar", {}, () => [
-                n[2] || (n[2] = f("データの読み込みができませんでした。しばらくしてから再読み込みしてください。"))
+            default: n(() => [
+              i(e.$slots, "errorSnackbar", {}, () => [
+                o[2] || (o[2] = v("データの読み込みができませんでした。しばらくしてから再読み込みしてください。", -1))
               ])
             ]),
             _: 3
           }, 8, ["modelValue"]),
-          s(w, null, {
-            default: o(() => [
-              s(b, X(Z(t.$attrs)), {
-                append: o(() => [
-                  u(t.$slots, "toolbarPrepend"),
-                  s(be),
-                  u(t.$slots, "toolbarAppend")
+          s(y, null, {
+            default: n(() => [
+              s(f, K(Q(e.$attrs)), {
+                append: n(() => [
+                  i(e.$slots, "toolbarPrepend"),
+                  s(me),
+                  i(e.$slots, "toolbarAppend")
                 ]),
-                default: o(() => [
-                  u(t.$slots, "appbarPrepend"),
-                  s(r, null, {
-                    default: o(() => [
-                      f(y(e.toolbarTitle), 1)
+                default: n(() => [
+                  i(e.$slots, "appbarPrepend"),
+                  s(a, null, {
+                    default: n(() => [
+                      v(g(t.toolbarTitle), 1)
                     ]),
                     _: 1
                   }),
-                  u(t.$slots, "appbarAppend")
+                  i(e.$slots, "appbarAppend")
                 ]),
                 _: 3
               }, 16),
-              u(t.$slots, "header"),
-              s(_, null, {
-                default: o(() => [
-                  u(t.$slots, "default")
+              i(e.$slots, "header"),
+              s(k, null, {
+                default: n(() => [
+                  i(e.$slots, "default")
                 ]),
                 _: 3
               }),
-              u(t.$slots, "footer")
+              i(e.$slots, "footer")
             ]),
             _: 3
           }),
-          u(t.$slots, "mainAppend")
+          i(e.$slots, "mainAppend")
         ]),
         _: 3
       });
     };
   }
-}), O = (e, a) => {
-  const l = e.__vccOpts || e;
-  for (const [t, n] of a)
-    l[t] = n;
-  return l;
-}, he = {};
-function ke(e, a) {
-  const l = i("v-icon");
-  return m(), k(l, { class: "shaking-icon" });
+}), O = (t, l) => {
+  const u = t.__vccOpts || t;
+  for (const [e, o] of l)
+    u[e] = o;
+  return u;
+}, pe = {};
+function ve(t, l) {
+  const u = r("v-icon");
+  return m(), h(u, { class: "shaking-icon" });
 }
-const ge = /* @__PURE__ */ O(he, [["render", ke]]), _e = /* @__PURE__ */ B({
+const fe = /* @__PURE__ */ O(pe, [["render", ve]]), be = /* @__PURE__ */ B({
   __name: "AppBaseV2",
   props: /* @__PURE__ */ F({
     pageId: null,
@@ -234,65 +216,65 @@ const ge = /* @__PURE__ */ O(he, [["render", ke]]), _e = /* @__PURE__ */ B({
     errorSnackbarShownModifiers: {}
   }),
   emits: ["update:errorSnackbarShown"],
-  setup(e) {
-    const a = j(e, "errorSnackbarShown"), { smAndDown: l, mdAndDown: t } = ce(), { page: n } = oe(e.pageId, e.pageSections), d = M();
-    return (c, r) => {
-      const b = i("v-list"), _ = i("v-navigation-drawer"), w = i("v-col"), C = i("v-row"), S = i("v-icon"), A = i("v-btn"), U = i("v-snackbar"), Y = i("v-app-bar-nav-icon"), L = i("v-toolbar-title"), D = i("v-app-bar"), H = i("v-container"), q = i("v-main"), R = i("v-app");
-      return m(), k(R, null, {
-        default: o(() => [
-          c.$slots.drawerMenu ? (m(), k(_, {
+  setup(t) {
+    const l = x(t, "errorSnackbarShown"), { smAndDown: u, mdAndDown: e } = ne(), { page: o } = oe(t.pageId, t.pageSections), d = T();
+    return (c, a) => {
+      const f = r("v-list"), k = r("v-navigation-drawer"), y = r("v-col"), M = r("v-row"), $ = r("v-icon"), A = r("v-btn"), U = r("v-snackbar"), Y = r("v-app-bar-nav-icon"), L = r("v-toolbar-title"), V = r("v-app-bar"), j = r("v-container"), H = r("v-main"), q = r("v-app");
+      return m(), h(q, null, {
+        default: n(() => [
+          c.$slots.drawerMenu ? (m(), h(k, {
             key: 0,
             modelValue: d.value,
-            "onUpdate:modelValue": r[0] || (r[0] = (p) => d.value = p),
+            "onUpdate:modelValue": a[0] || (a[0] = (w) => d.value = w),
             floating: "",
             "aria-label": "ナビゲーション",
             width: 270,
             color: "v2DrawerBackground"
           }, {
-            default: o(() => [
-              s(b, {
+            default: n(() => [
+              s(f, {
                 class: "px-0 pb-0 d-flex flex-column fill-height",
                 role: "menu"
               }, {
-                default: o(() => [
-                  u(c.$slots, "drawerMenu", { currentPage: v(n) }, void 0, !0)
+                default: n(() => [
+                  i(c.$slots, "drawerMenu", { currentPage: p(o) }, void 0, !0)
                 ]),
                 _: 3
               })
             ]),
             _: 3
-          }, 8, ["modelValue"])) : g("", !0),
+          }, 8, ["modelValue"])) : _("", !0),
           s(U, {
             class: "error-snackbar",
-            modelValue: a.value,
-            "onUpdate:modelValue": r[2] || (r[2] = (p) => a.value = p),
+            modelValue: l.value,
+            "onUpdate:modelValue": a[2] || (a[2] = (w) => l.value = w),
             timeout: "10000",
             color: "v2SnackbarBackground"
           }, {
-            actions: o(() => [
+            actions: n(() => [
               s(A, {
                 color: "red-lighten-2",
                 variant: "plain",
-                onClick: r[1] || (r[1] = (p) => a.value = !1)
+                onClick: a[1] || (a[1] = (w) => l.value = !1)
               }, {
-                default: o(() => [
-                  s(S, null, {
-                    default: o(() => r[6] || (r[6] = [
-                      f("mdi-close")
-                    ])),
+                default: n(() => [
+                  s($, null, {
+                    default: n(() => [...a[6] || (a[6] = [
+                      v("mdi-close", -1)
+                    ])]),
                     _: 1
                   })
                 ]),
                 _: 1
               })
             ]),
-            default: o(() => [
-              u(c.$slots, "errorSnackbar", {}, () => [
-                s(C, null, {
-                  default: o(() => [
-                    s(w, { cols: "1" }, {
-                      default: o(() => [
-                        s(ge, {
+            default: n(() => [
+              i(c.$slots, "errorSnackbar", {}, () => [
+                s(M, null, {
+                  default: n(() => [
+                    s(y, { cols: "1" }, {
+                      default: n(() => [
+                        s(fe, {
                           icon: "mdi-alert",
                           size: "medium",
                           color: "warning"
@@ -300,12 +282,12 @@ const ge = /* @__PURE__ */ O(he, [["render", ke]]), _e = /* @__PURE__ */ B({
                       ]),
                       _: 1
                     }),
-                    s(w, null, {
-                      default: o(() => r[5] || (r[5] = [
-                        f("データを取得できませんでした。"),
-                        h("br", null, null, -1),
-                        f("しばらくしてから再読み込みしてください。")
-                      ])),
+                    s(y, null, {
+                      default: n(() => [...a[5] || (a[5] = [
+                        v("データを取得できませんでした。", -1),
+                        b("br", null, null, -1),
+                        v("しばらくしてから再読み込みしてください。", -1)
+                      ])]),
                       _: 1
                     })
                   ]),
@@ -315,53 +297,47 @@ const ge = /* @__PURE__ */ O(he, [["render", ke]]), _e = /* @__PURE__ */ B({
             ]),
             _: 3
           }, 8, ["modelValue"]),
-          s(q, null, {
-            default: o(() => [
-              s(D, {
+          s(H, null, {
+            default: n(() => [
+              s(V, {
                 class: "app-bar",
                 flat: "",
                 floating: "",
                 color: "v2AppBarBackground",
-                density: v(l) ? "compact" : "comfortable",
-                "scroll-behavior": v(t) ? "hide" : void 0,
+                density: p(u) ? "compact" : "comfortable",
+                "scroll-behavior": p(e) ? "hide" : void 0,
                 "scroll-threshold": 48
               }, {
-                append: o(() => [
-                  u(c.$slots, "appbarAppend", {}, void 0, !0)
+                append: n(() => [
+                  i(c.$slots, "appbarAppend", {}, void 0, !0)
                 ]),
-                default: o(() => [
-                  u(c.$slots, "appbarPrepend", {}, () => {
-                    var p, I;
-                    return [
-                      !d.value && (e.icon ?? ((p = v(n)) == null ? void 0 : p.icon)) ? (m(), k(Y, {
-                        key: 0,
-                        transition: "slide-x-transition",
-                        class: "mr-n3",
-                        variant: "plain",
-                        icon: e.icon ?? ((I = v(n)) == null ? void 0 : I.icon),
-                        ripple: !1,
-                        onClick: r[3] || (r[3] = N((ye) => d.value = !d.value, ["stop"])),
-                        "aria-label": "ナビゲーションを表示"
-                      }, null, 8, ["icon"])) : g("", !0)
-                    ];
-                  }, !0),
-                  d.value ? g("", !0) : (m(), k(L, {
+                default: n(() => [
+                  i(c.$slots, "appbarPrepend", {}, () => [
+                    !d.value && (t.icon ?? p(o)?.icon) ? (m(), h(Y, {
+                      key: 0,
+                      transition: "slide-x-transition",
+                      class: "mr-n3",
+                      variant: "plain",
+                      icon: t.icon ?? p(o)?.icon,
+                      ripple: !1,
+                      onClick: a[3] || (a[3] = D((w) => d.value = !d.value, ["stop"])),
+                      "aria-label": "ナビゲーションを表示"
+                    }, null, 8, ["icon"])) : _("", !0)
+                  ], !0),
+                  d.value ? _("", !0) : (m(), h(L, {
                     key: 0,
                     transition: "slide-x-transition",
                     class: "ml-5"
                   }, {
-                    default: o(() => {
-                      var p;
-                      return [
-                        f(y(e.title ?? ((p = v(n)) == null ? void 0 : p.title)), 1)
-                      ];
-                    }),
+                    default: n(() => [
+                      v(g(t.title ?? p(o)?.title), 1)
+                    ]),
                     _: 1
                   }))
                 ]),
                 _: 3
               }, 8, ["density", "scroll-behavior"]),
-              v(t) && c.$slots.drawerMenu ? (m(), k(D, {
+              p(e) && c.$slots.drawerMenu ? (m(), h(V, {
                 key: 0,
                 transition: "slide-y-transition",
                 class: "app-bar-sub",
@@ -371,46 +347,46 @@ const ge = /* @__PURE__ */ O(he, [["render", ke]]), _e = /* @__PURE__ */ B({
                 density: "compact",
                 height: "48"
               }, {
-                default: o(() => [
+                default: n(() => [
                   s(A, {
                     variant: "plain",
                     density: "compact",
-                    onClick: r[4] || (r[4] = N((p) => d.value = !d.value, ["stop"])),
+                    onClick: a[4] || (a[4] = D((w) => d.value = !d.value, ["stop"])),
                     "aria-label": "ナビゲーションを表示",
                     ripple: !1
                   }, {
-                    default: o(() => [
-                      s(S, { size: "small" }, {
-                        default: o(() => r[7] || (r[7] = [
-                          f("mdi-menu")
-                        ])),
+                    default: n(() => [
+                      s($, { size: "small" }, {
+                        default: n(() => [...a[7] || (a[7] = [
+                          v("mdi-menu", -1)
+                        ])]),
                         _: 1
                       }),
-                      r[8] || (r[8] = h("div", { class: "ml-3 text-subtitle-2 opacity-90" }, "Menu", -1))
+                      a[8] || (a[8] = b("div", { class: "ml-3 text-subtitle-2 opacity-90" }, "Menu", -1))
                     ]),
                     _: 1
                   })
                 ]),
                 _: 1
-              })) : g("", !0),
-              u(c.$slots, "header", {}, void 0, !0),
-              s(H, { class: "pb-16 mb-16" }, {
-                default: o(() => [
-                  u(c.$slots, "default", {}, void 0, !0)
+              })) : _("", !0),
+              i(c.$slots, "header", {}, void 0, !0),
+              s(j, { class: "pb-16 mb-16" }, {
+                default: n(() => [
+                  i(c.$slots, "default", {}, void 0, !0)
                 ]),
                 _: 3
               }),
-              u(c.$slots, "footer", {}, void 0, !0)
+              i(c.$slots, "footer", {}, void 0, !0)
             ]),
             _: 3
           }),
-          u(c.$slots, "mainAppend", {}, void 0, !0)
+          i(c.$slots, "mainAppend", {}, void 0, !0)
         ]),
         _: 3
       });
     };
   }
-}), Ve = /* @__PURE__ */ O(_e, [["__scopeId", "data-v-60503008"]]), Ae = /* @__PURE__ */ B({
+}), Be = /* @__PURE__ */ O(be, [["__scopeId", "data-v-850db3e3"]]), Te = /* @__PURE__ */ B({
   __name: "MathJax",
   props: E({
     tag: null,
@@ -418,39 +394,39 @@ const ge = /* @__PURE__ */ O(he, [["render", ke]]), _e = /* @__PURE__ */ B({
     block: { type: Boolean },
     overlook: { type: Boolean }
   }, { tag: "span" }),
-  setup(e, { expose: a }) {
-    const l = e.tag;
+  setup(t, { expose: l }) {
+    const u = t.tag;
     "MathJax" in window || console.warn("window.MathJax does not exist. For typesetting, MathJax import is required.");
-    const t = M(), n = M(), d = T(() => e.block ? "div" : "span");
+    const e = T(), o = T(), d = N(() => t.block ? "div" : "span");
     async function c() {
-      n.value && (await ee(), r(), await window.MathJax.typesetPromise([n.value]));
+      o.value && (await X(), a(), await window.MathJax.typesetPromise([o.value]));
     }
-    function r() {
-      if (!(!t.value || !n.value))
-        if (t.value.children.length === 0 && !e.node)
-          e.block ? n.value.innerText = `$$ ${t.value.innerText} $$` : n.value.innerText = `\\( ${t.value.innerText} \\)`;
+    function a() {
+      if (!(!e.value || !o.value))
+        if (e.value.children.length === 0 && !t.node)
+          t.block ? o.value.innerText = `$$ ${e.value.innerText} $$` : o.value.innerText = `\\( ${e.value.innerText} \\)`;
         else {
-          for (; n.value.lastElementChild; )
-            n.value.removeChild(n.value.lastElementChild);
-          for (const _ of t.value.childNodes)
-            n.value.appendChild(_.cloneNode(!0));
+          for (; o.value.lastElementChild; )
+            o.value.removeChild(o.value.lastElementChild);
+          for (const k of e.value.childNodes)
+            o.value.appendChild(k.cloneNode(!0));
         }
     }
-    async function b() {
-      e.overlook ? n.value && (window.MathJax.typesetClear([n.value]), r()) : await c();
+    async function f() {
+      t.overlook ? o.value && (window.MathJax.typesetClear([o.value]), a()) : await c();
     }
-    return J(() => [e.node, e.block, e.overlook], b), x(b), ae(t, b, { childList: !0, subtree: !0, characterData: !0 }), a({ typeset: c }), (_, w) => (m(), k(v(l), null, {
-      default: o(() => [
-        h("span", {
+    return z(() => [t.node, t.block, t.overlook], f), J(f), te(e, f, { childList: !0, subtree: !0, characterData: !0 }), l({ typeset: c }), (k, y) => (m(), h(p(u), null, {
+      default: n(() => [
+        b("span", {
           ref_key: "raw",
-          ref: t,
+          ref: e,
           class: "mathjax-raw"
         }, [
-          u(_.$slots, "default")
+          i(k.$slots, "default")
         ], 512),
-        s(v(d), {
+        s(p(d), {
           ref_key: "formula",
-          ref: n
+          ref: o
         }, null, 512)
       ]),
       _: 3
@@ -458,10 +434,10 @@ const ge = /* @__PURE__ */ O(he, [["render", ke]]), _e = /* @__PURE__ */ B({
   }
 });
 export {
-  Me as AnimatedClock,
-  Ce as AppBase,
-  Ve as AppBaseV2,
-  Ae as MathJax,
-  ge as ShakingIcon,
-  be as ThemeToggleButton
+  $e as AnimatedClock,
+  Se as AppBase,
+  Be as AppBaseV2,
+  Te as MathJax,
+  fe as ShakingIcon,
+  me as ThemeToggleButton
 };

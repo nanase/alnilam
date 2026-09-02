@@ -2,6 +2,7 @@ class i {
   constructor(n) {
     this.obj = n;
   }
+  obj;
 }
 function l(e, n) {
   if (typeof e < "u" && e != null)
