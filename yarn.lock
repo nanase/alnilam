@@ -182,18 +182,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@biomejs/biome@npm:2.5.13":
-  version: 2.5.13
-  resolution: "@biomejs/biome@npm:2.5.13"
+"@biomejs/biome@npm:2.5.14":
+  version: 2.5.14
+  resolution: "@biomejs/biome@npm:2.5.14"
   dependencies:
-    "@biomejs/cli-darwin-arm64": "npm:2.5.13"
-    "@biomejs/cli-darwin-x64": "npm:2.5.13"
-    "@biomejs/cli-linux-arm64": "npm:2.5.13"
-    "@biomejs/cli-linux-arm64-musl": "npm:2.5.13"
-    "@biomejs/cli-linux-x64": "npm:2.5.13"
-    "@biomejs/cli-linux-x64-musl": "npm:2.5.13"
-    "@biomejs/cli-win32-arm64": "npm:2.5.13"
-    "@biomejs/cli-win32-x64": "npm:2.5.13"
+    "@biomejs/cli-darwin-arm64": "npm:2.5.14"
+    "@biomejs/cli-darwin-x64": "npm:2.5.14"
+    "@biomejs/cli-linux-arm64": "npm:2.5.14"
+    "@biomejs/cli-linux-arm64-musl": "npm:2.5.14"
+    "@biomejs/cli-linux-x64": "npm:2.5.14"
+    "@biomejs/cli-linux-x64-musl": "npm:2.5.14"
+    "@biomejs/cli-win32-arm64": "npm:2.5.14"
+    "@biomejs/cli-win32-x64": "npm:2.5.14"
   dependenciesMeta:
     "@biomejs/cli-darwin-arm64":
       optional: true
@@ -213,62 +213,62 @@ __metadata:
       optional: true
   bin:
     biome: bin/biome
-  checksum: 10c0/3a6267f4610aa94b16ab03e49e0921e219b5de449b6bc4cefe414e100bc83b12b9223407eb2b08dab47faed8782204a638cc149bbc577fa66cba7a7aab3e7d71
+  checksum: 10c0/db612f71783a33a11666d09febe8310993474671ca41191ae9c0fa7bfe96f7f6814a5f57dea445e70a88991d8d09a6c5212135aa2950158f320824e4f48ec0a4
   languageName: node
   linkType: hard
 
-"@biomejs/cli-darwin-arm64@npm:2.5.13":
-  version: 2.5.13
-  resolution: "@biomejs/cli-darwin-arm64@npm:2.5.13"
+"@biomejs/cli-darwin-arm64@npm:2.5.14":
+  version: 2.5.14
+  resolution: "@biomejs/cli-darwin-arm64@npm:2.5.14"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@biomejs/cli-darwin-x64@npm:2.5.13":
-  version: 2.5.13
-  resolution: "@biomejs/cli-darwin-x64@npm:2.5.13"
+"@biomejs/cli-darwin-x64@npm:2.5.14":
+  version: 2.5.14
+  resolution: "@biomejs/cli-darwin-x64@npm:2.5.14"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-arm64-musl@npm:2.5.13":
-  version: 2.5.13
-  resolution: "@biomejs/cli-linux-arm64-musl@npm:2.5.13"
+"@biomejs/cli-linux-arm64-musl@npm:2.5.14":
+  version: 2.5.14
+  resolution: "@biomejs/cli-linux-arm64-musl@npm:2.5.14"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-arm64@npm:2.5.13":
-  version: 2.5.13
-  resolution: "@biomejs/cli-linux-arm64@npm:2.5.13"
+"@biomejs/cli-linux-arm64@npm:2.5.14":
+  version: 2.5.14
+  resolution: "@biomejs/cli-linux-arm64@npm:2.5.14"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-x64-musl@npm:2.5.13":
-  version: 2.5.13
-  resolution: "@biomejs/cli-linux-x64-musl@npm:2.5.13"
+"@biomejs/cli-linux-x64-musl@npm:2.5.14":
+  version: 2.5.14
+  resolution: "@biomejs/cli-linux-x64-musl@npm:2.5.14"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-x64@npm:2.5.13":
-  version: 2.5.13
-  resolution: "@biomejs/cli-linux-x64@npm:2.5.13"
+"@biomejs/cli-linux-x64@npm:2.5.14":
+  version: 2.5.14
+  resolution: "@biomejs/cli-linux-x64@npm:2.5.14"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@biomejs/cli-win32-arm64@npm:2.5.13":
-  version: 2.5.13
-  resolution: "@biomejs/cli-win32-arm64@npm:2.5.13"
+"@biomejs/cli-win32-arm64@npm:2.5.14":
+  version: 2.5.14
+  resolution: "@biomejs/cli-win32-arm64@npm:2.5.14"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@biomejs/cli-win32-x64@npm:2.5.13":
-  version: 2.5.13
-  resolution: "@biomejs/cli-win32-x64@npm:2.5.13"
+"@biomejs/cli-win32-x64@npm:2.5.14":
+  version: 2.5.14
+  resolution: "@biomejs/cli-win32-x64@npm:2.5.14"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -572,26 +572,26 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nanase/alnilam@workspace:."
   dependencies:
-    "@biomejs/biome": "npm:2.5.13"
-    "@types/node": "npm:^22.20.2"
-    "@vitejs/plugin-vue": "npm:^6.0.8"
+    "@biomejs/biome": "npm:2.5.14"
+    "@types/node": "npm:^22.20.3"
+    "@vitejs/plugin-vue": "npm:^6.0.9"
     "@vitest/coverage-v8": "npm:^4.1.11"
-    "@vue/compiler-dom": "npm:^3.5.42"
+    "@vue/compiler-dom": "npm:^3.5.43"
     "@vue/language-core": "npm:^3.3.11"
-    "@vue/test-utils": "npm:^2.5.0"
+    "@vue/test-utils": "npm:^2.5.1"
     "@vue/tsconfig": "npm:^0.9.1"
     "@vueuse/core": "npm:^14.4.0"
     dayjs: "npm:^1.11.23"
-    happy-dom: "npm:^20.14.3"
+    happy-dom: "npm:^20.14.5"
     npm-run-all2: "npm:^9.0.3"
-    sass-embedded: "npm:^1.104.0"
+    sass-embedded: "npm:^1.104.1"
     typescript: "npm:5.9.3"
     unplugin-vue-macros: "npm:^2.14.5"
     vite: "npm:^7.3.6"
     vite-plugin-dts: "npm:^5.1.0"
     vite-plugin-lib-inject-css: "npm:^2.2.2"
     vitest: "npm:^4.1.11"
-    vue: "npm:^3.5.42"
+    vue: "npm:^3.5.43"
     vue-tsc: "npm:^3.3.11"
     vuetify: "npm:^3.13.4"
   peerDependencies:
@@ -1221,12 +1221,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^22.20.2":
-  version: 22.20.2
-  resolution: "@types/node@npm:22.20.2"
+"@types/node@npm:^22.20.3":
+  version: 22.20.3
+  resolution: "@types/node@npm:22.20.3"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10c0/1940dbec0c65a454c3651a282970fbfc998e0f0a5492bf5e067d8d9185f0c47cacc0d028153c481c4e6ecd19381ab03bf3f2efadb0cfacd702e74b6d5e4b212e
+  checksum: 10c0/27034f3f66d7044494f0be7b20b17eecbb1f6deab9e2ea8b004d79e896f4a90cde954da9a433a145e800f3db3e5c5c4761a65366434997c77102ba364dcbedd0
   languageName: node
   linkType: hard
 
@@ -1253,15 +1253,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-vue@npm:^6.0.8":
-  version: 6.0.8
-  resolution: "@vitejs/plugin-vue@npm:6.0.8"
+"@vitejs/plugin-vue@npm:^6.0.9":
+  version: 6.0.9
+  resolution: "@vitejs/plugin-vue@npm:6.0.9"
   dependencies:
     "@rolldown/pluginutils": "npm:^1.0.1"
   peerDependencies:
     vite: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
     vue: ^3.2.25
-  checksum: 10c0/28640e62f5f36bafd5f5be70726883af7c14db35bdcc04f348a5a1a4cc4f5d56dc2b59dd3409b048f9577f61af238149a0f55f96a2bfc9b3c24f98288bf5b8ab
+  checksum: 10c0/0e9308788f7ff4f6e0b44cd1135cb780c6bb1791fd513fc11b0f1153e131243993df950397e0b342c4522ba181cd35a621e0c5163327e4b3e225c2902b2a56e2
   languageName: node
   linkType: hard
 
@@ -1807,7 +1807,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/compiler-dom@npm:3.5.42, @vue/compiler-dom@npm:^3.5.13, @vue/compiler-dom@npm:^3.5.42":
+"@vue/compiler-core@npm:3.5.43":
+  version: 3.5.43
+  resolution: "@vue/compiler-core@npm:3.5.43"
+  dependencies:
+    "@babel/parser": "npm:^7.29.8"
+    "@vue/shared": "npm:3.5.43"
+    entities: "npm:^7.0.1"
+    estree-walker: "npm:^2.0.2"
+    source-map-js: "npm:^1.2.1"
+  checksum: 10c0/a6aa1a3e852a759322afa62ba22dae4f56fdcb275e1bc78c9588d65b9b53d24fd093965eb985b92c1ecd50a7b6dd9b7beddd8b3aebf207509b0ffc8844417137
+  languageName: node
+  linkType: hard
+
+"@vue/compiler-dom@npm:3.5.42, @vue/compiler-dom@npm:^3.5.13":
   version: 3.5.42
   resolution: "@vue/compiler-dom@npm:3.5.42"
   dependencies:
@@ -1824,6 +1837,16 @@ __metadata:
     "@vue/compiler-core": "npm:3.5.12"
     "@vue/shared": "npm:3.5.12"
   checksum: 10c0/48a67cd28c25e94dccff3c1e18bf2f79b073e486a856e5b30661e89e50d08cd49ababc43de94626c948da77c8dad859909e32d3ab678079e90dfa5d3e1ddc344
+  languageName: node
+  linkType: hard
+
+"@vue/compiler-dom@npm:^3.5.43":
+  version: 3.5.43
+  resolution: "@vue/compiler-dom@npm:3.5.43"
+  dependencies:
+    "@vue/compiler-core": "npm:3.5.43"
+    "@vue/shared": "npm:3.5.43"
+  checksum: 10c0/7176866486b51b18315b298bba613ddee38da1dbae7491b8bd87843951e26f347fab2027892d431655147253c011f5f3c152d7f7acca968c6eb51b7b446adabc
   languageName: node
   linkType: hard
 
@@ -1956,9 +1979,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/test-utils@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "@vue/test-utils@npm:2.5.0"
+"@vue/shared@npm:3.5.43":
+  version: 3.5.43
+  resolution: "@vue/shared@npm:3.5.43"
+  checksum: 10c0/2925261c79d49957523060a8e6c92e29a588301d22ee3f978d09d1aba881256a703285ae0108f7b50d76dd10b054ca31a0c1f1ed8696afbef7bf58e862782b4b
+  languageName: node
+  linkType: hard
+
+"@vue/test-utils@npm:^2.5.1":
+  version: 2.5.1
+  resolution: "@vue/test-utils@npm:2.5.1"
   dependencies:
     js-beautify: "npm:^2.0.0"
     vue-component-type-helpers: "npm:^3.0.0"
@@ -1969,7 +1999,7 @@ __metadata:
   peerDependenciesMeta:
     "@vue/server-renderer":
       optional: true
-  checksum: 10c0/e131aecc7aef29b8953d5fac51bf2dd85dfad2f428deb376978505aea7e2e954bf9f24af18f2279862af63c5148db60ed0ee44b91a0be29f49d56df08c192daf
+  checksum: 10c0/f44597b0db0689f4d30e32d1f8d367bf2ab040e80431b46cb9ce423fae5485bc56c03c15c530fa29c6a824868355cc59c33ed4704304215d17bc75ac3565e385
   languageName: node
   linkType: hard
 
@@ -2509,9 +2539,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happy-dom@npm:^20.14.3":
-  version: 20.14.3
-  resolution: "happy-dom@npm:20.14.3"
+"happy-dom@npm:^20.14.5":
+  version: 20.14.5
+  resolution: "happy-dom@npm:20.14.5"
   dependencies:
     "@types/node": "npm:>=20.0.0"
     "@types/whatwg-mimetype": "npm:^3.0.2"
@@ -2520,7 +2550,7 @@ __metadata:
     entities: "npm:^7.0.1"
     whatwg-mimetype: "npm:^3.0.0"
     ws: "npm:^8.21.0"
-  checksum: 10c0/6c16e3e3e9a0e1aedae620890af971c2028f9fffe3b64fbc4e9845e4a8254864fa5f22da56f7586e0970662997ae6dbf0c352e8c801e3c484c4d5229919d6686
+  checksum: 10c0/c2f82774aaa42944918e5a8bd69e34e98f87f5d3f144b44829ba53ed1f49f11ad35598e96ee3cf49fc65dbddaed57ae3760d693e60ee245de87e3af1aeadf63e
   languageName: node
   linkType: hard
 
@@ -3362,162 +3392,162 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass-embedded-all-unknown@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-all-unknown@npm:1.104.0"
+"sass-embedded-all-unknown@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-all-unknown@npm:1.104.1"
   dependencies:
-    sass: "npm:1.104.0"
+    sass: "npm:1.104.1"
   conditions: (!cpu=arm | !cpu=arm64 | !cpu=riscv64 | !cpu=x64)
   languageName: node
   linkType: hard
 
-"sass-embedded-android-arm64@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-android-arm64@npm:1.104.0"
+"sass-embedded-android-arm64@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-android-arm64@npm:1.104.1"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"sass-embedded-android-arm@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-android-arm@npm:1.104.0"
+"sass-embedded-android-arm@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-android-arm@npm:1.104.1"
   conditions: os=android & cpu=arm
   languageName: node
   linkType: hard
 
-"sass-embedded-android-riscv64@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-android-riscv64@npm:1.104.0"
+"sass-embedded-android-riscv64@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-android-riscv64@npm:1.104.1"
   conditions: os=android & cpu=riscv64
   languageName: node
   linkType: hard
 
-"sass-embedded-android-x64@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-android-x64@npm:1.104.0"
+"sass-embedded-android-x64@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-android-x64@npm:1.104.1"
   conditions: os=android & cpu=x64
   languageName: node
   linkType: hard
 
-"sass-embedded-darwin-arm64@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-darwin-arm64@npm:1.104.0"
+"sass-embedded-darwin-arm64@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-darwin-arm64@npm:1.104.1"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"sass-embedded-darwin-x64@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-darwin-x64@npm:1.104.0"
+"sass-embedded-darwin-x64@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-darwin-x64@npm:1.104.1"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-arm64@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-linux-arm64@npm:1.104.0"
+"sass-embedded-linux-arm64@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-linux-arm64@npm:1.104.1"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-arm@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-linux-arm@npm:1.104.0"
+"sass-embedded-linux-arm@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-linux-arm@npm:1.104.1"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-musl-arm64@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-linux-musl-arm64@npm:1.104.0"
+"sass-embedded-linux-musl-arm64@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-linux-musl-arm64@npm:1.104.1"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-musl-arm@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-linux-musl-arm@npm:1.104.0"
+"sass-embedded-linux-musl-arm@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-linux-musl-arm@npm:1.104.1"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-musl-riscv64@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-linux-musl-riscv64@npm:1.104.0"
+"sass-embedded-linux-musl-riscv64@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-linux-musl-riscv64@npm:1.104.1"
   conditions: os=linux & cpu=riscv64
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-musl-x64@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-linux-musl-x64@npm:1.104.0"
+"sass-embedded-linux-musl-x64@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-linux-musl-x64@npm:1.104.1"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-riscv64@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-linux-riscv64@npm:1.104.0"
+"sass-embedded-linux-riscv64@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-linux-riscv64@npm:1.104.1"
   conditions: os=linux & cpu=riscv64
   languageName: node
   linkType: hard
 
-"sass-embedded-linux-x64@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-linux-x64@npm:1.104.0"
+"sass-embedded-linux-x64@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-linux-x64@npm:1.104.1"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"sass-embedded-unknown-all@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-unknown-all@npm:1.104.0"
+"sass-embedded-unknown-all@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-unknown-all@npm:1.104.1"
   dependencies:
-    sass: "npm:1.104.0"
+    sass: "npm:1.104.1"
   conditions: (!os=android | !os=darwin | !os=linux | !os=win32)
   languageName: node
   linkType: hard
 
-"sass-embedded-win32-arm64@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-win32-arm64@npm:1.104.0"
+"sass-embedded-win32-arm64@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-win32-arm64@npm:1.104.1"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"sass-embedded-win32-x64@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded-win32-x64@npm:1.104.0"
+"sass-embedded-win32-x64@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded-win32-x64@npm:1.104.1"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"sass-embedded@npm:^1.104.0":
-  version: 1.104.0
-  resolution: "sass-embedded@npm:1.104.0"
+"sass-embedded@npm:^1.104.1":
+  version: 1.104.1
+  resolution: "sass-embedded@npm:1.104.1"
   dependencies:
     "@bufbuild/protobuf": "npm:^2.5.0"
     colorjs.io: "npm:^0.7.0"
     immutable: "npm:^5.1.5"
     rxjs: "npm:^7.4.0"
-    sass-embedded-all-unknown: "npm:1.104.0"
-    sass-embedded-android-arm: "npm:1.104.0"
-    sass-embedded-android-arm64: "npm:1.104.0"
-    sass-embedded-android-riscv64: "npm:1.104.0"
-    sass-embedded-android-x64: "npm:1.104.0"
-    sass-embedded-darwin-arm64: "npm:1.104.0"
-    sass-embedded-darwin-x64: "npm:1.104.0"
-    sass-embedded-linux-arm: "npm:1.104.0"
-    sass-embedded-linux-arm64: "npm:1.104.0"
-    sass-embedded-linux-musl-arm: "npm:1.104.0"
-    sass-embedded-linux-musl-arm64: "npm:1.104.0"
-    sass-embedded-linux-musl-riscv64: "npm:1.104.0"
-    sass-embedded-linux-musl-x64: "npm:1.104.0"
-    sass-embedded-linux-riscv64: "npm:1.104.0"
-    sass-embedded-linux-x64: "npm:1.104.0"
-    sass-embedded-unknown-all: "npm:1.104.0"
-    sass-embedded-win32-arm64: "npm:1.104.0"
-    sass-embedded-win32-x64: "npm:1.104.0"
+    sass-embedded-all-unknown: "npm:1.104.1"
+    sass-embedded-android-arm: "npm:1.104.1"
+    sass-embedded-android-arm64: "npm:1.104.1"
+    sass-embedded-android-riscv64: "npm:1.104.1"
+    sass-embedded-android-x64: "npm:1.104.1"
+    sass-embedded-darwin-arm64: "npm:1.104.1"
+    sass-embedded-darwin-x64: "npm:1.104.1"
+    sass-embedded-linux-arm: "npm:1.104.1"
+    sass-embedded-linux-arm64: "npm:1.104.1"
+    sass-embedded-linux-musl-arm: "npm:1.104.1"
+    sass-embedded-linux-musl-arm64: "npm:1.104.1"
+    sass-embedded-linux-musl-riscv64: "npm:1.104.1"
+    sass-embedded-linux-musl-x64: "npm:1.104.1"
+    sass-embedded-linux-riscv64: "npm:1.104.1"
+    sass-embedded-linux-x64: "npm:1.104.1"
+    sass-embedded-unknown-all: "npm:1.104.1"
+    sass-embedded-win32-arm64: "npm:1.104.1"
+    sass-embedded-win32-x64: "npm:1.104.1"
     supports-color: "npm:^8.1.1"
     sync-child-process: "npm:^1.0.2"
     varint: "npm:^6.0.0"
@@ -3560,13 +3590,13 @@ __metadata:
       optional: true
   bin:
     sass: dist/bin/sass.js
-  checksum: 10c0/10714839dff288aef70a7ba880bdb2406135fe9bd03f30989703c6a258245aff494f6e239bd6cbd2e27cfb9c8bdf2d489de2a5676be9dcaeab6cda56a7ab3aa9
+  checksum: 10c0/091a7bc946d6c71115b5ba330af854c971f9cbb23dddb166386e2fa84d4aefbc44b3c2cebe47a12300f738eef21bc758f8597606aa590aa697bddaff31d7a46a
   languageName: node
   linkType: hard
 
-"sass@npm:1.104.0":
-  version: 1.104.0
-  resolution: "sass@npm:1.104.0"
+"sass@npm:1.104.1":
+  version: 1.104.1
+  resolution: "sass@npm:1.104.1"
   dependencies:
     "@parcel/watcher": "npm:^2.4.1"
     chokidar: "npm:^5.0.0"
@@ -3577,7 +3607,7 @@ __metadata:
       optional: true
   bin:
     sass: sass.js
-  checksum: 10c0/f43dafaf582526bece2e854f73eecab433300b641468e56966ed97717e7eb06db2c010f8b6bdfccd6ff6b4c07083732ef0d524dfe12a1a19e9e5c953083c06a6
+  checksum: 10c0/d04e1898a9470a7a5052e67cbe5fc4ec342374f6d65a75eb180a5a60d0ee1af85bb2df6d877087169c4d53e358ff0864f2343fd594dc60474ce7a6467ee41961
   languageName: node
   linkType: hard
 
@@ -4270,8 +4300,8 @@ __metadata:
   linkType: hard
 
 "vuetify@npm:^3":
-  version: 3.13.2
-  resolution: "vuetify@npm:3.13.2"
+  version: 3.13.4
+  resolution: "vuetify@npm:3.13.4"
   peerDependencies:
     typescript: ">=4.7"
     vite-plugin-vuetify: ">=2.1.0"
@@ -4284,7 +4314,7 @@ __metadata:
       optional: true
     webpack-plugin-vuetify:
       optional: true
-  checksum: 10c0/b4c8a0870395706d0b959e39199e4d4a15cd1d316f6f04b43334b32acf5fae0cd3bdcaaabe6e57e826ef3934f0f81464911132b3fb4c1fa27a0a034662bc2a78
+  checksum: 10c0/802627cf60d81f58c2ae0adb957743b06c56fbe35f0f873d727f68be326823691c552ce1d1bba02648f5640eff600fa23d57f586069ede8be79d34f0f648ce2e
   languageName: node
   linkType: hard
 
