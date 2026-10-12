@@ -93,22 +93,22 @@
     "@vitejs/plugin-vue": "^6.0.9",
     "@vitest/coverage-v8": "^4.1.11",
     "@vue/compiler-dom": "^3.5.43",
-    "@vue/language-core": "^3.3.11",
+    "@vue/language-core": "^3.3.12",
     "@vue/test-utils": "^2.5.1",
     "@vue/tsconfig": "^0.9.1",
     "@vueuse/core": "^14.4.0",
     "dayjs": "^1.11.23",
-    "happy-dom": "^20.14.5",
+    "happy-dom": "^20.14.6",
     "npm-run-all2": "^9.0.3",
     "sass-embedded": "^1.105.1",
     "typescript": "5.9.3",
     "unplugin-vue-macros": "^2.14.5",
-    "vite": "^7.3.6",
-    "vite-plugin-dts": "^5.1.1",
+    "vite": "^7.3.7",
+    "vite-plugin-dts": "^5.1.2",
     "vite-plugin-lib-inject-css": "^2.2.2",
     "vitest": "^4.1.11",
     "vue": "^3.5.43",
-    "vue-tsc": "^3.3.11",
-    "vuetify": "^3.13.5"
+    "vue-tsc": "^3.3.12",
+    "vuetify": "^3.13.6"
   }
 }
